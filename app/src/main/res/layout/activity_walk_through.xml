@@ -7,6 +7,7 @@
     tools:context=".WalkThroughActivity">
 
     <android.support.v4.view.ViewPager
+        android:id="@+id/view_pager"
         android:layout_height="match_parent"
         android:layout_width="match_parent" />
 
@@ -20,6 +21,7 @@
     </LinearLayout>
 
     <Button
+        android:id="@+id/next"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
         android:background="@null"
@@ -33,6 +35,19 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:alpha=".4"
-
+        android:background="@android:color/white"
+        android:layout_above="@+id/next"
+        android:layout_alignParentStart="true"
         />
+    <Button
+        android:id="@+id/skip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        android:text="skip"
+        android:textSize="20dp"
+        android:textColor="@android:color/white"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="34dp" />
 </RelativeLayout>
