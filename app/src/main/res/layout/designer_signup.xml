@@ -14,8 +14,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="47dp"
-        android:layout_marginTop="97dp"
+        android:layout_marginStart="53dp"
+        android:layout_marginTop="131dp"
         android:backgroundTint="#e7d9d9"
         android:ems="10"
         android:inputType="textPersonName"
@@ -28,8 +28,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="48dp"
-        android:layout_marginTop="233dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="251dp"
         android:backgroundTint="#e7d9d9"
         android:ems="10"
         android:inputType="textPersonName"
@@ -42,8 +42,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="51dp"
-        android:layout_marginTop="297dp"
+        android:layout_marginStart="57dp"
+        android:layout_marginTop="323dp"
         android:backgroundTint="#e7d9d9"
         android:ems="10"
         android:inputType="textPersonName"
@@ -57,8 +57,8 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_centerInParent="true"
-        android:layout_marginStart="125dp"
-        android:layout_marginTop="2dp"
+        android:layout_marginStart="120dp"
+        android:layout_marginTop="0dp"
         app:srcCompat="@drawable/logo" />
 
     <ImageView
@@ -71,25 +71,14 @@
         android:layout_marginBottom="44dp"
         app:srcCompat="@drawable/logo_text" />
 
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="162dp"
-        android:layout_marginBottom="54dp"
-        android:text="Are you a designer?"
-        android:textColor="#e7d9d9" />
-
 
     <android.support.v7.widget.CardView
         android:layout_width="222dp"
         android:layout_height="50dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="66dp"
-        android:layout_marginTop="366dp"
+        android:layout_marginStart="65dp"
+        android:layout_marginTop="388dp"
         app:cardCornerRadius="28dp"
         app:cardElevation="6dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -102,7 +91,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="SIGN UP" />
+            android:text="CONTINUE" />
     </android.support.v7.widget.CardView>
 
     <EditText
@@ -111,8 +100,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="48dp"
-        android:layout_marginTop="160dp"
+        android:layout_marginStart="51dp"
+        android:layout_marginTop="185dp"
         android:backgroundTint="#e7d9d9"
         android:ems="10"
         android:inputType="textPersonName"
@@ -125,20 +114,41 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="68dp"
-        android:layout_marginBottom="56dp"
+        android:layout_marginEnd="193dp"
+        android:layout_marginBottom="66dp"
         android:text="Sign In here"
         android:textAppearance="@style/TextAppearance.Compat.Notification.Title"
         android:textColor="#e7d9d9" />
 
+    <ImageView
+        android:id="@+id/imageView22"
+        android:layout_width="143dp"
+        android:layout_height="50dp"
+
+        android:layout_above="@+id/fullName"
+        android:layout_alignEnd="@+id/imageView"
+        android:layout_marginBottom="-131dp"
+        app:srcCompat="@drawable/logo_text_white" />
     <TextView
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="94dp"
-        android:layout_marginBottom="22dp"
+        android:layout_marginEnd="51dp"
+        android:layout_marginBottom="74dp"
         android:text="Are you a designer?"
+        android:textColor="#e7d9d9" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="92dp"
+        android:layout_marginBottom="6dp"
+        android:text="Copyright @ 2019 Cuesoft Ltd"
         android:textColor="#e7d9d9" />
 </RelativeLayout>

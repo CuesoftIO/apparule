@@ -41,7 +41,7 @@
         android:layout_above="@+id/editText"
         android:layout_alignStart="@+id/imageView"
         android:layout_marginBottom="-174dp"
-        app:srcCompat="@drawable/logo_text" />
+        app:srcCompat="@drawable/logo_text_white" />
 
     <TextView
         android:id="@+id/textView4"
@@ -117,5 +117,16 @@
         android:textColor="#e7d9d9"
         />
 
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="104dp"
+        android:layout_marginBottom="34dp"
+        android:text="Copyright @ 2019 Cuesoft Ltd"
+        android:textColor="#e7d9d9" />
 
 </RelativeLayout>
