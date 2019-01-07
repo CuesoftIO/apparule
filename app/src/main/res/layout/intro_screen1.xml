@@ -5,8 +5,10 @@
     android:layout_height="match_parent"
     android:background="@drawable/get_started_00"
     android:alpha="0.7"
+
     android:backgroundTintMode="multiply"
     android:backgroundTint="#8b8282"
+
     >
 
 
