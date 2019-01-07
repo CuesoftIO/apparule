@@ -20,10 +20,10 @@
         android:layout_height="wrap_content"
         android:backgroundTint="#e7d9d9"
         android:ems="10"
-
+        android:hint="PASSWORD"
         android:inputType="textPersonName"
-        android:text="PASSWORD"
-        android:textColor="#e7d9d9"
+        android:textColorHint="#e7d9d9"
+
         app:layout_constraintBottom_toTopOf="@+id/cardView3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -121,12 +121,12 @@
     <EditText
         android:id="@+id/editText5"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-
+        android:layout_height="42dp"
+        android:textColorHint="#e7d9d9"
         android:backgroundTint="#e7d9d9"
         android:ems="10"
+        android:hint="USERNAME"
         android:inputType="textPersonName"
-        android:text="USERNAME"
         android:textColor="#e7d9d9"
         app:layout_constraintBottom_toTopOf="@+id/editText2"
         app:layout_constraintEnd_toEndOf="parent"

@@ -82,7 +82,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="SIGN UP" />
+            android:text="SIGN UP"
+            android:onClick="signup"
+            />
     </android.support.v7.widget.CardView>
 
     <ImageView
@@ -114,6 +116,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Sign Up here"
+        android:onClick="signup"
         android:layout_margin="3dp"
         android:textColor="#e7d9d9"
         app:layout_constraintBottom_toTopOf="@+id/textView7"
