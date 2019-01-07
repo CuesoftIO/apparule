@@ -19,6 +19,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".WalkThroughActivity"></activity>
+
         <activity android:name=".LandingActivity"></activity>
     </application>
 

@@ -3,13 +3,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@drawable/landing"
-    android:alpha="3.5"
-    android:tint="#716b6b"
+    android:background="@drawable/intro_01"
     android:backgroundTintMode="multiply"
     android:backgroundTint="#534c4c"
     >
-
 
     <EditText
         android:id="@+id/editText2"
@@ -20,10 +17,10 @@
         android:layout_marginStart="94dp"
         android:layout_marginTop="257dp"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:textColor="#e7d9d9"
+        android:inputType="textVisiblePassword"
         android:text="PASSWORD"
         android:backgroundTint="#e7d9d9"
+        android:textColor="#e7d9d9"
         />
 
     <ImageView
@@ -54,8 +51,9 @@
         android:layout_alignParentBottom="true"
         android:layout_marginEnd="122dp"
         android:layout_marginBottom="130dp"
+        android:text="Forgot yourPassword"
         android:textColor="#e7d9d9"
-        android:text="Forgot yourPassword" />
+        />
 
 
     <android.support.v7.widget.CardView
@@ -80,6 +78,20 @@
             android:text="Sign In" />
     </android.support.v7.widget.CardView>
 
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="91dp"
+        android:layout_marginTop="197dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="USERNAME"
+        android:textColor="#e7d9d9"
+        android:backgroundTint="#e7d9d9"
+        />
 
     <TextView
         android:id="@+id/textView5"
@@ -87,11 +99,11 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="72dp"
-        android:layout_marginBottom="83dp"
+        android:layout_marginEnd="93dp"
+        android:layout_marginBottom="81dp"
         android:text="Sign Up here"
-        android:textAppearance="@style/TextAppearance.Compat.Notification.Title"
-        android:textColor="#e7d9d9" />
+        android:textColor="#e7d9d9"
+        android:textAppearance="@style/TextAppearance.Compat.Notification.Title" />
 
     <TextView
         android:id="@+id/textView6"
@@ -99,24 +111,11 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="178dp"
-        android:layout_marginBottom="80dp"
+        android:layout_marginEnd="201dp"
+        android:layout_marginBottom="79dp"
         android:text="Forgot your password"
-        android:textColor="#e7d9d9" />
+        android:textColor="#e7d9d9"
+        />
 
-    <EditText
-        android:id="@+id/editText5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="66dp"
-        android:layout_marginTop="175dp"
-        android:backgroundTint="#e7d9d9"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Name"
-        android:textColor="#e7d9d9" />
 
 </RelativeLayout>
