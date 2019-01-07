@@ -13,5 +13,6 @@ public class LandingActivity extends AppCompatActivity {
     }
 
     public void signin(View view) {
+        setContentView(R.layout.signin_page);
     }
 }
