@@ -34,7 +34,7 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:text="PASSWORD"
-        android:textColor="#e7d9d9" />
+        android:textColor="#efe5e5" />
 
     <EditText
         android:id="@+id/editText2"
