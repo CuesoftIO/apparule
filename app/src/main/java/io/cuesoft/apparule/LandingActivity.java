@@ -22,10 +22,10 @@ public class LandingActivity extends AppCompatActivity {
     }
 
     public void designer(View view) {
-        setContentView(R.layout.designer_signup);
+        setContentView(R.layout.designer_signin);
     }
 
     public void designerSignUP(View view) {
-        setContentView(R.layout.designer_signin);
+        setContentView(R.layout.designer_signup);
     }
 }

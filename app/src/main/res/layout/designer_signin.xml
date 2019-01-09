@@ -15,6 +15,7 @@
         android:layout_width="108dp"
         android:layout_height="97dp"
         app:cardCornerRadius="100dp"
+
         app:layout_constraintBottom_toTopOf="@+id/editText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -38,7 +39,7 @@
         android:backgroundTint="#e7d9d9"
         android:ems="10"
         android:inputType="textVisiblePassword"
-        android:hint="PASSWORD"
+        android:hint="CONFIRM PASSWORD"
         android:textColorHint="#e7d9d9"
         app:layout_constraintBottom_toTopOf="@+id/cardView7"
         app:layout_constraintEnd_toEndOf="parent"
@@ -75,6 +76,7 @@
         android:layout_height="50dp"
         app:cardCornerRadius="28dp"
         app:cardElevation="6dp"
+        app:cardBackgroundColor="#fff700"
         app:layout_constraintBottom_toTopOf="@+id/textView6"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -86,7 +88,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="Sign In" />
+            android:text="SIGN UP" />
     </android.support.v7.widget.CardView>
 
     <EditText
@@ -96,7 +98,7 @@
         android:backgroundTint="#e7d9d9"
         android:ems="10"
         android:inputType="textPersonName"
-        android:hint="CONFIRM PASSWORD"
+        android:hint="PASSWORD"
         android:textColorHint="#e7d9d9"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

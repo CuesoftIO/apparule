@@ -76,6 +76,7 @@
         android:layout_height="50dp"
         app:cardCornerRadius="28dp"
         app:cardElevation="6dp"
+        app:cardBackgroundColor="#00b7ff"
         app:layout_constraintBottom_toTopOf="@+id/textView4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -87,7 +88,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="Sign In" />
+            android:text="SIGN IN"
+            android:textColor="#f1f3f4"
+
+            />
     </android.support.v7.widget.CardView>
 
     <TextView

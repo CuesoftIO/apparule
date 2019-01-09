@@ -76,6 +76,7 @@
         android:layout_height="50dp"
         app:cardCornerRadius="28dp"
         app:cardElevation="6dp"
+        app:cardBackgroundColor="#fff700"
         app:layout_constraintBottom_toTopOf="@+id/textView5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -87,6 +88,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:onClick="designerSignUP"
             android:text="CONTINUE" />
     </android.support.v7.widget.CardView>
 
