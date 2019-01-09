@@ -72,7 +72,7 @@
         android:layout_height="50dp"
         app:cardCornerRadius="28dp"
 
-        android:onClick="signup"
+        android:onClick="designerSignUP"
         app:cardBackgroundColor="#eeff00"
         app:cardElevation="6dp"
         app:layout_constraintBottom_toTopOf="@+id/textView4"
