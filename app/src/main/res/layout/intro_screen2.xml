@@ -40,7 +40,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="@string/intro_words"
+        android:text="Signup as a fashion designer and upload your designs to your catalogue"
         android:textColor="#f4efef"
         android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/guideline"

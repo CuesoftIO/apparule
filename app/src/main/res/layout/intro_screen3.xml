@@ -19,8 +19,9 @@
         app:cardBackgroundColor="#00b7ff"
         app:cardCornerRadius="28dp"
         app:cardElevation="6dp"
-        app:layout_constraintBottom_toBottomOf="72dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/guideline">
 
@@ -61,7 +62,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="@string/intro_words"
+        android:text="Take measurements with the app and send to the designer"
         android:textColor="#f4efef"
         android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/guideline"
