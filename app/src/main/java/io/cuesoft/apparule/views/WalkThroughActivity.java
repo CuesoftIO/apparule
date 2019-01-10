@@ -1,4 +1,4 @@
-package io.cuesoft.apparule;
+package io.cuesoft.apparule.views;
 
 
 import android.content.Context;
@@ -15,7 +15,8 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import io.cuesoft.apparule.views.HomeActivity;
+import io.cuesoft.apparule.R;
+import io.cuesoft.apparule.data.PreferenceManager;
 
 public class WalkThroughActivity extends AppCompatActivity {
 

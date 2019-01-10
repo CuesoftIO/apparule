@@ -12,7 +12,7 @@ import io.cuesoft.apparule.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class BlankFragment extends Fragment {
+public class  BlankFragment extends Fragment {
 
 
     public BlankFragment() {

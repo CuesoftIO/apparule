@@ -142,7 +142,6 @@
         android:id="@+id/textView7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
         android:layout_marginBottom="16dp"
         android:text="Copyright @ 2019 Cuesoft Ltd"
         android:textColor="#e7d9d9"

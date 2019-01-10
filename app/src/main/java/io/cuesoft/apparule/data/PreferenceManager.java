@@ -1,4 +1,4 @@
-package io.cuesoft.apparule;
+package io.cuesoft.apparule.data;
 
 import android.content.Context;
 import android.content.SharedPreferences;

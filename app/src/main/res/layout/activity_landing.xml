@@ -11,7 +11,7 @@
 
     android:backgroundTintMode="multiply"
     android:tint="#fc121010"
-    tools:context=".LandingActivity"
+    tools:context=".views.LandingActivity"
     tools:layout_editor_absoluteY="25dp">
 
     <TextView
@@ -71,8 +71,7 @@
         android:layout_width="188dp"
         android:layout_height="50dp"
         app:cardCornerRadius="28dp"
-
-        android:onClick="designerSignUP"
+        android:onClick="signup"
         app:cardBackgroundColor="#eeff00"
         app:cardElevation="6dp"
         app:layout_constraintBottom_toTopOf="@+id/textView4"

@@ -17,7 +17,7 @@ public class CustomerSignUpFragment extends Fragment {
 
 
     public CustomerSignUpFragment() {
-        // Required empty public constructor
+
     }
 
 
