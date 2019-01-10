@@ -41,8 +41,4 @@ public class LandingActivity extends AppCompatActivity {
         setContentView(R.layout.designer_signup);
     }
 
-    public void mainPage(View view) {
-        Intent intent = new Intent(LandingActivity.this, HomeActivity.class);
-        startActivity(intent);
-    }
 }

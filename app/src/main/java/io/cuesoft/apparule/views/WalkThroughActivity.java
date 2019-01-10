@@ -79,5 +79,11 @@ public class WalkThroughActivity extends AppIntro {
             }
 
         }
+
+    public void mainPage(View view) {
+        Intent intent = new Intent(WalkThroughActivity.this, HomeActivity.class);
+        startActivity(intent);
+    }
+
     }
 
