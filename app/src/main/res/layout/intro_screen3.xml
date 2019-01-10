@@ -16,6 +16,7 @@
         android:layout_width="222dp"
         android:layout_height="50dp"
         android:layout_marginTop="12dp"
+        android:onClick="mainPage"
         app:cardBackgroundColor="#00b7ff"
         app:cardCornerRadius="28dp"
         app:cardElevation="6dp"
