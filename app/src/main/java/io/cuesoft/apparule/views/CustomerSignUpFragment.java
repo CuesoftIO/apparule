@@ -24,9 +24,7 @@ public class CustomerSignUpFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        TextView textView = new TextView(getActivity());
-        textView.setText(R.string.hello_blank_fragment);
-        return textView;
+       return inflater.inflate(R.layout.siginup_page, container, false);
     }
 
 }

@@ -1,5 +1,7 @@
 package io.cuesoft.apparule.views;
 
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -15,12 +17,19 @@ public class LandingActivity extends AppCompatActivity {
     }
 
     public void signin(View view) {
-
-        setContentView(R.layout.signin_page);
+        Fragment SignInFragment = new CustomerSignInFragment();
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(android.R.id.content, SignInFragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
     }
 
     public void signup(View view) {
-        setContentView(R.layout.siginup_page);
+    Fragment SignUpFragment = new CustomerSignUpFragment();
+    FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+    transaction.replace(android.R.id.content, SignUpFragment);
+    transaction.addToBackStack(null);
+    transaction.commit();
     }
 
     public void designer(View view) {
