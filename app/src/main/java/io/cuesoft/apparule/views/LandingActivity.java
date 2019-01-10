@@ -43,5 +43,6 @@ public class LandingActivity extends AppCompatActivity {
 
     public void mainPage(View view) {
         Intent intent = new Intent(LandingActivity.this, HomeActivity.class);
+        startActivity(intent);
     }
 }
