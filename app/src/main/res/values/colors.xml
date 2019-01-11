@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimary">#f2f7f6</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#f8fffe</color>
-
+    <color name="black">#0b0b0b</color>
+    <color name="bottom_navigation">#0fb2e4</color>
     <array name="dot_on_page_active">
         <item>#B71C1C</item>
         <item>#8BC34A</item>

@@ -77,6 +77,7 @@
         android:layout_height="50dp"
         app:cardCornerRadius="28dp"
         app:cardElevation="6dp"
+        android:onClick="enterMain"
         app:cardBackgroundColor="#00b7ff"
         app:layout_constraintBottom_toTopOf="@+id/textView4"
         app:layout_constraintEnd_toEndOf="parent"
