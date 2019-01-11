@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
@@ -25,7 +26,7 @@ public class WalkThroughActivity extends AppIntro {
             preferenceHelper = new WalkThroughHelper(this);
 
             if (preferenceHelper.getIntro().equals("no")) {
-                Intent intent = new Intent(WalkThroughActivity.this, HomeActivity.class);
+                Intent intent = new Intent(WalkThroughActivity.this, LandingActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
                 this.finish();
@@ -42,7 +43,7 @@ public class WalkThroughActivity extends AppIntro {
             super.onSkipPressed(currentFragment);
 
             preferenceHelper.putIntro("no");
-            Intent intent = new Intent(WalkThroughActivity.this, HomeActivity.class);
+            Intent intent = new Intent(WalkThroughActivity.this, LandingActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
             this.finish();
@@ -53,7 +54,7 @@ public class WalkThroughActivity extends AppIntro {
             super.onDonePressed(currentFragment);
 
             preferenceHelper.putIntro("no");
-            Intent intent = new Intent(WalkThroughActivity.this, HomeActivity.class);
+            Intent intent = new Intent(WalkThroughActivity.this, LandingActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
             this.finish();
@@ -81,8 +82,15 @@ public class WalkThroughActivity extends AppIntro {
         }
 
     public void mainPage(View view) {
-        Intent intent = new Intent(WalkThroughActivity.this, HomeActivity.class);
+        Intent intent = new Intent(WalkThroughActivity.this, LandingActivity.class);
         startActivity(intent);
+    }
+    public void signup(View view) {
+        Fragment SignUpFragment = new CustomerSignUpFragment();
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(android.R.id.content, SignUpFragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
     }
 
     }
