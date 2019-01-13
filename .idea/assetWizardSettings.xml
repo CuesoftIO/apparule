@@ -34,9 +34,10 @@
                                   <option name="values">
                                     <map>
                                       <entry key="backgroundLayerName" value="ic_launcher_background" />
-                                      <entry key="foregroundAssetType" value="CLIP_ART" />
-                                      <entry key="foregroundLayerName" value="ic_launcher_foreground" />
-                                      <entry key="outputName" value="ic_store" />
+                                      <entry key="foregroundImage" value="C:\Development\Apparule\app\src\main\res\drawable\logo.png" />
+                                      <entry key="foregroundLayerName" value="ic_launcher_icon" />
+                                      <entry key="outputName" value="logo" />
+                                      <entry key="previewDensity" value="MEDIUM" />
                                     </map>
                                   </option>
                                 </PersistentState>
