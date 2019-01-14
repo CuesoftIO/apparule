@@ -36,10 +36,10 @@
         android:text="Are you are a Designer?"
         android:textColor="#e7d9d9"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardView" />
+        app:layout_constraintTop_toBottomOf="@+id/signIn_landing" />
 
     <android.support.v7.widget.CardView
-        android:id="@+id/cardView"
+        android:id="@+id/signIn_landing"
         android:layout_width="188dp"
         android:layout_height="50dp"
         android:layout_marginBottom="199dp"
@@ -62,7 +62,7 @@
     </android.support.v7.widget.CardView>
 
     <android.support.v7.widget.CardView
-        android:id="@+id/cardView2"
+        android:id="@+id/signUp_landing"
         android:layout_width="188dp"
         android:layout_height="50dp"
         android:layout_marginTop="76dp"
@@ -72,7 +72,7 @@
         app:cardBackgroundColor="#eeff00"
         app:cardCornerRadius="28dp"
         app:cardElevation="6dp"
-        app:layout_constraintBottom_toBottomOf="@+id/cardView"
+        app:layout_constraintBottom_toBottomOf="@+id/signIn_landing"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView">
@@ -130,7 +130,7 @@
         android:layout_height="77dp"
         android:layout_marginTop="54dp"
         android:layout_marginBottom="73dp"
-        app:layout_constraintBottom_toBottomOf="@+id/cardView2"
+        app:layout_constraintBottom_toBottomOf="@+id/signUp_landing"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"

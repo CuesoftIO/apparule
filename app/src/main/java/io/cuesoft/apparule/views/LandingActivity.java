@@ -5,16 +5,34 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.CardView;
 import android.view.View;
 
 import io.cuesoft.apparule.R;
 
 public class LandingActivity extends AppCompatActivity {
-
+    CardView signInButton;
+    CardView signUpButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_landing);
+        signInButton = findViewById(R.id.signIn_landing);
+        signUpButton = findViewById(R.id.signUp_landing);
+
+        signInButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            signin(v);
+            }
+        });
+
+       signUpButton.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               signup(v);
+           }
+       });
     }
 
     public void signin(View view) {
@@ -24,6 +42,7 @@ public class LandingActivity extends AppCompatActivity {
         transaction.addToBackStack(null);
         transaction.commit();
     }
+
 
     public void signup(View view) {
         Fragment SignUpFragment = new CustomerSignUpFragment();

@@ -12,8 +12,8 @@
 
     <EditText
         android:id="@+id/fullName"
-        android:layout_width="252dp"
-        android:layout_height="wrap_content"
+        android:layout_width="242dp"
+        android:layout_height="40dp"
         android:layout_marginTop="28dp"
         android:backgroundTint="#e7d9d9"
         android:ems="10"
@@ -21,20 +21,22 @@
         android:inputType="textPersonName"
         android:textColorHint="#e7d9d9"
         android:textSize="12sp"
+        android:textColor="#e7d9d9"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline10" />
 
     <EditText
         android:id="@+id/passowrd"
-        android:layout_width="252dp"
-        android:layout_height="wrap_content"
+        android:layout_width="242dp"
+        android:layout_height="40dp"
         android:backgroundTint="#e7d9d9"
         android:ems="10"
         android:hint="ADDRESS"
         android:inputType="textPersonName"
         android:textColorHint="#efe5e5"
         android:textSize="12sp"
+        android:textColor="#e7d9d9"
         app:layout_constraintBottom_toTopOf="@+id/editText2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -43,14 +45,16 @@
 
     <EditText
         android:id="@+id/editText2"
-        android:layout_width="252dp"
-        android:layout_height="wrap_content"
+        android:layout_width="242dp"
+        android:layout_height="40dp"
         android:backgroundTint="#e7d9d9"
         android:ems="10"
         android:hint="COUNTRY"
         android:inputType="textPersonName"
         android:textColorHint="#e7d9d9"
         android:textSize="12sp"
+        android:textColor="#e7d9d9"
+
         app:layout_constraintBottom_toTopOf="@+id/cardView5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -59,25 +63,24 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="73dp"
-        android:layout_height="54dp"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        app:layout_constraintBottom_toTopOf="@+id/imageView22"
-        app:layout_constraintEnd_toStartOf="@+id/imageView22"
-        app:layout_constraintHorizontal_bias="0.533"
-        app:layout_constraintStart_toEndOf="@+id/imageView22"
+        android:layout_marginTop="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/logo" />
 
 
     <android.support.v7.widget.CardView
         android:id="@+id/cardView5"
-        android:layout_width="252dp"
+        android:layout_width="242dp"
         android:layout_height="40dp"
         android:onClick="designer"
-        app:cardBackgroundColor="#fff700"
+        app:cardBackgroundColor="#ffcc00"
         app:cardCornerRadius="20dp"
         app:cardElevation="6dp"
         app:layout_constraintBottom_toTopOf="@+id/textView5"
@@ -97,14 +100,15 @@
 
     <EditText
         android:id="@+id/editText"
-        android:layout_width="252dp"
-        android:layout_height="wrap_content"
+        android:layout_width="242dp"
+        android:layout_height="40dp"
         android:backgroundTint="#e7d9d9"
         android:ems="10"
         android:hint="EMAIL"
         android:inputType="textPersonName"
         android:textColorHint="#e7d9d9"
         android:textSize="12sp"
+        android:textColor="#e7d9d9"
         app:layout_constraintBottom_toTopOf="@+id/passowrd"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -116,7 +120,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="4dp"
-        android:onClick="designerSignUP"
+        android:onClick="signin"
         android:text="@string/sign_in_here"
         android:textAppearance="@style/TextAppearance.Compat.Notification.Title"
         android:textColor="#e7d9d9"
@@ -131,11 +135,12 @@
 
     <ImageView
         android:id="@+id/imageView22"
-        android:layout_width="120dp"
-        android:layout_height="27dp"
-        android:layout_marginBottom="16dp"
+        android:layout_width="103dp"
+        android:layout_height="28dp"
+        android:layout_marginBottom="10dp"
         app:layout_constraintBottom_toTopOf="@+id/guideline10"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/logo_text_white" />
 
@@ -160,7 +165,7 @@
         android:layout_marginTop="34dp"
         android:text="Copyright @ 2019 Cuesoft Ltd"
         android:textColor="#e7d9d9"
-        android:textSize="10sp"
+        android:textSize="8sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -171,6 +176,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="123dp" />
+        app:layout_constraintGuide_begin="116dp" />
 
 </android.support.constraint.ConstraintLayout>
