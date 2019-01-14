@@ -37,7 +37,8 @@ public class LandingActivity extends AppCompatActivity {
         setContentView(R.layout.designer_signin);
     }
 
-    public void designerSignUP(View view) {
+    public void designerSignUP(View view)
+    {
         setContentView(R.layout.designer_signup);
     }
 
