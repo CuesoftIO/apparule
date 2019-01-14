@@ -11,7 +11,7 @@ import android.view.View;
 import io.cuesoft.apparule.R;
 
 public class LandingActivity extends AppCompatActivity {
-    CardView signInButton;
+    CardView signInButton, signInButton2;
     CardView signUpButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +33,16 @@ public class LandingActivity extends AppCompatActivity {
                signup(v);
            }
        });
+
+//        signInButton2 = (CardView) findViewById(R.id.signIn_cardView);
+//        signInButton2.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                signin(v);
+//            }
+//        });
     }
+
 
     public void signin(View view) {
         Fragment SignInFragment = new CustomerSignInFragment();

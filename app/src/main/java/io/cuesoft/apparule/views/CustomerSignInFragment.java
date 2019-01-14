@@ -19,6 +19,7 @@ import io.cuesoft.apparule.R;
 public class CustomerSignInFragment extends Fragment {
     LandingActivity land = new LandingActivity();
     CardView signInButton;
+
     public CustomerSignInFragment() {
         // Required empty public constructor
     }
@@ -27,18 +28,21 @@ public class CustomerSignInFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.signin_page, container, false);
+        View view = inflater.inflate(R.layout.signin_page, container, false);
+//        signInButton = (CardView) view.findViewById(R.id.signIn_cardView);
+//        signInButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                land.signin(v);
+//            }
+//        });
+
+        return view;
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        signInButton = (CardView) view.findViewById(R.id.signIn_cardView);
-        signInButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                land.signin(v);
-            }
-        });
+
     }
 }
