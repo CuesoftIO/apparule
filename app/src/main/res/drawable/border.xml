@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
     <shape xmlns:android="http://schemas.android.com/apk/res/android"
-    android:thickness="0dp"
-
+    android:thickness="21dp"
+    android:shape="oval"
+    android:visible="true"
+    android:innerRadius="43dp"
     >
 
-
+<corners
+    android:radius="101dp"
+    android:topRightRadius="23dp"
+    />
         <!-- Border Color -->
-        <stroke android:width="0dp"
+        <stroke android:width="10dp"
             android:color="#eae9e6" />
 
         <!-- Round Corners -->
