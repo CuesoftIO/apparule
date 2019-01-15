@@ -77,7 +77,7 @@ public class LandingActivity extends AppCompatActivity {
     }
 
     public void forgotpassword(View view) {
-        Fragment ForgotPasswordFragment = new DesignerSignUPFragment();
+        Fragment ForgotPasswordFragment = new ForgotPasswordFragment();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(android.R.id.content, ForgotPasswordFragment);
         transaction.addToBackStack(null);
