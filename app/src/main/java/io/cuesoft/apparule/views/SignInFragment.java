@@ -10,7 +10,6 @@ import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import io.cuesoft.apparule.R;
 
@@ -37,7 +36,7 @@ public class SignInFragment extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        signInButton = (CardView) view.findViewById(R.id.signIn_cardView);
+        signInButton = (CardView) view.findViewById(R.id.signButton);
         signInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

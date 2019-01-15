@@ -56,16 +56,28 @@ public class LandingActivity extends AppCompatActivity {
     }
 
     public void designer(View view) {
-        setContentView(R.layout.designer_signin);
+       setContentView(R.layout.designer_signin);
     }
 
     public void designerSignUP(View view)
     {
-        setContentView(R.layout.designer_signup);
+       Fragment designerSignFragment = new DesignerSignUPFragment();
+       FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+       transaction.replace(android.R.id.content, designerSignFragment);
+       transaction.addToBackStack(null);
+       transaction.commit();
     }
 
     public void enterMain(View view) {
         Intent intent = new Intent(LandingActivity.this, MainActivity.class);
         startActivity(intent);
+    }
+
+    public void forgotpassword(View view) {
+        Fragment ForgotPasswordFragment = new DesignerSignUPFragment();
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(android.R.id.content, ForgotPasswordFragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
     }
 }
