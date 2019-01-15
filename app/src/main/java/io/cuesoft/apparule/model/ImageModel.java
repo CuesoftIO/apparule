@@ -1,4 +1,4 @@
-package io.cuesoft.apparule.views;
+package io.cuesoft.apparule.model;
 
 public class ImageModel {
     private int image_drawable;

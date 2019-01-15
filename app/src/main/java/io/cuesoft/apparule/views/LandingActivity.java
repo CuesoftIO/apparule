@@ -34,18 +34,12 @@ public class LandingActivity extends AppCompatActivity {
            }
        });
 
-//        signInButton2 = (CardView) findViewById(R.id.signIn_cardView);
-//        signInButton2.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                signin(v);
-//            }
-//        });
+
     }
 
 
     public void signin(View view) {
-        Fragment SignInFragment = new CustomerSignInFragment();
+        Fragment SignInFragment = new SignInFragment();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(android.R.id.content, SignInFragment);
         transaction.addToBackStack(null);

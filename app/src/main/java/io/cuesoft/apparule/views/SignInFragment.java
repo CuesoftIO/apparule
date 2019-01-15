@@ -1,6 +1,7 @@
 package io.cuesoft.apparule.views;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -16,11 +17,11 @@ import io.cuesoft.apparule.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class CustomerSignInFragment extends Fragment {
+public class SignInFragment extends Fragment {
     LandingActivity land = new LandingActivity();
     CardView signInButton;
 
-    public CustomerSignInFragment() {
+    public SignInFragment() {
         // Required empty public constructor
     }
 
@@ -29,13 +30,15 @@ public class CustomerSignInFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.signin_page, container, false);
-//        signInButton = (CardView) view.findViewById(R.id.signIn_cardView);
-//        signInButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                land.signin(v);
-//            }
-//        });
+        signInButton = (CardView) view.findViewById(R.id.signIn_cardView);
+        signInButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               // land.enterMain(v);
+                Intent intent = new Intent(getActivity(), MainActivity.class);
+                startActivity(intent);
+            }
+        });
 
         return view;
     }
