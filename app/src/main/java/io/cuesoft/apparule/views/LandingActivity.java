@@ -56,8 +56,11 @@ public class LandingActivity extends AppCompatActivity {
     }
 
     public void designer(View view) {
-       setContentView(R.layout.designer_signin);
-    }
+        Fragment designerSignSecondFragment = new designerSecondFragment();
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(android.R.id.content, designerSignSecondFragment);
+        transaction.addToBackStack(null);
+        transaction.commit();}
 
     public void designerSignUP(View view)
     {
