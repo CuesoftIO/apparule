@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "566577333385",
+    "firebase_url": "https://apparule-59674.firebaseio.com",
+    "project_id": "apparule-59674",
+    "storage_bucket": "apparule-59674.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:566577333385:android:4937b34f2d726914",
+        "android_client_info": {
+          "package_name": "io.cuesoft.apparule"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "566577333385-iulsm9fv4r3qpgl1tu87v9r0bku9bek2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC9egNodu1pfnKYxZA5kjUoWG9sFdRFy8M"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

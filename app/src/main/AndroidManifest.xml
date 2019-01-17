@@ -23,8 +23,12 @@
         <activity android:name=".views.CustomerActivity"></activity>
         <activity
             android:name=".views.MainActivity"
-            android:label="@string/title_activity_main"></activity>
-        <activity android:name=".views.DesignerActivity"></activity>
+            android:label="@string/title_activity_main">
+
+        </activity>
+        <activity android:name=".views.DesignerActivity">
+
+        </activity>
     </application>
 
 </manifest>
