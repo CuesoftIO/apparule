@@ -53,7 +53,9 @@ public class CustomerSignUpActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 if (validateForm()) {
+
                     createAccount(mEmailField.getText().toString(), mPasswordField1.getText().toString());
+
                 } else {
                     Toast.makeText(CustomerSignUpActivity.this , "Authentication false or Please " +
                             "check your internet connection and try again", Toast.LENGTH_LONG).show();
