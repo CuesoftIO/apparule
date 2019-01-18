@@ -15,7 +15,7 @@
 
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/password_signinField"
         android:layout_width="285dp"
         android:layout_height="46dp"
         android:layout_marginTop="14dp"
@@ -32,7 +32,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText5"
+        app:layout_constraintTop_toBottomOf="@+id/username_signinField"
         app:layout_constraintVertical_chainStyle="spread_inside" />
 
     <ImageView
@@ -53,7 +53,7 @@
         android:layout_height="63dp"
 
         android:layout_marginBottom="112dp"
-        app:layout_constraintBottom_toTopOf="@+id/editText5"
+        app:layout_constraintBottom_toTopOf="@+id/username_signinField"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.528"
         app:layout_constraintStart_toStartOf="parent"
@@ -88,7 +88,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText2">
+        app:layout_constraintTop_toBottomOf="@+id/password_signinField">
 
         <TextView
             android:id="@+id/textView"
@@ -131,7 +131,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
-        android:id="@+id/editText5"
+        android:id="@+id/username_signinField"
 
         android:layout_width="285dp"
         android:layout_height="52dp"

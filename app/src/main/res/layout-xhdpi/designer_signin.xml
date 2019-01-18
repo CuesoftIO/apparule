@@ -25,7 +25,7 @@
 
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/password_signinField"
         android:layout_width="260dp"
         android:layout_height="52dp"
         android:backgroundTint="#e7d9d9"
@@ -70,10 +70,10 @@
         android:id="@+id/designerSignInButton"
         android:layout_width="260dp"
         android:layout_height="40dp"
+        android:layout_marginTop="12dp"
         app:cardBackgroundColor="#ffcc00"
         app:cardCornerRadius="20dp"
         app:cardElevation="6dp"
-        android:layout_marginTop="12dp"
         app:layout_constraintBottom_toTopOf="@+id/textView6"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -100,11 +100,10 @@
         android:textColor="#e7d9d9"
         android:textColorHint="#e7d9d9"
         android:textSize="14sp"
-        app:layout_constraintBottom_toTopOf="@+id/editText2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/floatingActionButton" />
+        tools:layout_editor_absoluteY="258dp" />
 
     <TextView
         android:id="@+id/textView6"

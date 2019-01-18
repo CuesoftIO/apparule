@@ -14,7 +14,7 @@
     <ImageView
         android:id="@+id/imageView4"
         android:layout_width="127dp"
-        android:layout_height="80dp"
+        android:layout_height="120dp"
         app:layout_constraintBottom_toTopOf="@+id/textView8"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -24,8 +24,8 @@
 
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="276dp"
-        android:layout_height="71dp"
+        android:layout_width="286dp"
+        android:layout_height="40dp"
 
 
         app:layout_constraintBottom_toTopOf="@+id/imageView4"
@@ -42,7 +42,7 @@
         android:gravity="center"
         android:text="Signup as a fashion designer and upload your designs to your catalogue"
         android:textColor="#f4efef"
-        android:textSize="16sp"
+        android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/guideline"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"

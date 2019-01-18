@@ -23,7 +23,7 @@
 
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/password_signinField"
         android:layout_width="252dp"
         android:layout_height="52dp"
         android:backgroundTint="#e7d9d9"

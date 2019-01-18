@@ -1,4 +1,4 @@
-package io.cuesoft.apparule.views;
+package io.cuesoft.apparule.views.walkthrough;
 
 
 import android.app.Activity;
@@ -7,13 +7,14 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.github.paolorotolo.appintro.AppIntro;
 
-import io.cuesoft.apparule.R;
 import io.cuesoft.apparule.helper.WalkThroughHelper;
+import io.cuesoft.apparule.views.BlankActivity;
+import io.cuesoft.apparule.views.LandingActivity;
+import io.cuesoft.apparule.views.customer.CustomerSignUpFragment;
 
 public class WalkThroughActivity extends AppIntro {
     private WalkThroughHelper preferenceHelper;
@@ -82,7 +83,7 @@ public class WalkThroughActivity extends AppIntro {
         }
 
     public void mainPage(View view) {
-        Intent intent = new Intent(WalkThroughActivity.this, LandingActivity.class);
+        Intent intent = new Intent(WalkThroughActivity.this, BlankActivity.class);
         startActivity(intent);
     }
     public void signup(View view) {

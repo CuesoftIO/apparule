@@ -1,4 +1,4 @@
-package io.cuesoft.apparule.views;
+package io.cuesoft.apparule.views.designer;
 
 
 import android.content.Context;

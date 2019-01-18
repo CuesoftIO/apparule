@@ -14,14 +14,14 @@
     tools:layout_editor_absoluteY="25dp">
 
     <android.support.v7.widget.CardView
-        android:id="@+id/cardView4"
-        android:layout_width="222dp"
-        android:layout_height="50dp"
-        android:layout_marginBottom="72dp"
+        android:id="@+id/signUp_walkthrough"
+        android:layout_width="250dp"
+        android:layout_height="40dp"
+        android:layout_marginBottom="92dp"
+        android:onClick="signup"
         app:cardBackgroundColor="#00b7ff"
         app:cardCornerRadius="28dp"
         app:cardElevation="6dp"
-        android:onClick="signup"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -40,26 +40,26 @@
     <ImageView
         android:id="@+id/imageView4"
         android:layout_width="230dp"
-        android:layout_height="0dp"
+        android:layout_height="120dp"
         android:layout_marginBottom="50dp"
         app:layout_constraintBottom_toTopOf="@+id/textView8"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView2"
         app:srcCompat="@drawable/logo" />
 
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-
-
-        android:layout_marginStart="42dp"
-        android:layout_marginTop="2dp"
-        android:layout_marginEnd="42dp"
+        android:layout_width="286dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="37dp"
+        android:layout_marginTop="70dp"
+        android:layout_marginEnd="37dp"
         android:layout_marginBottom="24dp"
         app:layout_constraintBottom_toTopOf="@+id/imageView4"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/logo_text" />
@@ -68,14 +68,13 @@
         android:id="@+id/textView8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="21dp"
+        android:layout_marginBottom="70dp"
         android:gravity="center"
         android:text="Follow and preview a designer's catalogue"
         android:textColor="#f4efef"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/signUp_walkthrough"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView4" />
 
@@ -83,10 +82,7 @@
         android:id="@+id/guideline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="98dp"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/cardView4"
-        app:layout_constraintGuide_begin="346dp"
-        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+        app:layout_constraintGuide_begin="346dp" />
 
 </android.support.constraint.ConstraintLayout>

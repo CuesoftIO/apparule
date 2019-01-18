@@ -30,7 +30,8 @@ dependencies {
     implementation 'com.makeramen:roundedimageview:2.3.0'
 
     //Firebase services
-    implementation 'com.google.firebase:firebase-core:16.0.1'
+    implementation 'com.google.firebase:firebase-core:16.0.6'
+    implementation 'com.google.firebase:firebase-auth:16.1.0'
 
     implementation 'com.android.support:support-vector-drawable:27.1.1'
     testImplementation 'junit:junit:4.12'

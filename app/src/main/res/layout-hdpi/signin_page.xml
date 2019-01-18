@@ -2,7 +2,7 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/relativeLayout2"
+    android:id="@+id/_signInLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:alpha="3.5"
@@ -15,7 +15,7 @@
 
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/password_signinField"
         android:layout_width="252dp"
         android:layout_height="46dp"
         android:layout_marginTop="4dp"
@@ -31,7 +31,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText5"
+        app:layout_constraintTop_toBottomOf="@+id/username_signinField"
         app:layout_constraintVertical_chainStyle="spread_inside" />
 
     <ImageView
@@ -62,10 +62,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
+        android:onClick="forgotpassword"
         android:text="Forgot Password?"
         android:textColor="#e7d9d9"
         android:textSize="12dp"
-        android:onClick="forgotpassword"
         app:layout_constraintBottom_toTopOf="@+id/designer_signup"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -78,15 +78,14 @@
         android:layout_width="241dp"
         android:layout_height="40dp"
         android:layout_marginBottom="23dp"
-        android:onClick="enterMain"
         app:cardBackgroundColor="#00b7ff"
         app:cardCornerRadius="20dp"
         app:cardElevation="6dp"
         app:layout_constraintBottom_toTopOf="@+id/textView4"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.43"
+        app:layout_constraintHorizontal_bias="0.506"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText2">
+        app:layout_constraintTop_toBottomOf="@+id/password_signinField">
 
         <TextView
             android:id="@+id/textView"
@@ -105,10 +104,10 @@
         android:layout_height="wrap_content"
         android:layout_margin="4dp"
         android:autoLink="all"
+        android:onClick="signup"
         android:text="@string/sign_up_here"
         android:textColor="#e7d9d9"
         android:textSize="12dp"
-        android:onClick="signup"
         app:layout_constraintBaseline_toBaselineOf="@id/textView6"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -129,8 +128,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
-        android:id="@+id/editText5"
-
+        android:id="@+id/username_signinField"
         android:layout_width="252dp"
         android:layout_height="52dp"
         android:layout_marginTop="62dp"
@@ -141,7 +139,7 @@
         android:textColor="#e7d9d9"
         android:textColorHint="#e7d9d9"
         android:textSize="12sp"
-        app:layout_constraintBottom_toTopOf="@+id/editText2"
+        app:layout_constraintBottom_toTopOf="@+id/password_signinField"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/guideline8"

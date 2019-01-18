@@ -1,4 +1,4 @@
-package io.cuesoft.apparule.views;
+package io.cuesoft.apparule.views.walkthrough;
 
 
 import android.os.Bundle;
@@ -13,10 +13,10 @@ import io.cuesoft.apparule.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class Intro_screen3 extends Fragment {
+public class Intro_screen2 extends Fragment {
 
 
-    public Intro_screen3() {
+    public Intro_screen2() {
         // Required empty public constructor
     }
 
@@ -24,7 +24,7 @@ public class Intro_screen3 extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.intro_screen3,container,false);
+        return inflater.inflate(R.layout.intro_screen2,container,false);
     }
 
 }

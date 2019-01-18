@@ -17,7 +17,7 @@ public class WalkThroughHelper {
     public void putIntro(String loginorout) {
         SharedPreferences.Editor edit = app_prefs.edit();
         edit.putString(INTRO, loginorout);
-        edit.commit();
+        edit.apply();
     }
     public String getIntro() {
         return app_prefs.getString(INTRO, "");

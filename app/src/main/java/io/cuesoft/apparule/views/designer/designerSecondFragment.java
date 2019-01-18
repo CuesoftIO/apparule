@@ -1,4 +1,4 @@
-package io.cuesoft.apparule.views;
+package io.cuesoft.apparule.views.designer;
 
 
 import android.content.Intent;
@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import io.cuesoft.apparule.R;
+import io.cuesoft.apparule.views.MainActivity;
 
 /**
  * A simple {@link Fragment} subclass.

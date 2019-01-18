@@ -36,14 +36,14 @@
         android:inputType="textPersonName"
         android:textColorHint="#efe5e5"
         android:textSize="12sp"
-        app:layout_constraintBottom_toTopOf="@+id/editText2"
+        app:layout_constraintBottom_toTopOf="@+id/password_signinField"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editText" />
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/password_signinField"
         android:layout_width="280dp"
         android:layout_height="wrap_content"
         android:backgroundTint="#e7d9d9"
@@ -84,7 +84,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText2">
+        app:layout_constraintTop_toBottomOf="@+id/password_signinField">
 
         <TextView
             android:id="@+id/textView"

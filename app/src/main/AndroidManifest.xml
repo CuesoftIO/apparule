@@ -7,28 +7,25 @@
         android:allowBackup="true"
         android:icon="@drawable/logo"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/ic_launcher_icon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".views.HomeActivity"></activity>
-        <activity android:name=".views.WalkThroughActivity">
+        <activity android:name=".views.walkthrough.WalkThroughActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".views.LandingActivity"></activity>
-        <activity android:name=".views.CustomerActivity"></activity>
+        <activity android:name=".views.LandingActivity" />
+        <activity android:name=".views.customer.CustomerActivity" />
         <activity
             android:name=".views.MainActivity"
-            android:label="@string/title_activity_main">
-
-        </activity>
-        <activity android:name=".views.DesignerActivity">
-
-        </activity>
+            android:label="@string/title_activity_main" />
+        <activity android:name=".views.designer.DesignerActivity" />
+        <activity android:name=".views.BlankActivity" />
+        <activity android:name=".views.SignInActivity"></activity>
     </application>
 
 </manifest>

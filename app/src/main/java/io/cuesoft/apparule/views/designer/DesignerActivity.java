@@ -1,9 +1,11 @@
-package io.cuesoft.apparule.views;
+package io.cuesoft.apparule.views.designer;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import io.cuesoft.apparule.views.customer.CustomerSignUpFragment;
 
 public class DesignerActivity extends AppCompatActivity {
 

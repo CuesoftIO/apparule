@@ -1,4 +1,4 @@
-package io.cuesoft.apparule.views;
+package io.cuesoft.apparule.views.customer;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
