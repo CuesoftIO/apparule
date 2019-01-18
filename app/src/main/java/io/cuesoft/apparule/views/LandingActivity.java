@@ -69,7 +69,7 @@ public class LandingActivity extends AppCompatActivity {
         signInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(LandingActivity.this, CustomerSignInActivity.class);
+                Intent intent = new Intent(LandingActivity.this, SignInActivity.class);
                 startActivity(intent);
             }
         });

@@ -19,7 +19,7 @@ import com.google.firebase.auth.FirebaseUser;
 
 import io.cuesoft.apparule.R;
 
-public class CustomerSignInActivity extends AppCompatActivity {
+public class SignInActivity extends AppCompatActivity {
     private static final String TAG = "EmailPassword" ;
     private CardView signInButton;
     private EditText mUsernameField;
@@ -41,16 +41,16 @@ public class CustomerSignInActivity extends AppCompatActivity {
             public void onClick(View v) {
                 //land.enterMain(v);
                 if (validateForm()) {
-                    createAccount(mUsernameField.getText().toString(), mPasswordField.getText().toString());
+                    signIn(mUsernameField.getText().toString(), mPasswordField.getText().toString());
                 }else{
-                    Toast.makeText(CustomerSignInActivity.this,"Authentication false", Toast.LENGTH_LONG).show();
+                    Toast.makeText(SignInActivity.this,"Authentication false", Toast.LENGTH_LONG).show();
                 }
             }
         });
     }
 
-    public  void createAccount(String email, String password){
-        Log.d( TAG, "createAccount: " + email );
+    public  void signIn(String email, String password){
+        Log.d( TAG, "signIn: " + email );
 
 
         //[START create_user_with_email]
@@ -61,15 +61,15 @@ public class CustomerSignInActivity extends AppCompatActivity {
                         if(task.isSuccessful()){
                             //Sign in success, Ui with the signed-in use's information
                             FirebaseUser user = mFirebaseAuth.getCurrentUser();
-                            Toast.makeText(CustomerSignInActivity.this, "Authentication Success.",
+                            Toast.makeText(SignInActivity.this, "Authentication Success.",
                                     Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent( CustomerSignInActivity.this, MainActivity.class);
+                            Intent intent = new Intent( SignInActivity.this, MainActivity.class);
                             startActivity(intent);
                         }
                         else{
                             //If sign in fails, display a message to the user.
                             Log.w(TAG, "createUserWithEmailAndPassword:failure", task.getException());
-                            Toast.makeText(CustomerSignInActivity.this, "Authentication failed.",
+                            Toast.makeText(SignInActivity.this, "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();
                         }
 
@@ -78,10 +78,6 @@ public class CustomerSignInActivity extends AppCompatActivity {
 
 
     }
-
-
-
-
     public boolean validateForm(){
         boolean valid = true;
 

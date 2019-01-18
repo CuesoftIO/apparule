@@ -2,6 +2,7 @@ package io.cuesoft.apparule.views.customer;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
@@ -27,7 +28,7 @@ public class CustomerSignUpActivity extends AppCompatActivity {
 
     private EditText mFullNameField;
     private EditText mEmailField;
-    private EditText mPasswordField1;
+    private TextInputEditText mPasswordField1;
     private EditText mPasswordField2;
 
     private FirebaseAuth mFirebaseAuth;
