@@ -7,10 +7,8 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -20,6 +18,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 import io.cuesoft.apparule.R;
+import io.cuesoft.apparule.views.customer.CustomerSignUpActivity;
 import io.cuesoft.apparule.views.customer.CustomerSignUpFragment;
 import io.cuesoft.apparule.views.designer.DesignerSignUPFragment;
 import io.cuesoft.apparule.views.designer.designerSecondFragment;
@@ -66,17 +65,19 @@ public class LandingActivity extends AppCompatActivity {
 
         signInButton = findViewById(R.id.signIn_landing);
         signUpButton = findViewById(R.id.signUp_landing);
+
         signInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(LandingActivity.this, SignInActivity.class);
+                Intent intent = new Intent(LandingActivity.this, CustomerSignInActivity.class);
                 startActivity(intent);
             }
         });
         signUpButton.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
-               signup(v);
+               Intent intent = new Intent(LandingActivity.this, CustomerSignUpActivity.class);
+               startActivity(intent);
            }
        });
 

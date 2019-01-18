@@ -14,7 +14,7 @@
 
 
     <EditText
-        android:id="@+id/fullName"
+        android:id="@+id/customerFullNameField"
         android:layout_width="260dp"
         android:layout_height="58dp"
         android:backgroundTint="#e7d9d9"
@@ -62,7 +62,7 @@
         app:srcCompat="@drawable/logo" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/forgetPasswordText"
         android:layout_width="wrap_content"
         android:layout_height="16dp"
         android:layout_marginTop="12dp"
@@ -104,7 +104,7 @@
         android:layout_height="40dp"
 
         android:layout_marginBottom="32dp"
-        app:layout_constraintBottom_toTopOf="@+id/fullName"
+        app:layout_constraintBottom_toTopOf="@+id/customerFullNameField"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -124,7 +124,7 @@
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/fullName" />
+        app:layout_constraintTop_toBottomOf="@id/customerFullNameField" />
 
     <TextView
         android:id="@+id/designer_signup"
@@ -135,10 +135,10 @@
         android:text="@string/sign_in_here"
         android:textColor="#e7d9d9"
         android:textSize="12sp"
-        app:layout_constraintBaseline_toBaselineOf="@id/textView4"
+        app:layout_constraintBaseline_toBaselineOf="@id/forgetPasswordText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/textView4" />
+        app:layout_constraintStart_toEndOf="@+id/forgetPasswordText" />
 
     <TextView
         android:id="@+id/textView6"
@@ -152,7 +152,7 @@
 
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textView4" />
+        app:layout_constraintTop_toBottomOf="@id/forgetPasswordText" />
 
     <EditText
         android:id="@+id/editText4"

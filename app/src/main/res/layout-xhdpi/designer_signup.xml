@@ -13,7 +13,7 @@
         tools:layout_editor_absoluteX="0dp">
 
         <EditText
-            android:id="@+id/fullName"
+            android:id="@+id/customerFullNameField"
             android:layout_width="270dp"
             android:layout_height="wrap_content"
             android:backgroundTint="#e7d9d9"
@@ -115,7 +115,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/fullName" />
+            app:layout_constraintTop_toBottomOf="@+id/customerFullNameField" />
 
         <TextView
             android:id="@+id/designer_signup"

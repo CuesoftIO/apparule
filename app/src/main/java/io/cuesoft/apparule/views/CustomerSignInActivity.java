@@ -1,6 +1,5 @@
 package io.cuesoft.apparule.views;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -20,7 +19,7 @@ import com.google.firebase.auth.FirebaseUser;
 
 import io.cuesoft.apparule.R;
 
-public class SignInActivity extends AppCompatActivity {
+public class CustomerSignInActivity extends AppCompatActivity {
     private static final String TAG = "EmailPassword" ;
     private CardView signInButton;
     private EditText mUsernameField;
@@ -44,7 +43,7 @@ public class SignInActivity extends AppCompatActivity {
                 if (validateForm()) {
                     createAccount(mUsernameField.getText().toString(), mPasswordField.getText().toString());
                 }else{
-                    Toast.makeText(SignInActivity.this,"Authentication false", Toast.LENGTH_LONG).show();
+                    Toast.makeText(CustomerSignInActivity.this,"Authentication false", Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -62,15 +61,15 @@ public class SignInActivity extends AppCompatActivity {
                         if(task.isSuccessful()){
                             //Sign in success, Ui with the signed-in use's information
                             FirebaseUser user = mFirebaseAuth.getCurrentUser();
-                            Toast.makeText(SignInActivity.this, "Authentication Success.",
+                            Toast.makeText(CustomerSignInActivity.this, "Authentication Success.",
                                     Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent( SignInActivity.this, MainActivity.class);
+                            Intent intent = new Intent( CustomerSignInActivity.this, MainActivity.class);
                             startActivity(intent);
                         }
                         else{
                             //If sign in fails, display a message to the user.
                             Log.w(TAG, "createUserWithEmailAndPassword:failure", task.getException());
-                            Toast.makeText(SignInActivity.this, "Authentication failed.",
+                            Toast.makeText(CustomerSignInActivity.this, "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();
                         }
 

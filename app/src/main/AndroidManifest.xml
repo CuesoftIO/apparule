@@ -25,7 +25,8 @@
             android:label="@string/title_activity_main" />
         <activity android:name=".views.designer.DesignerActivity" />
         <activity android:name=".views.BlankActivity" />
-        <activity android:name=".views.SignInActivity"></activity>
+        <activity android:name=".views.CustomerSignInActivity" />
+        <activity android:name=".views.customer.CustomerSignUpActivity"></activity>
     </application>
 
 </manifest>

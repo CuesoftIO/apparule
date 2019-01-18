@@ -14,9 +14,12 @@
 
 
     <EditText
-        android:id="@+id/fullName"
-        android:layout_width="252dp"
-        android:layout_height="52dp"
+        android:id="@+id/customerFullName"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="34dp"
+        android:layout_marginEnd="34dp"
+        android:layout_marginBottom="12dp"
         android:backgroundTint="#e7d9d9"
         android:ems="10"
         android:hint="FULLNAME"
@@ -24,16 +27,18 @@
         android:textColor="#e7d9d9"
         android:textColorHint="#e7d9d9"
         android:textSize="12sp"
-        app:layout_constraintBottom_toTopOf="@id/guideline9"
+        app:layout_constraintBottom_toTopOf="@+id/CustomerEmail"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <EditText
-        android:id="@+id/passowrd"
-        android:layout_width="252dp"
-        android:layout_height="41dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginBottom="4dp"
+        android:id="@+id/customerPassword1"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="34dp"
+        android:layout_marginEnd="34dp"
+        android:layout_marginBottom="11dp"
         android:backgroundTint="#e7d9d9"
         android:ems="10"
         android:hint="PASSWORD"
@@ -41,53 +46,55 @@
         android:textColor="#e7d9d9"
         android:textColorHint="#e7d9d9"
         android:textSize="12sp"
-        app:layout_constraintBottom_toTopOf="@+id/editText4"
+        app:layout_constraintBottom_toTopOf="@+id/customerPassword2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText" />
+        app:layout_constraintTop_toBottomOf="@+id/CustomerEmail" />
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="103dp"
-        android:layout_height="55dp"
+        android:layout_height="0dp"
 
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:layout_marginTop="28dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="63dp"
+        app:layout_constraintBottom_toTopOf="@+id/customerFullName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.507"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/logo" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/alreadyhaveaccontText"
         android:layout_width="wrap_content"
         android:layout_height="16dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginEnd="6dp"
         android:text="Already have an account?"
         android:textColor="#e7d9d9"
         android:textSize="12sp"
-        app:layout_constraintEnd_toStartOf="@+id/designer_signup"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintBaseline_toBaselineOf="@+id/signinText"
+        app:layout_constraintEnd_toStartOf="@+id/signinText"
         app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/signUpButton" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 
     <android.support.v7.widget.CardView
         android:id="@+id/signUpButton"
-        android:layout_width="252dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="16dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="34dp"
+        android:layout_marginEnd="34dp"
+        android:layout_marginBottom="14dp"
         android:onClick="enterMain"
         app:cardBackgroundColor="#00b7ff"
         app:cardCornerRadius="20dp"
         app:cardElevation="6dp"
+        app:layout_constraintBottom_toTopOf="@+id/signinText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/editText4">
+        app:layout_constraintTop_toBottomOf="@+id/customerPassword2">
 
         <TextView
             android:id="@+id/textView"
@@ -103,63 +110,70 @@
         android:layout_width="121dp"
         android:layout_height="40dp"
 
+        android:layout_marginTop="42dp"
         android:layout_marginBottom="36dp"
-        app:layout_constraintBottom_toTopOf="@+id/fullName"
+        app:layout_constraintBottom_toTopOf="@+id/customerFullName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.532"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageView"
         app:srcCompat="@drawable/logo_text_white" />
 
     <EditText
-        android:id="@+id/editText"
-        android:layout_width="252dp"
+        android:id="@+id/CustomerEmail"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_marginStart="34dp"
+        android:layout_marginEnd="34dp"
+        android:layout_marginBottom="11dp"
         android:backgroundTint="#e7d9d9"
         android:ems="10"
         android:hint="EMAIL"
-        android:inputType="textPersonName"
+        android:inputType="textEmailAddress"
         android:textColor="#e7d9d9"
         android:textColorHint="#e7d9d9"
         android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@+id/customerPassword1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/fullName" />
+        app:layout_constraintTop_toBottomOf="@+id/customerFullName" />
 
     <TextView
-        android:id="@+id/designer_signup"
+        android:id="@+id/signinText"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="6dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="6dp"
+        android:layout_marginBottom="13dp"
+        android:onClick="signin"
         android:text="@string/sign_in_here"
         android:textColor="#e7d9d9"
         android:textSize="12sp"
-        android:onClick="signin"
-        app:layout_constraintBaseline_toBaselineOf="@id/textView4"
+        app:layout_constraintBottom_toTopOf="@+id/desginerSignUpText"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/textView4" />
+        app:layout_constraintStart_toEndOf="@+id/alreadyhaveaccontText"
+        app:layout_constraintTop_toBottomOf="@+id/signUpButton" />
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/desginerSignUpText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_marginBottom="32dp"
         android:onClick="designerSignUP"
         android:text="Are you a Designer?"
         android:textColor="#e7d9d9"
-        android:textSize="12sp"
 
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@+id/textView7"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textView4" />
+        app:layout_constraintTop_toBottomOf="@+id/signinText" />
 
     <EditText
-        android:id="@+id/editText4"
-        android:layout_width="252dp"
+        android:id="@+id/customerPassword2"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="6dp"
-        android:layout_marginBottom="14dp"
+        android:layout_marginStart="34dp"
+        android:layout_marginEnd="34dp"
+        android:layout_marginBottom="15dp"
         android:backgroundTint="#e7d9d9"
         android:ems="10"
         android:hint="CONFIRM PASSWORD"
@@ -170,7 +184,7 @@
         app:layout_constraintBottom_toTopOf="@+id/signUpButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/passowrd" />
+        app:layout_constraintTop_toBottomOf="@+id/customerPassword1" />
 
 
     <TextView
@@ -178,15 +192,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
+        android:layout_marginBottom="6dp"
         android:text="Copyright @ 2019 Cuesoft Ltd"
         android:textColor="#e7d9d9"
         android:textSize="10sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView6"
-        app:layout_constraintVertical_bias="0.883" />
+        app:layout_constraintTop_toBottomOf="@+id/desginerSignUpText" />
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline9"
