@@ -12,9 +12,12 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
+import com.google.firebase.auth.FirebaseAuthInvalidUserException;
 import com.google.firebase.auth.FirebaseUser;
 
 import io.cuesoft.apparule.R;
@@ -54,32 +57,47 @@ public class SignInActivity extends AppCompatActivity {
         Log.d( TAG, "signIn: " + email );
 
 
-        //[START create_user_with_email]
-        mFirebaseAuth.signInWithEmailAndPassword(email, password)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if(task.isSuccessful()){
-                            //Sign in success, Ui with the signed-in use's information
-                            FirebaseUser user = mFirebaseAuth.getCurrentUser();
-                            Toast.makeText(SignInActivity.this, "Authentication Success.",
-                                    Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent( SignInActivity.this, MainActivity.class);
-                            startActivity(intent);
+            //[START create_user_with_email]
+            mFirebaseAuth.signInWithEmailAndPassword(email, password)
+                    .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (task.isSuccessful()) {
+
+                                //Sign in success, Ui with the signed-in use's information
+                                Toast.makeText(SignInActivity.this, "Authentication Success.",
+                                        Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(SignInActivity.this, MainActivity.class);
+                                startActivity(intent);
+
+                            } else {
+                                //If sign in fails, display a message to the user.
+                                Log.w(TAG, "createUserWithEmailAndPassword:failure", task.getException());
+                                Toast.makeText(SignInActivity.this, "Authentication failed. Please" +
+                                                " check your connection and try again",
+                                        Toast.LENGTH_SHORT).show();
+                            }
+
                         }
-                        else{
-                            //If sign in fails, display a message to the user.
-                            Log.w(TAG, "createUserWithEmailAndPassword:failure", task.getException());
-                            Toast.makeText(SignInActivity.this, "Authentication failed. Please" +
-                                            " check your connection and try again",
-                                    Toast.LENGTH_SHORT).show();
+                    }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                     if (e instanceof FirebaseAuthInvalidUserException) {
+
+                        String errorCode =
+                                ((FirebaseAuthInvalidUserException) e).getErrorCode();
+                        if (errorCode.equals("ERROR_USER_NOT_FOUND")) {
+                            mUsernameField.setError("Email not found,Signup");
                         }
 
+
+                    } else if (e instanceof FirebaseAuthInvalidCredentialsException){
+                        mPasswordField.setError("Wrong Password");
                     }
-                });
+                }
+            });
+            }
 
-
-    }
     public boolean validateForm(){
         boolean valid = true;
 
@@ -101,6 +119,12 @@ public class SignInActivity extends AppCompatActivity {
             mPasswordField.setError(null);
         }
         return valid;
+    }
+
+    public void errorMessage(String errorMessage){
+        Toast.makeText(SignInActivity.this, errorMessage,
+                Toast.LENGTH_SHORT).show();
+
     }
 
 }

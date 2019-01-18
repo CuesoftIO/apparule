@@ -109,7 +109,7 @@ public class DesignerSignUpActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                createdesignerAccount(designerPassword1.getText().toString(), designerPassword2.getText().toString());
+                createdesignerAccount(designerEmail.getText().toString(), designerPassword1.getText().toString());
             }
         });
 
