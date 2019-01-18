@@ -42,8 +42,9 @@ public class SignInActivity extends AppCompatActivity {
                 //land.enterMain(v);
                 if (validateForm()) {
                     signIn(mUsernameField.getText().toString(), mPasswordField.getText().toString());
+
                 }else{
-                    Toast.makeText(SignInActivity.this,"Authentication false", Toast.LENGTH_LONG).show();
+                   // Toast.makeText(SignInActivity.this,"Authentication false", Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -54,7 +55,7 @@ public class SignInActivity extends AppCompatActivity {
 
 
         //[START create_user_with_email]
-        mFirebaseAuth.createUserWithEmailAndPassword(email, password)
+        mFirebaseAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
@@ -69,7 +70,8 @@ public class SignInActivity extends AppCompatActivity {
                         else{
                             //If sign in fails, display a message to the user.
                             Log.w(TAG, "createUserWithEmailAndPassword:failure", task.getException());
-                            Toast.makeText(SignInActivity.this, "Authentication failed.",
+                            Toast.makeText(SignInActivity.this, "Authentication failed. Please" +
+                                            " check your connection and try again",
                                     Toast.LENGTH_SHORT).show();
                         }
 

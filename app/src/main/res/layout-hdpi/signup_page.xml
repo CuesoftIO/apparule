@@ -39,6 +39,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:passwordToggleEnabled="true"
         app:passwordToggleTint="@color/colorAccent"
+
         tools:layout_editor_absoluteY="226dp">
 
         <android.support.design.widget.TextInputEditText

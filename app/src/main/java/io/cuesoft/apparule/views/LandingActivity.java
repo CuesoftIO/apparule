@@ -21,6 +21,7 @@ import io.cuesoft.apparule.R;
 import io.cuesoft.apparule.views.customer.CustomerSignUpActivity;
 import io.cuesoft.apparule.views.customer.CustomerSignUpFragment;
 import io.cuesoft.apparule.views.designer.DesignerSignUPFragment;
+import io.cuesoft.apparule.views.designer.DesignerSignUpActivity;
 import io.cuesoft.apparule.views.designer.designerSecondFragment;
 
 /**
@@ -143,12 +144,8 @@ public class LandingActivity extends AppCompatActivity {
 
     //Designer SignUpFragment
     public void designerSignUP(View view)
-    {
-       Fragment designerSignFragment = new DesignerSignUPFragment();
-       FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-       transaction.replace(android.R.id.content, designerSignFragment);
-       transaction.addToBackStack(null);
-       transaction.commit();
+    {  Intent intent = new Intent(LandingActivity.this, DesignerSignUpActivity.class);
+        startActivity(intent);
     }
 
     // MainPage
