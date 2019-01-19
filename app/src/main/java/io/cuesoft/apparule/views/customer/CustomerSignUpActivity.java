@@ -10,6 +10,7 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -20,6 +21,8 @@ import com.google.firebase.auth.FirebaseUser;
 
 import io.cuesoft.apparule.R;
 import io.cuesoft.apparule.views.MainActivity;
+import io.cuesoft.apparule.views.SignInActivity;
+import io.cuesoft.apparule.views.designer.DesignerSignUpActivity;
 
 public class CustomerSignUpActivity extends AppCompatActivity {
     private static final String TAG = "SignUpEmailPassword";
@@ -32,6 +35,9 @@ public class CustomerSignUpActivity extends AppCompatActivity {
     private EditText mPasswordField2;
 
     private FirebaseAuth mFirebaseAuth;
+    //TextView
+    private TextView mSignInLink;
+    private TextView mDesignerText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +49,10 @@ public class CustomerSignUpActivity extends AppCompatActivity {
         mEmailField = findViewById(R.id.CustomerEmail);
         mPasswordField1 = findViewById(R.id.customerPassword1);
         mPasswordField2 = findViewById(R.id.customerPassword2);
+
+        //Initializing textViews form
+        mSignInLink = findViewById(R.id.signinText);
+        mDesignerText = findViewById(R.id.designerSignUpText);
 
         signUpButton= findViewById(R.id.signUpButton);
 
@@ -62,13 +72,14 @@ public class CustomerSignUpActivity extends AppCompatActivity {
                 }
             }
         });
+        //onClickListener handling the navigation to designerSignup
+        //and Signing of users
+        allOnClickListener();
     }
 
 
     public void createAccount(String email, String password) {
         Log.d(TAG, "createAccount: " + email);
-
-
         //[START create_user_with_email]
         mFirebaseAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -91,6 +102,28 @@ public class CustomerSignUpActivity extends AppCompatActivity {
                     }
                 });
         }
+
+        public void allOnClickListener(){
+             /*Setting click listener for designerText to take users to designer
+              SignUpPage*/
+              mDesignerText.setOnClickListener(new View.OnClickListener() {
+                  @Override
+                  public void onClick(View v) {
+                      Intent intent = new Intent(CustomerSignUpActivity.this, DesignerSignUpActivity.class);
+                      startActivity(intent);
+                  }
+              });
+              /*Setting click listener for SignInLink to take users to Sign
+              * in Page*/
+              mSignInLink.setOnClickListener(new View.OnClickListener() {
+                  @Override
+                  public void onClick(View v) {
+                      Intent intent = new Intent(CustomerSignUpActivity.this, SignInActivity.class);
+                      startActivity(intent);
+                  }
+              });
+        }
+
 
     public boolean validateForm(){
         boolean valid = true;

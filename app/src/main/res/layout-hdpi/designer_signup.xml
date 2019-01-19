@@ -155,9 +155,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="4dp"
-
         android:layout_marginBottom="55dp"
-        android:onClick="signin"
         android:text="@string/sign_in_here"
         android:textAppearance="@style/TextAppearance.Compat.Notification.Title"
         android:textColor="#e7d9d9"

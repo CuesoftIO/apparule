@@ -6,8 +6,10 @@ import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -18,6 +20,7 @@ import com.google.firebase.auth.FirebaseUser;
 
 import io.cuesoft.apparule.R;
 import io.cuesoft.apparule.views.MainActivity;
+import io.cuesoft.apparule.views.SignInActivity;
 import io.cuesoft.apparule.views.customer.CustomerSignUpActivity;
 
 public class DesignerSignUpActivity extends AppCompatActivity {
@@ -27,6 +30,8 @@ public class DesignerSignUpActivity extends AppCompatActivity {
     private TextInputEditText designerEmail;
     private TextInputEditText designerAddress;
     private TextInputEditText designerCountry;
+
+    private TextView signInText_signup;
 
     private CardView continueButton;
     private CardView signUpButton;
@@ -47,30 +52,36 @@ public class DesignerSignUpActivity extends AppCompatActivity {
         designerAddress = findViewById(R.id.designerAddressField);
         designerCountry = findViewById(R.id.designerCountryField);
 
+        signInText_signup = findViewById(R.id.designer_signupText);
+
         mFirebaseAuth = FirebaseAuth.getInstance();
 
         //SecondPage Signup Initialization
         designerPassword1 = findViewById(R.id.designerPasswordField1);
         designerPassword2= findViewById(R.id.designerPasswordField2);
 
-
         continueButton = findViewById(R.id.designerContinue_button);
         continueButton.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            if(validateForm()){
+                Email = designerEmail.getText().toString();
+                secondButtonSignUp();
+               }
+            }
+        });
 
+        signInText_signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-             Email = designerEmail.getText().toString();
-                secondButtonSignUp();
-             // Intent intent = new Intent(DesignerSignUpActivity.this, MainActivity.class);
-            // startActivity(intent);
+                Intent intent = new Intent(DesignerSignUpActivity.this, SignInActivity.class);
+                startActivity(intent);
             }
         });
     }
 
     private void createdesignerAccount(String email, String password) {
         Log.d(TAG, "createAccount: " + email);
-
-
         //[START create_user_with_email]
         mFirebaseAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -89,7 +100,6 @@ public class DesignerSignUpActivity extends AppCompatActivity {
                             Toast.makeText(DesignerSignUpActivity .this, "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();
                         }
-
                     }
                 });
 
@@ -97,21 +107,90 @@ public class DesignerSignUpActivity extends AppCompatActivity {
 
 
     public void secondButtonSignUp(){
-
+        //Caliing the second layout for registration
         setContentView(R.layout.designer_signin);
         signUpButton = findViewById(R.id.designerSignInButton);
+
         //SecondPage Signup Initialization
         designerPassword1 = findViewById(R.id.designerPasswordField1);
         designerPassword2= findViewById(R.id.designerPasswordField2);
 
-
         signUpButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                createdesignerAccount(designerEmail.getText().toString(), designerPassword1.getText().toString());
+                if(validateForm2()) {
+                    createdesignerAccount(designerEmail.getText().toString(), designerPassword1.getText().toString());
+                }
             }
         });
+    }
 
+    public boolean validateForm(){
+        boolean valid = true;
+
+        String email = designerEmail.getText().toString();
+
+        if(TextUtils.isEmpty(email)){
+            designerEmail.setError("Required");
+            valid = false;
+        }
+        else{
+            designerEmail.setError(null);
+        }
+
+
+        String businessNameText = businessName.getText().toString();
+
+        if(TextUtils.isEmpty(businessNameText)){
+            businessName.setError("Required");
+            valid =false;
+        }
+        else{
+            businessName.setError(null);
+        }
+
+        String designerAddressText = designerAddress.getText().toString();
+
+        if(TextUtils.isEmpty(designerAddressText)){
+            designerAddress.setError("Required");
+            valid =false;
+        }
+        else{
+            designerAddress.setError(null);
+        }
+
+        String designerCountryText = designerCountry.getText().toString();
+
+        if(TextUtils.isEmpty(designerCountryText)){
+            designerCountry.setError("Required");
+            valid =false;
+        }
+        else{
+            designerCountry.setError(null);
+        }
+
+
+        return valid;
+
+    }
+
+    public boolean validateForm2(){
+        boolean valid = true;
+        String password = designerPassword1.getText().toString();
+        String password2 = designerPassword2.getText().toString();
+
+        if(TextUtils.isEmpty(password)){
+            designerPassword1.setError("Required");
+            valid =false;
+
+        }else if(!password.equals(password2)){
+            designerPassword2.setError("Password does not match!!!");
+            valid =false;
+        }
+        else{
+            designerPassword1.setError(null);
+            designerPassword2.setError(null);
+        }
+        return valid;
     }
 }
