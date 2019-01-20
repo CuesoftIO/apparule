@@ -3,30 +3,29 @@ package io.cuesoft.apparule.views;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Intent;
-import android.content.res.ColorStateList;
 import android.os.Build;
-import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import io.cuesoft.apparule.R;
 import io.cuesoft.apparule.adapter.MainAdapter;
 import io.cuesoft.apparule.helper.BottomNavigationViewHelper;
 
-public class MainActivity extends AppCompatActivity {
+public class DiscoveryActivity extends AppCompatActivity {
 
     private TextView mTextMessage;
     private RecyclerView mRecyclerView;
     private MainAdapter mAdapter;
+
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
         @TargetApi(Build.VERSION_CODES.O)
@@ -35,10 +34,10 @@ public class MainActivity extends AppCompatActivity {
             Fragment fragment1;
             switch (item.getItemId()) {
                 case R.id.navigation_favourites:
+                    Intent intent1 = new Intent(DiscoveryActivity.this, MainActivity.class);
+                    startActivity(intent1);
                     return true;
                 case R.id.navigation_discovery:
-                    Intent intent1 = new Intent(MainActivity.this, DiscoveryActivity.class);
-                    startActivity(intent1);
                     return true;
                 case R.id.navigation_post:
                     return true;
@@ -64,6 +63,10 @@ public class MainActivity extends AppCompatActivity {
 
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
+        Menu menu = navigation.getMenu();
+        MenuItem menuItem = menu.getItem(1);
+        menuItem.setChecked(true);
+
         mRecyclerView = findViewById(R.id.mainRecyclerView);
         mAdapter = new MainAdapter(this);
         mRecyclerView.setAdapter(mAdapter);
@@ -79,5 +82,4 @@ public class MainActivity extends AppCompatActivity {
         transaction.addToBackStack(null);
         transaction.commit();
     }
-
 }

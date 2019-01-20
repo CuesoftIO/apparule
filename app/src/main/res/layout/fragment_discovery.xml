@@ -5,11 +5,4 @@
     android:layout_height="match_parent"
     tools:context=".views.DiscoveryFragment">
 
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/discovery_fragment"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-
-        />
 </FrameLayout>

@@ -12,4 +12,13 @@
     <string name="title_notifications">Notifications</string>
     <string name="sign_up_here"><u>Sign Up here</u></string>
     <string name="sign_in_here"><u>Sign In here</u></string>
+
+    <array name="images">
+        <item>@drawable/product01</item>
+        <item>@drawable/product00</item>
+        <item>@drawable/product03</item>
+        <item>@drawable/product02</item>
+        <item>@drawable/product04</item>
+        <item>@drawable/product05</item>
+    </array>
 </resources>

@@ -33,7 +33,7 @@ public class DiscoveryFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_discovery, container, false);
-        mRecyclerView = view.findViewById(R.id.discovery_fragment);
+        //mRecyclerView = view.findViewById(R.id.);
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_discovery, container, false);
     }
