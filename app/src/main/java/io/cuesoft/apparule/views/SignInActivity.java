@@ -177,7 +177,15 @@ public class SignInActivity extends AppCompatActivity {
         mForgotPasswordButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                errorMessage("working on it");
+               String email=mForgotEmailField.getText().toString();
+                if(TextUtils.isEmpty(email)){
+                   mForgotEmailField.setError("Required");
+               }
+
+                else{
+                    errorMessage("working on it");
+                    mForgotPasswordButton.setActivated(false);
+                }
             }
         });
     }
