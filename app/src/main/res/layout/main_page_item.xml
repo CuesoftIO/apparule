@@ -18,18 +18,18 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <ImageView
+        <io.cuesoft.apparule.views.ProportionalImageView
             android:id="@+id/imageView5"
             android:layout_width="match_parent"
             android:layout_height="336dp"
-            android:scaleType="fitCenter"
+            android:adjustViewBounds="true"
             app:layout_constraintBottom_toTopOf="@+id/imageView6"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageView9"
             app:layout_constraintVertical_bias="0.496"
-            app:srcCompat="@drawable/product03" />
+            android:src="@drawable/product04" />
 
         <ImageView
             android:id="@+id/imageView6"
