@@ -4,6 +4,7 @@ import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.ColorStateList;
+import android.content.res.TypedArray;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -18,15 +19,20 @@ import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 import io.cuesoft.apparule.R;
 import io.cuesoft.apparule.adapter.MainAdapter;
 import io.cuesoft.apparule.helper.BottomNavigationViewHelper;
+import io.cuesoft.apparule.model.ItemsModel;
 
 public class MainActivity extends AppCompatActivity {
 
     private TextView mTextMessage;
     private RecyclerView mRecyclerView;
     private MainAdapter mAdapter;
+    private ArrayList<ItemsModel> mItemsData;
+
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
         @TargetApi(Build.VERSION_CODES.O)
@@ -64,20 +70,26 @@ public class MainActivity extends AppCompatActivity {
 
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
+        mItemsData = new ArrayList<>();
+
         mRecyclerView = findViewById(R.id.mainRecyclerView);
-        mAdapter = new MainAdapter(this);
+        mAdapter = new MainAdapter(this, mItemsData);
         mRecyclerView.setAdapter(mAdapter);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-
+        initializeData();
     }
 
+    public void initializeData(){
+        TypedArray ImageResources =
+                getResources().obtainTypedArray(R.array.images);
 
-    private void loadFragment(Fragment fragment){
-        //load fragment
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.frame_container, fragment);
-        transaction.addToBackStack(null);
-        transaction.commit();
+        for(int i =0; i<ImageResources.length(); i++){
+            mItemsData.add(new ItemsModel( ImageResources.getResourceId(i,0)));
+        }
+
+        ImageResources.recycle();
+        mAdapter.notifyDataSetChanged();
+
     }
 
 }

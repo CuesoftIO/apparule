@@ -67,10 +67,10 @@ public class DiscoveryActivity extends AppCompatActivity {
         MenuItem menuItem = menu.getItem(1);
         menuItem.setChecked(true);
 
-        mRecyclerView = findViewById(R.id.mainRecyclerView);
-        mAdapter = new MainAdapter(this);
-        mRecyclerView.setAdapter(mAdapter);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+//        mRecyclerView = findViewById(R.id.mainRecyclerView);
+//        mAdapter = new MainAdapter(this);
+//        mRecyclerView.setAdapter(mAdapter);
+//        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
     }
 
