@@ -13,26 +13,32 @@
     android:tint="#716b6b"
     tools:layout_editor_absoluteY="25dp">
 
-
-    <EditText
-        android:id="@+id/password_signinField"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="34dp"
-        android:layout_marginEnd="34dp"
-        android:layout_marginBottom="24dp"
-        android:backgroundTint="#e7d9d9"
-        android:ems="10"
-        android:layout_marginTop="10dp"
-        android:hint="PASSWORD"
-        android:inputType="textPassword"
-        android:textColor="#e7d9d9"
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/textInputLayout6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="18dp"
         android:textColorHint="#e7d9d9"
-        android:textSize="14sp"
         app:layout_constraintBottom_toTopOf="@+id/signButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/username_signinField" />
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout7"
+        app:passwordToggleEnabled="true">
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/password_signinField"
+            android:layout_width="252dp"
+            android:layout_height="match_parent"
+            android:backgroundTint="#e7d9d9"
+            android:ems="10"
+            android:hint="PASSWORD"
+            android:inputType="textPassword"
+            android:textColor="#e7d9d9"
+            android:textColorHint="#e7d9d9"
+            android:textSize="14sp"
+            tools:layout_editor_absoluteX="34dp"
+            tools:layout_editor_absoluteY="258dp" />
+    </android.support.design.widget.TextInputLayout>
 
     <ImageView
         android:id="@+id/logo_signin"
@@ -40,8 +46,8 @@
         android:layout_height="51dp"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:layout_marginTop="24dp"
-        android:layout_marginBottom="24dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="30dp"
         app:layout_constraintBottom_toBottomOf="@+id/text_sigin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -54,8 +60,8 @@
         android:layout_height="0dp"
 
         android:layout_marginTop="74dp"
-        android:layout_marginBottom="95dp"
-        app:layout_constraintBottom_toTopOf="@+id/username_signinField"
+        android:layout_marginBottom="87dp"
+        app:layout_constraintBottom_toTopOf="@+id/textInputLayout7"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -77,10 +83,10 @@
 
     <android.support.v7.widget.CardView
         android:id="@+id/signButton"
-        android:layout_width="252dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="39dp"
-        android:layout_marginEnd="39dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="34dp"
+        android:layout_marginEnd="34dp"
         android:layout_marginBottom="22dp"
         app:cardBackgroundColor="#00b7ff"
         app:cardCornerRadius="20dp"
@@ -88,7 +94,7 @@
         app:layout_constraintBottom_toTopOf="@+id/forgetPasswordText_signin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/password_signinField">
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout6">
 
         <TextView
             android:id="@+id/textView"
@@ -129,30 +135,37 @@
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <EditText
-        android:id="@+id/username_signinField"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="34dp"
-        android:layout_marginEnd="34dp"
-        android:layout_marginBottom="4dp"
-        android:backgroundTint="#e7d9d9"
-        android:ems="10"
-        android:hint="USERNAME"
-        android:inputType="textPersonName"
-        android:textColor="#e7d9d9"
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/textInputLayout7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="25dp"
         android:textColorHint="#e7d9d9"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toTopOf="@+id/password_signinField"
+        app:layout_constraintBottom_toTopOf="@+id/textInputLayout6"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_sigin" />
+        app:layout_constraintTop_toBottomOf="@+id/text_sigin">
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/username_signinField"
+            android:layout_width="252dp"
+            android:layout_height="37dp"
+            android:backgroundTint="#e7d9d9"
+            android:ems="10"
+            android:hint="USERNAME"
+            android:inputType="textPersonName"
+            android:textColor="#e7d9d9"
+            android:textColorHint="#e7d9d9"
+            android:textSize="14sp"
+            tools:layout_editor_absoluteX="34dp"
+            tools:layout_editor_absoluteY="206dp" />
+    </android.support.design.widget.TextInputLayout>
 
     <TextView
         android:id="@+id/cuesoft_signgin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="18dp"
+        android:layout_marginBottom="20dp"
         android:text="Copyright @ 2019 Cuesoft Ltd"
         android:textColor="#e7d9d9"
         android:textSize="10sp"

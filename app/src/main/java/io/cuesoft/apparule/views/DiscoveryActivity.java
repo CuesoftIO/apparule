@@ -1,8 +1,8 @@
 package io.cuesoft.apparule.views;
 
 import android.annotation.TargetApi;
-import android.app.Activity;
 import android.content.Intent;
+import android.content.res.TypedArray;
 import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -16,15 +16,22 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 import io.cuesoft.apparule.R;
+import io.cuesoft.apparule.adapter.DiscoverAdapter;
 import io.cuesoft.apparule.adapter.MainAdapter;
 import io.cuesoft.apparule.helper.BottomNavigationViewHelper;
+import io.cuesoft.apparule.model.ItemsModel;
 
 public class DiscoveryActivity extends AppCompatActivity {
 
     private TextView mTextMessage;
-    private RecyclerView mRecyclerView;
+    private RecyclerView mRecyclerView1;
+    private RecyclerView mRecyclerView2;
+
     private MainAdapter mAdapter;
+    private ArrayList<ItemsModel> mItemsData;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -54,7 +61,7 @@ public class DiscoveryActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_discovery);
 
         mTextMessage = (TextView) findViewById(R.id.message);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
@@ -67,10 +74,31 @@ public class DiscoveryActivity extends AppCompatActivity {
         MenuItem menuItem = menu.getItem(1);
         menuItem.setChecked(true);
 
-//        mRecyclerView = findViewById(R.id.mainRecyclerView);
-//        mAdapter = new MainAdapter(this);
-//        mRecyclerView.setAdapter(mAdapter);
-//        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        mItemsData = new ArrayList<>();
+
+        mRecyclerView1 = findViewById(R.id.categories_Recyclerview);
+        DiscoverAdapter mAdapter1 = new DiscoverAdapter(this, mItemsData);
+        mRecyclerView1.setAdapter(mAdapter1);
+        mRecyclerView1.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+
+        mRecyclerView2 = findViewById(R.id.discoverRecyclerView);
+        mAdapter = new MainAdapter(this, mItemsData);
+        mRecyclerView2.setAdapter(mAdapter);
+        mRecyclerView2.setLayoutManager(new LinearLayoutManager(this));
+        initializeData();
+    }
+
+
+    public void initializeData(){
+        TypedArray ImageResources =
+                getResources().obtainTypedArray(R.array.images);
+
+        for(int i =0; i<ImageResources.length(); i++){
+            mItemsData.add(new ItemsModel( ImageResources.getResourceId(i,0)));
+        }
+
+        ImageResources.recycle();
+        mAdapter.notifyDataSetChanged();
 
     }
 

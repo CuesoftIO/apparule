@@ -8,8 +8,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 
 import java.util.ArrayList;
 
@@ -50,11 +52,13 @@ public class MainAdapter extends
     class MainViewHolder extends RecyclerView.ViewHolder
                 implements View.OnClickListener {
 
-        private ProportionalImageView imageView;
+        private ImageView imageView;
+        private ImageView profileImageView;
 
          public MainViewHolder(View itemView)
         {
             super(itemView);
+            profileImageView = itemView.findViewById(R.id.profilePic);
             imageView = itemView.findViewById(R.id.itemsImageView);
             itemView.setOnClickListener(this);
         }
@@ -64,7 +68,13 @@ public class MainAdapter extends
             // Load the images into the ImageView using the Glide library.
             Glide.with(mContext)
                     .load(
-                    currentItems.getImage()).into(imageView);
+                    currentItems.getImage())
+                    .apply(new RequestOptions().override(1800, 600))
+                    .into(imageView);
+
+            Glide.with(mContext)
+                    .load(currentItems.getImage()).apply(RequestOptions.circleCropTransform())
+                    .into(profileImageView);
         }
 
         @Override

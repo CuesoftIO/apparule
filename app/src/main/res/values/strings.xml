@@ -14,11 +14,16 @@
     <string name="sign_in_here"><u>Sign In here</u></string>
 
     <array name="images">
+        <item>@drawable/selfie06</item>
         <item>@drawable/product01</item>
         <item>@drawable/product00</item>
+        <item>@drawable/selfie08</item>
         <item>@drawable/product03</item>
+        <item>@drawable/selfie05</item>
         <item>@drawable/product02</item>
+        <item>@drawable/selfie07</item>
         <item>@drawable/product04</item>
+        <item>@drawable/selfie09</item>
         <item>@drawable/product05</item>
     </array>
 </resources>
