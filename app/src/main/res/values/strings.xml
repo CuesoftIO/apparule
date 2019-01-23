@@ -13,6 +13,19 @@
     <string name="sign_up_here"><u>Sign Up here</u></string>
     <string name="sign_in_here"><u>Sign In here</u></string>
 
+    <string-array name="categories">
+        <item>Featured</item>
+        <item>Men</item>
+        <item>Women</item>
+        <item>Children</item>
+    </string-array>
+
+    <string-array name="men_categories">
+        <item>Senator</item>
+        <item>Agbada</item>
+        <item>Buba & Kaftan</item>
+    </string-array>
+
     <array name="images">
         <item>@drawable/selfie06</item>
         <item>@drawable/product01</item>

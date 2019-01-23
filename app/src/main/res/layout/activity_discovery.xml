@@ -13,9 +13,7 @@
         android:id="@+id/navigation"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-
         android:background="?android:attr/windowBackground"
-
         app:itemIconTint="@drawable/selector"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -32,7 +30,10 @@
         <android.support.v7.widget.RecyclerView
             android:id="@+id/categories_Recyclerview"
             android:layout_width="match_parent"
-            android:layout_height="77dp" />
+            android:layout_height="100dp"
+            app:layout_scrollFlags="scroll|enterAlways"
+
+            />
 
     </FrameLayout>
 

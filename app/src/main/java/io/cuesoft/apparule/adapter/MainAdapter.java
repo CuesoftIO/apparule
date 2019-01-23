@@ -45,7 +45,8 @@ public class MainAdapter extends
     }
 
     @Override
-    public int getItemCount() {
+    public int getItemCount()
+    {
         return mItemsData.size();
     }
 
@@ -73,12 +74,13 @@ public class MainAdapter extends
                     .into(imageView);
 
             Glide.with(mContext)
-                    .load(currentItems.getImage()).apply(RequestOptions.circleCropTransform())
+                    .load(currentItems.getImage()).apply(new RequestOptions().optionalCircleCrop())
                     .into(profileImageView);
         }
 
         @Override
          public void onClick(View v) {
+
          }
      }
 }
