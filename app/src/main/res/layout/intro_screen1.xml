@@ -20,7 +20,7 @@
         android:layout_marginBottom="92dp"
         android:onClick="signup"
         app:cardBackgroundColor="#00b7ff"
-        app:cardCornerRadius="28dp"
+        app:cardCornerRadius="20dp"
         app:cardElevation="6dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

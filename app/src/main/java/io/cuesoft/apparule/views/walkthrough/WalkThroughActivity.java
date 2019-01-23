@@ -14,6 +14,8 @@ import com.github.paolorotolo.appintro.AppIntro;
 import io.cuesoft.apparule.helper.WalkThroughHelper;
 import io.cuesoft.apparule.views.BlankActivity;
 import io.cuesoft.apparule.views.LandingActivity;
+import io.cuesoft.apparule.views.customer.CustomerActivity;
+import io.cuesoft.apparule.views.customer.CustomerSignUpActivity;
 import io.cuesoft.apparule.views.customer.CustomerSignUpFragment;
 
 public class WalkThroughActivity extends AppIntro {
@@ -83,15 +85,13 @@ public class WalkThroughActivity extends AppIntro {
         }
 
     public void mainPage(View view) {
-        Intent intent = new Intent(WalkThroughActivity.this, BlankActivity.class);
+        Intent intent = new Intent(WalkThroughActivity.this, LandingActivity.class);
         startActivity(intent);
     }
     public void signup(View view) {
-        Fragment SignUpFragment = new CustomerSignUpFragment();
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(android.R.id.content, SignUpFragment);
-        transaction.addToBackStack(null);
-        transaction.commit();
+        Intent intent = new Intent(WalkThroughActivity.this, CustomerSignUpActivity.class);
+        startActivity(intent);
+
     }
 
     }

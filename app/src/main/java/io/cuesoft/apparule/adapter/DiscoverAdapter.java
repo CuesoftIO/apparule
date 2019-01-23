@@ -7,12 +7,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
 import io.cuesoft.apparule.R;
+import io.cuesoft.apparule.model.CategoriesItemModel;
 import io.cuesoft.apparule.model.ItemsModel;
 
 public class DiscoverAdapter extends
@@ -20,9 +22,9 @@ public class DiscoverAdapter extends
 
     private LayoutInflater mInflater;
     Context mContext;
-    private ArrayList<ItemsModel>mImageData;
+    private ArrayList<CategoriesItemModel> mImageData;
 
-    public DiscoverAdapter(Context context, ArrayList<ItemsModel> mImageData){
+    public DiscoverAdapter(Context context, ArrayList<CategoriesItemModel> mImageData){
         mInflater = LayoutInflater.from(context);
         mContext = context;
         this.mImageData = mImageData;
@@ -37,7 +39,7 @@ public class DiscoverAdapter extends
 
     @Override
     public void onBindViewHolder(@NonNull DiscoverViewHolder holder, int position) {
-        ItemsModel currentItems = mImageData.get(position);
+        CategoriesItemModel currentItems = mImageData.get(position);
         holder.bindTo(currentItems);
     }
 
@@ -50,17 +52,21 @@ public class DiscoverAdapter extends
     public class DiscoverViewHolder extends RecyclerView.ViewHolder
                     implements  View.OnClickListener{
         private ImageView imageView;
+        private TextView textView;
 
         public DiscoverViewHolder(View itemView) {
             super(itemView);
             imageView= itemView.findViewById(R.id.discover_imageView);
+            textView = itemView.findViewById(R.id.categories_textView);
             itemView.setOnClickListener(this);
+
         }
 
-        void bindTo(ItemsModel currentItems){
+        void bindTo(CategoriesItemModel currentItems){
             Glide.with(mContext)
-                    .load(currentItems.getImage()).into(imageView);
+                    .load(currentItems.getImageResources()).into(imageView);
 
+            textView.setText(currentItems.getCategoriesText());
         }
 
         @Override

@@ -19,7 +19,7 @@
             app:srcCompat="@drawable/selfie09" />
 
         <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/categories_textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"

@@ -17,14 +17,43 @@
         <item>Featured</item>
         <item>Men</item>
         <item>Women</item>
-        <item>Children</item>
+        <item>Kids</item>
     </string-array>
+
+    <array name="images_categories">
+        <item>@drawable/selfie06</item>
+        <item>@drawable/men2</item>
+        <item>@drawable/selfie07</item>
+        <item>@drawable/kid</item>
+    </array>
+
 
     <string-array name="men_categories">
         <item>Senator</item>
         <item>Agbada</item>
-        <item>Buba & Kaftan</item>
+        <item>Buba and Kaftan</item>
+        <item>Danshiki</item>
+        <item>Shirts</item>
+        <item>Shorts</item>
+        <item>Tees</item>
+        <item>Sets and Couples</item>
+        <item>From Abroad</item>
     </string-array>
+
+
+    <string-array name="women_categories">
+        <item>Dresses</item>
+        <item>skirts</item>
+        <item>Tops</item>
+        <item>Pants</item>
+        <item>Jumpsuits</item>
+        <item>Shorts</item>
+        <item>Tees</item>
+        <item>Maternity</item>
+        <item>Sets and Couples</item>
+        <item>From Abroad</item>
+    </string-array>
+
 
     <array name="images">
         <item>@drawable/selfie06</item>
@@ -38,5 +67,10 @@
         <item>@drawable/product04</item>
         <item>@drawable/selfie09</item>
         <item>@drawable/product05</item>
+        <item>@drawable/men1</item>
+        <item>@drawable/men2</item>
+        <item>@drawable/men11</item>
+        <item>@drawable/men10</item>
+        <item>@drawable/men12</item>
     </array>
 </resources>

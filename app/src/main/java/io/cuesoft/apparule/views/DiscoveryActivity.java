@@ -22,6 +22,7 @@ import io.cuesoft.apparule.R;
 import io.cuesoft.apparule.adapter.DiscoverAdapter;
 import io.cuesoft.apparule.adapter.MainAdapter;
 import io.cuesoft.apparule.helper.BottomNavigationViewHelper;
+import io.cuesoft.apparule.model.CategoriesItemModel;
 import io.cuesoft.apparule.model.ItemsModel;
 
 public class DiscoveryActivity extends AppCompatActivity {
@@ -32,6 +33,40 @@ public class DiscoveryActivity extends AppCompatActivity {
 
     private MainAdapter mAdapter;
     private ArrayList<ItemsModel> mItemsData;
+    private  ArrayList<CategoriesItemModel> mCateData;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_discovery);
+
+        mTextMessage = (TextView) findViewById(R.id.message);
+        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
+        BottomNavigationViewHelper.removeShiftMode(navigation);
+        navigation.setBackgroundColor(getResources().getColor(R.color.bottom_navigation));
+
+        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+
+        Menu menu = navigation.getMenu();
+        MenuItem menuItem = menu.getItem(1);
+        menuItem.setChecked(true);
+
+        mItemsData = new ArrayList<>();
+        mCateData = new ArrayList<>();
+
+        mRecyclerView1 = findViewById(R.id.categories_Recyclerview);
+        DiscoverAdapter mAdapter1 = new DiscoverAdapter(this, mCateData);
+        mRecyclerView1.setAdapter(mAdapter1);
+        mRecyclerView1.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+
+        mRecyclerView2 = findViewById(R.id.discoverRecyclerView);
+        mAdapter = new MainAdapter(this, mItemsData);
+        mRecyclerView2.setAdapter(mAdapter);
+        mRecyclerView2.setLayoutManager(new LinearLayoutManager(this));
+        initializeData();
+        categories();
+    }
+
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -57,39 +92,9 @@ public class DiscoveryActivity extends AppCompatActivity {
         }
     };
 
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_discovery);
-
-        mTextMessage = (TextView) findViewById(R.id.message);
-        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
-        BottomNavigationViewHelper.removeShiftMode(navigation);
-        navigation.setBackgroundColor(getResources().getColor(R.color.bottom_navigation));
-
-        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-
-        Menu menu = navigation.getMenu();
-        MenuItem menuItem = menu.getItem(1);
-        menuItem.setChecked(true);
-
-        mItemsData = new ArrayList<>();
-
-        mRecyclerView1 = findViewById(R.id.categories_Recyclerview);
-        DiscoverAdapter mAdapter1 = new DiscoverAdapter(this, mItemsData);
-        mRecyclerView1.setAdapter(mAdapter1);
-        mRecyclerView1.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
-
-        mRecyclerView2 = findViewById(R.id.discoverRecyclerView);
-        mAdapter = new MainAdapter(this, mItemsData);
-        mRecyclerView2.setAdapter(mAdapter);
-        mRecyclerView2.setLayoutManager(new LinearLayoutManager(this));
-        initializeData();
-    }
-
-
     public void initializeData(){
+
+
         TypedArray ImageResources =
                 getResources().obtainTypedArray(R.array.images);
 
@@ -102,6 +107,20 @@ public class DiscoveryActivity extends AppCompatActivity {
 
     }
 
+    public void categories(){
+        String[] categories = getResources()
+                .getStringArray(R.array.categories);
+
+        TypedArray ImageCategories= getResources()
+                .obtainTypedArray(R.array.images_categories);
+
+        for(int i=0; i<ImageCategories.length(); i++){
+            mCateData.add(new CategoriesItemModel(categories[i], ImageCategories.getResourceId(i, 0)));
+        }
+
+        ImageCategories.recycle();
+        mAdapter.notifyDataSetChanged();
+    }
 
     private void loadFragment(Fragment fragment){
         //load fragment
