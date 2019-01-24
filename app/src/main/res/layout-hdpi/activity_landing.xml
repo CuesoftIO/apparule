@@ -38,15 +38,17 @@
         android:text="Are you are a Designer?"
         android:textColor="#e7d9d9"
         android:textSize="12sp"
+        app:layout_constraintEnd_toStartOf="@+id/designer_signup"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintHorizontal_chainStyle="spread"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/signUp_landing" />
 
     <android.support.v7.widget.CardView
         android:id="@+id/signIn_landing"
-        android:layout_width="180dp"
+        android:layout_width="175dp"
         android:layout_height="40dp"
-        android:layout_marginTop="56dp"
+        android:layout_marginTop="76dp"
         app:cardBackgroundColor="#0099ff"
         app:cardCornerRadius="20dp"
         app:cardElevation="6dp"
@@ -66,7 +68,7 @@
 
     <android.support.v7.widget.CardView
         android:id="@+id/signUp_landing"
-        android:layout_width="180dp"
+        android:layout_width="175dp"
         android:layout_height="40dp"
         android:layout_marginTop="20dp"
         app:cardBackgroundColor="#ffcc00"
@@ -88,13 +90,12 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
         app:layout_constraintBottom_toTopOf="@id/guideline5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/logo"
-        tools:layout_editor_absoluteY="94dp" />
+        app:srcCompat="@drawable/logo" />
 
     <TextView
         android:id="@+id/textView3"
@@ -123,7 +124,8 @@
         android:textSize="12sp"
         app:layout_constraintBaseline_toBaselineOf="@id/designerText"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/designerText" />
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/designerText" />
 
     <ImageView
         android:id="@+id/imageView2"

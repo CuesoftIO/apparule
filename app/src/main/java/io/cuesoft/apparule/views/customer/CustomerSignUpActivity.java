@@ -29,10 +29,10 @@ public class CustomerSignUpActivity extends AppCompatActivity {
 
     private CardView signUpButton;
 
-    private EditText mFullNameField;
-    private EditText mEmailField;
+    private TextInputEditText mFullNameField;
+    private TextInputEditText mEmailField;
     private TextInputEditText mPasswordField1;
-    private EditText mPasswordField2;
+    private TextInputEditText mPasswordField2;
 
     private FirebaseAuth mFirebaseAuth;
     //TextView
