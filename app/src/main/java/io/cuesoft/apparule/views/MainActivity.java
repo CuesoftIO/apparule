@@ -2,6 +2,7 @@ package io.cuesoft.apparule.views;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.content.res.TypedArray;
@@ -43,14 +44,22 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.navigation_favourites:
                     return true;
                 case R.id.navigation_discovery:
-                    Intent intent1 = new Intent(MainActivity.this, DiscoveryActivity.class);
-                    startActivity(intent1);
+                  intentDelivery(new DiscoveryActivity());
+//                    Intent intent1 = new Intent(MainActivity.this, DiscoveryActivity.class);
+//                    startActivity(intent1);
+//
                     return true;
                 case R.id.navigation_post:
+                    Intent intent2 = new Intent(MainActivity.this, PostActivity.class);
+                    startActivity(intent2);
                     return true;
                 case R.id.navigation_notifications:
+                    Intent intent3 = new Intent(MainActivity.this, NotificationsActivity.class);
+                    startActivity(intent3);
                     return true;
                 case R.id.navigation_account:
+                    Intent intent4 = new Intent(MainActivity.this, ProfileActivity.class);
+                    startActivity(intent4);
                     return true;
             }
             return false;
@@ -91,6 +100,14 @@ public class MainActivity extends AppCompatActivity {
         ImageResources.recycle();
         mAdapter.notifyDataSetChanged();
 
+    }
+
+    public void intentDelivery(Activity cls){
+
+        Intent intent = new Intent(MainActivity.this, cls.getClass());
+        intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+        startActivity(intent);
+        overridePendingTransition(0,0);
     }
 
 }
