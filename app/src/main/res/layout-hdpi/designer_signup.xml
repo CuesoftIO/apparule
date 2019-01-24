@@ -11,19 +11,20 @@
     tools:layout_editor_absoluteY="25dp">
 
     <android.support.design.widget.TextInputLayout
-        android:id="@+id/textInputLayout2"
+        android:id="@+id/designerBusinessNameFieldLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:textSize="14sp"
+        android:layout_marginTop="40dp"
         android:textColorHint="#e7d9d9"
-        app:layout_constraintBottom_toTopOf="@+id/textInputLayout5"
-        app:layout_constraintStart_toStartOf="@+id/textInputLayout5"
-        app:layout_constraintTop_toBottomOf="@+id/imageView">
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/guideline10">
 
         <android.support.design.widget.TextInputEditText
             android:id="@+id/designerBusinessNameField"
-            android:layout_width="242dp"
+            android:layout_width="252dp"
             android:layout_height="40dp"
             android:backgroundTint="#e7d9d9"
             android:ems="10"
@@ -37,18 +38,19 @@
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
-        android:id="@+id/textInputLayout3"
+        android:id="@+id/designerAddressFieldLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="14dp"
+        android:layout_marginTop="10dp"
         android:textColorHint="#e7d9d9"
-        app:layout_constraintBottom_toTopOf="@+id/textInputLayout4"
-        app:layout_constraintStart_toStartOf="@+id/textInputLayout4"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout5">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/designerEmailFieldLayout">
 
         <android.support.design.widget.TextInputEditText
             android:id="@+id/designerAddressField"
-            android:layout_width="242dp"
+            android:layout_width="252dp"
             android:layout_height="40dp"
             android:backgroundTint="#e7d9d9"
             android:ems="10"
@@ -62,18 +64,19 @@
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
-        android:id="@+id/textInputLayout4"
+        android:id="@+id/designerCountryFieldLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="12dp"
+        android:layout_marginTop="10dp"
         android:textColorHint="#e7d9d9"
-        app:layout_constraintBottom_toTopOf="@+id/designerContinue_button"
-        app:layout_constraintStart_toStartOf="@+id/designerContinue_button"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout3">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/designerAddressFieldLayout">
 
         <android.support.design.widget.TextInputEditText
             android:id="@+id/designerCountryField"
-            android:layout_width="242dp"
+            android:layout_width="252dp"
             android:layout_height="40dp"
             android:backgroundTint="#e7d9d9"
             android:ems="10"
@@ -88,13 +91,11 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="45dp"
-        android:layout_height="0dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:layout_marginTop="40dp"
-        android:layout_marginBottom="59dp"
-        app:layout_constraintBottom_toTopOf="@+id/textInputLayout2"
+        android:layout_marginTop="50dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -103,18 +104,16 @@
 
     <android.support.v7.widget.CardView
         android:id="@+id/designerContinue_button"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="39dp"
-        android:layout_marginEnd="39dp"
-        android:layout_marginBottom="17dp"
+        android:layout_width="252dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="10dp"
         app:cardBackgroundColor="#ffcc00"
         app:cardCornerRadius="20dp"
         app:cardElevation="6dp"
-        app:layout_constraintBottom_toTopOf="@+id/designer_signupText"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout4">
+        app:layout_constraintTop_toBottomOf="@id/designerCountryFieldLayout">
 
         <TextView
             android:id="@+id/textView"
@@ -126,18 +125,19 @@
     </android.support.v7.widget.CardView>
 
     <android.support.design.widget.TextInputLayout
-        android:id="@+id/textInputLayout5"
+        android:id="@+id/designerEmailFieldLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="15dp"
+        android:layout_marginTop="10dp"
         android:textColorHint="#e7d9d9"
-        app:layout_constraintBottom_toTopOf="@+id/textInputLayout3"
-        app:layout_constraintStart_toStartOf="@+id/textInputLayout3"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout2">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/designerBusinessNameFieldLayout">
 
         <android.support.design.widget.TextInputEditText
             android:id="@+id/designerEmailField"
-            android:layout_width="242dp"
+            android:layout_width="252dp"
             android:layout_height="40dp"
             android:backgroundTint="#e7d9d9"
             android:ems="10"
@@ -154,61 +154,61 @@
         android:id="@+id/designer_signupText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="4dp"
-        android:layout_marginBottom="55dp"
+        android:layout_margin="4dp"
         android:text="@string/sign_in_here"
         android:textAppearance="@style/TextAppearance.Compat.Notification.Title"
         android:textColor="#e7d9d9"
-        android:textSize="10sp"
-        app:layout_constraintBottom_toTopOf="@+id/cuesoftText"
+        android:textSize="12sp"
+        app:layout_constraintBaseline_toBaselineOf="@id/alreadyHaveAccount"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView6"
-        app:layout_constraintTop_toBottomOf="@+id/designerContinue_button" />
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/alreadyHaveAccount"
+        tools:layout_editor_absoluteY="415dp" />
 
     <ImageView
         android:id="@+id/imageView22"
-        android:layout_width="103dp"
-        android:layout_height="28dp"
-        android:layout_marginTop="36dp"
-        android:layout_marginBottom="36dp"
-        app:layout_constraintBottom_toTopOf="@+id/textInputLayout2"
+        android:layout_width="106dp"
+        android:layout_height="15dp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline10"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageView"
         app:srcCompat="@drawable/logo_text_white" />
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/alreadyHaveAccount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="4dp"
+        android:layout_marginTop="10dp"
         android:text="Already have an account?"
         android:textColor="#e7d9d9"
-        android:textSize="10sp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/designer_signupText"
+        android:textSize="12sp"
         app:layout_constraintEnd_toStartOf="@+id/designer_signupText"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/designerContinue_button"
+        tools:layout_editor_absoluteY="415dp" />
 
     <TextView
         android:id="@+id/cuesoftText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
-        android:layout_marginBottom="14dp"
+        android:layout_marginBottom="12dp"
         android:text="Copyright @ 2019 Cuesoft Ltd"
         android:textColor="#e7d9d9"
-        android:textSize="8sp"
+        android:textSize="10sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/designer_signupText" />
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline10"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="116dp" />
+        app:layout_constraintGuide_begin="115dp" />
 
 </android.support.constraint.ConstraintLayout>
