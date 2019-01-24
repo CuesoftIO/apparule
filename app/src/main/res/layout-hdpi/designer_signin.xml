@@ -13,10 +13,10 @@
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/floatingActionButton"
-        android:layout_width="120dp"
-        android:layout_height="85dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
 
-        app:layout_constraintBottom_toTopOf="@+id/textInputLayout8"
+        android:layout_marginTop="21dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -27,18 +27,20 @@
         android:id="@+id/textInputLayout9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="22dp"
         android:textColorHint="#e7d9d9"
-        app:layout_constraintBottom_toTopOf="@+id/designerSignInButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout8"
-        app:passwordToggleEnabled="true">
+        app:passwordToggleEnabled="true"
+        app:passwordToggleTint="@color/colorAccent"
+        >
 
         <android.support.design.widget.TextInputEditText
             android:id="@+id/designerPasswordField2"
-            android:layout_width="242dp"
-            android:layout_height="52dp"
+            android:layout_width="252dp"
+            android:layout_height="40dp"
             android:backgroundTint="#e7d9d9"
             android:ems="10"
             android:hint="CONFIRM PASSWORD"
@@ -53,22 +55,23 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="45dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="40dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="50dp"
+        app:layout_constraintEnd_toStartOf="@+id/imageView2"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/imageView2"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/logo" />
 
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="103dp"
-        android:layout_height="28dp"
-        android:layout_marginBottom="8dp"
+        android:layout_height="15dp"
+        android:layout_marginBottom="1dp"
         app:layout_constraintBottom_toTopOf="@+id/guideline11"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/logo_text_white" />
 
@@ -77,12 +80,11 @@
         android:id="@+id/designerSignInButton"
         android:layout_width="242dp"
         android:layout_height="40dp"
+        android:layout_marginTop="10dp"
         app:cardBackgroundColor="#ffcc00"
         app:cardCornerRadius="20dp"
         app:cardElevation="6dp"
-        app:layout_constraintBottom_toTopOf="@+id/designer_terms_and_Conditions"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout9">
 
@@ -98,18 +100,20 @@
         android:id="@+id/textInputLayout8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:textColorHint="#e7d9d9"
-        app:layout_constraintBottom_toTopOf="@+id/textInputLayout9"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/floatingActionButton"
-        app:passwordToggleEnabled="true">
+        app:passwordToggleEnabled="true"
+        app:passwordToggleTint="@color/colorAccent"
+        >
 
         <android.support.design.widget.TextInputEditText
             android:id="@+id/designerPasswordField1"
-            android:layout_width="242dp"
-            android:layout_height="52dp"
+            android:layout_width="252dp"
+            android:layout_height="40dp"
             android:backgroundTint="#e7d9d9"
             android:ems="10"
             android:hint="PASSWORD"
@@ -126,34 +130,33 @@
         android:id="@+id/designer_terms_and_Conditions"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="14dp"
         android:text="I agree to the term and conditions."
         android:textColor="#e7d9d9"
-        android:textSize="10sp"
-        app:layout_constraintBottom_toTopOf="@+id/cuesoftText"
+        android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/designerSignInButton"
-        app:layout_constraintVertical_bias="0.253" />
+        app:layout_constraintTop_toBottomOf="@+id/designerSignInButton" />
 
     <TextView
         android:id="@+id/cuesoftText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
         android:text="Copyright @ 2019 Cuesoft Ltd"
         android:textColor="#e7d9d9"
         android:textSize="8sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/designer_terms_and_Conditions" />
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline11"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="116dp" />
+        app:layout_constraintGuide_begin="115dp" />
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline12"
