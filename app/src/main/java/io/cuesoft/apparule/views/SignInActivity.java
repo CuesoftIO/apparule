@@ -93,10 +93,11 @@ public class SignInActivity extends AppCompatActivity {
     public  void signIn(String email, String password){
         Log.d( TAG, "signIn: " + email );
         //[START create_user_with_email]
+    try {
         mFirebaseAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
 
                             //Sign in success, Ui with the signed-in use's information
@@ -104,7 +105,7 @@ public class SignInActivity extends AppCompatActivity {
                                     Toast.LENGTH_SHORT).show();
                             //Granted Acces to the MainActivity
                             Intent intent = new Intent(SignInActivity.this, MainActivity.class);
-                                startActivity(intent);
+                            startActivity(intent);
 
                         } else {
                             //If sign in fails, display a message to the user.
@@ -113,24 +114,29 @@ public class SignInActivity extends AppCompatActivity {
                                             " check your connection and try again",
                                     Toast.LENGTH_SHORT).show();
                         }
-                    //Add on failure listener
-                    }}).addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception e) {
-                     if (e instanceof FirebaseAuthInvalidUserException) {
-                     String errorCode =
+                        //Add on failure listener
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                if (e instanceof FirebaseAuthInvalidUserException) {
+                    String errorCode =
                             ((FirebaseAuthInvalidUserException) e).getErrorCode();
 
-                     if (errorCode.equals("ERROR_USER_NOT_FOUND")) {
+                    if (errorCode.equals("ERROR_USER_NOT_FOUND")) {
                         mUsernameField.setError("Email not found,Signup");
                     }
 
-                } else if (e instanceof FirebaseAuthInvalidCredentialsException){
+                } else if (e instanceof FirebaseAuthInvalidCredentialsException) {
                     mPasswordField.setError("Wrong Password");
                 }
-                }
-            });
             }
+        });
+    }catch (Exception e){
+        errorMessage("Error Signing in try again");
+    }
+
+    }
 
     public boolean validateForm(){
         boolean valid = true;

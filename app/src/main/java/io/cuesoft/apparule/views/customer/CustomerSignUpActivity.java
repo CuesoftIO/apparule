@@ -14,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -81,29 +82,45 @@ public class CustomerSignUpActivity extends AppCompatActivity {
     public void createAccount(String email, String password) {
         Log.d(TAG, "createAccount: " + email);
         //[START create_user_with_email]
-        mFirebaseAuth.createUserWithEmailAndPassword(email, password)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            //Sign in success, Ui with the signed-in use's information
-                            FirebaseUser user = mFirebaseAuth.getCurrentUser();
-                            Toast.makeText(CustomerSignUpActivity.this, "Account Created.",
-                                    Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(CustomerSignUpActivity.this, MainActivity.class);
-                            startActivity(intent);
-                        } else {
-                            //If sign in fails, display a message to the user.
-                            Log.w(TAG, "createUserWithEmailAndPassword:failure", task.getException());
-                            Toast.makeText(CustomerSignUpActivity.this, "Authentication failed.",
-                                    Toast.LENGTH_SHORT).show();
+
+        try {
+            mFirebaseAuth.createUserWithEmailAndPassword(email, password)
+                    .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (task.isSuccessful()) {
+                                //Sign in success, Ui with the signed-in use's information
+                                FirebaseUser user = mFirebaseAuth.getCurrentUser();
+                                Toast.makeText(CustomerSignUpActivity.this, "Account Created.",
+                                        Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(CustomerSignUpActivity.this, MainActivity.class);
+                                startActivity(intent);
+                            } else {
+                                //If sign in fails, display a message to the user.
+                                Log.w(TAG, "createUserWithEmailAndPassword:failure", task.getException());
+                                Toast.makeText(CustomerSignUpActivity.this, "Authentication failed.",
+                                        Toast.LENGTH_SHORT).show();
+                            }
+
                         }
-
-                    }
-                });
+                    }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    errorMessage(e.getLocalizedMessage());
+                }
+            });
+        }catch (Exception e){
+            errorMessage("Error Creating Account try again");
         }
+    }
 
-        public void allOnClickListener(){
+    public void errorMessage(String errorMessage){
+        Toast.makeText(this, errorMessage,
+                Toast.LENGTH_SHORT).show();
+    }
+
+
+    public void allOnClickListener(){
              /*Setting click listener for designerText to take users to designer
               SignUpPage*/
               mDesignerText.setOnClickListener(new View.OnClickListener() {

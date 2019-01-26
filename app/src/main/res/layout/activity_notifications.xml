@@ -20,7 +20,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/frame_container"
+
         app:menu="@menu/navigation"
 
         />
@@ -33,7 +33,7 @@
         android:minHeight="?attr/actionBarSize"
         android:theme="@style/AppBaseTheme.Toolbar"
         app:layout_scrollFlags="scroll|enterAlways"
-        app:layout_constraintBottom_toTopOf="@+id/frame_container"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"

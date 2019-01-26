@@ -8,9 +8,12 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.github.paolorotolo.appintro.AppIntro;
 
+import io.cuesoft.apparule.R;
 import io.cuesoft.apparule.helper.WalkThroughHelper;
 import io.cuesoft.apparule.views.BlankActivity;
 import io.cuesoft.apparule.views.LandingActivity;
@@ -27,6 +30,8 @@ public class WalkThroughActivity extends AppIntro {
             //setContentView(R.layout.activity_main);
 
             preferenceHelper = new WalkThroughHelper(this);
+            TextView skipText = (TextView) findViewById(com.github.paolorotolo.appintro.R.id.skip);
+        skipText.setVisibility(View.INVISIBLE);
 
             if (preferenceHelper.getIntro().equals("no")) {
                 Intent intent = new Intent(WalkThroughActivity.this, LandingActivity.class);
@@ -41,7 +46,28 @@ public class WalkThroughActivity extends AppIntro {
 
         }
 
-        @Override
+    @Override
+    public void showSkipButton(boolean showButton) {
+     showButton= false;
+        super.showSkipButton(showButton);
+    }
+
+    @Override
+    public void setBarColor(int color) {
+    //    super.setBarColor(color);
+        LinearLayout bottomBar = (LinearLayout) findViewById(R.id.bottom);
+        bottomBar.setVisibility(View.INVISIBLE);
+
+
+    }
+
+    @Override
+    public void setSkipText(@Nullable CharSequence text) {
+        TextView doneText = (TextView) findViewById(com.github.paolorotolo.appintro.R.id.done);
+        doneText.setVisibility(View.GONE);
+    }
+
+    @Override
         public void onSkipPressed (Fragment currentFragment){
             super.onSkipPressed(currentFragment);
 
@@ -87,11 +113,12 @@ public class WalkThroughActivity extends AppIntro {
     public void mainPage(View view) {
         Intent intent = new Intent(WalkThroughActivity.this, LandingActivity.class);
         startActivity(intent);
+        this.finish();
     }
     public void signup(View view) {
         Intent intent = new Intent(WalkThroughActivity.this, CustomerSignUpActivity.class);
         startActivity(intent);
-
+        this.finish();
     }
 
     }

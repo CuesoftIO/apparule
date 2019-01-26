@@ -16,7 +16,10 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.Layout;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -47,7 +50,6 @@ public class MainActivity extends AppCompatActivity {
                   intentDelivery(new DiscoveryActivity());
 //                    Intent intent1 = new Intent(MainActivity.this, DiscoveryActivity.class);
 //                    startActivity(intent1);
-//
                     return true;
                 case R.id.navigation_post:
                     Intent intent2 = new Intent(MainActivity.this, PostActivity.class);
@@ -73,17 +75,18 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         mTextMessage = (TextView) findViewById(R.id.message);
+
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         BottomNavigationViewHelper.removeShiftMode(navigation);
-        navigation.setBackgroundColor(getResources().getColor(R.color.bottom_navigation));
 
+        navigation.setBackgroundColor(getResources().getColor(R.color.bottom_navigation));
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
         mItemsData = new ArrayList<>();
-
         mRecyclerView = findViewById(R.id.mainRecyclerView);
         mAdapter = new MainAdapter(this, mItemsData);
         mRecyclerView.setAdapter(mAdapter);
+
         //mRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         initializeData();

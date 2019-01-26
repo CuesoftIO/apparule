@@ -3,10 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="io.cuesoft.apparule">
 
-    <uses-feature android:name="android.hardware.camera"
+    <uses-feature
+        android:name="android.hardware.camera"
         android:required="true" />
-
-
 
     <application
         android:allowBackup="true"
@@ -22,16 +21,12 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
         <activity android:name=".views.LandingActivity" />
         <activity android:name=".views.customer.CustomerActivity" />
         <activity
             android:name=".views.MainActivity"
-            android:label="@string/title_activity_main" >
-
-
-        </activity>
+            android:label="@string/title_activity_main"></activity>
         <activity android:name=".views.designer.DesignerActivity" />
         <activity android:name=".views.BlankActivity" />
         <activity android:name=".views.SignInActivity" />
@@ -41,7 +36,8 @@
         <activity android:name=".views.BaseActivity" />
         <activity android:name=".views.NotificationsActivity" />
         <activity android:name=".views.ProfileActivity" />
-        <activity android:name=".views.PostActivity"></activity>
+        <activity android:name=".views.PostActivity" />
+        <activity android:name=".views.WalkThroughActivity"></activity>
     </application>
 
 </manifest>
