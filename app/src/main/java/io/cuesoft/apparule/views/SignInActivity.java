@@ -1,8 +1,10 @@
 package io.cuesoft.apparule.views;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.design.widget.TextInputEditText;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
@@ -64,9 +66,12 @@ public class SignInActivity extends AppCompatActivity {
             public void onClick(View v) {
                 //land.enterMain(v);
                 if (validateForm()) {
+                    signInButton.setCardBackgroundColor(Color.WHITE);
                     signIn(mUsernameField.getText().toString(), mPasswordField.getText().toString());
+                    signInButton.setCardBackgroundColor(ContextCompat.getColor(SignInActivity.this, R.color.bottom_navigation));
                 }else{
-                   // Toast.makeText(SignInActivity.this,"Authentication false", Toast.LENGTH_LONG).show();
+
+                    // Toast.makeText(SignInActivity.this,"Authentication false", Toast.LENGTH_LONG).show();
                 }
             }
         });

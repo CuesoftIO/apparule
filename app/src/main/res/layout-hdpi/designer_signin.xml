@@ -11,31 +11,18 @@
     tools:layout_editor_absoluteY="25dp">
 
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/floatingActionButton"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-
-        android:layout_marginTop="21dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/guideline11"
-        app:srcCompat="@drawable/ic_store_black_24dp" />
-
     <android.support.design.widget.TextInputLayout
         android:id="@+id/textInputLayout9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="22dp"
         android:textColorHint="#e7d9d9"
+        app:layout_constraintBottom_toTopOf="@id/guideline12"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout8"
         app:passwordToggleEnabled="true"
         app:passwordToggleTint="@color/colorAccent"
-        >
+        tools:layout_editor_absoluteX="34dp"
+        tools:layout_editor_absoluteY="318dp">
 
         <android.support.design.widget.TextInputEditText
             android:id="@+id/designerPasswordField2"
@@ -57,10 +44,9 @@
         android:id="@+id/imageView"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_marginTop="50dp"
-        app:layout_constraintEnd_toStartOf="@+id/imageView2"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/imageView2"
+        android:layout_marginTop="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/logo" />
 
@@ -68,25 +54,27 @@
         android:id="@+id/imageView2"
         android:layout_width="103dp"
         android:layout_height="15dp"
-        android:layout_marginBottom="1dp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline11"
+        app:layout_constraintBottom_toTopOf="@id/guideline11"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/logo_text_white" />
+        app:srcCompat="@drawable/logo_text_white"
+        tools:layout_editor_absoluteX="109dp"
+        tools:layout_editor_absoluteY="98dp" />
 
 
     <android.support.v7.widget.CardView
         android:id="@+id/designerSignInButton"
         android:layout_width="242dp"
         android:layout_height="40dp"
-        android:layout_marginTop="10dp"
         app:cardBackgroundColor="#ffcc00"
         app:cardCornerRadius="20dp"
         app:cardElevation="6dp"
+        app:layout_constraintTop_toBottomOf="@id/guideline12"
+        android:layout_marginTop="9dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout9">
+        tools:layout_editor_absoluteY="368dp">
 
         <TextView
             android:id="@+id/textView"
@@ -100,15 +88,15 @@
         android:id="@+id/textInputLayout8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
         android:textColorHint="#e7d9d9"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/floatingActionButton"
         app:passwordToggleEnabled="true"
         app:passwordToggleTint="@color/colorAccent"
-        >
+        android:layout_marginBottom="20dp"
+        app:layout_constraintBottom_toTopOf="@id/textInputLayout9"
+        tools:layout_editor_absoluteX="34dp"
+        tools:layout_editor_absoluteY="256dp">
 
         <android.support.design.widget.TextInputEditText
             android:id="@+id/designerPasswordField1"
@@ -134,22 +122,23 @@
         android:text="I agree to the term and conditions."
         android:textColor="#e7d9d9"
         android:textSize="12sp"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/iAgree_checkBox"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/designerSignInButton" />
+        app:layout_constraintTop_toBottomOf="@id/designerSignInButton" />
 
     <TextView
         android:id="@+id/cuesoftText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
         android:text="Copyright @ 2019 Cuesoft Ltd"
         android:textColor="#e7d9d9"
         android:textSize="8sp"
+        android:layout_marginBottom="12dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="482dp" />
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline11"
@@ -164,5 +153,40 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_begin="356dp" />
+
+    <ImageView
+        android:id="@+id/business_logoImage"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:layout_constraintBottom_toTopOf="@id/business_logoText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/logo"
+        tools:layout_editor_absoluteX="106dp"
+        tools:layout_editor_absoluteY="130dp" />
+
+    <TextView
+        android:id="@+id/business_logoText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="Select your business logo"
+        android:textColor="@color/cardview_light_background"
+        app:layout_constraintBottom_toTopOf="@id/textInputLayout8"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="235dp" />
+
+    <CheckBox
+        android:id="@+id/iAgree_checkBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:shadowColor="@android:color/white"
+        android:text="I Agree"
+        android:textColor="#f2e6e6"
+        app:layout_constraintBaseline_toBaselineOf="@id/designer_terms_and_Conditions"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

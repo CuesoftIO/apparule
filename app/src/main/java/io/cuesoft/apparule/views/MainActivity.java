@@ -32,10 +32,30 @@ import io.cuesoft.apparule.model.ItemsModel;
 
 public class MainActivity extends AppCompatActivity {
 
-    private TextView mTextMessage;
     private RecyclerView mRecyclerView;
     private MainAdapter mAdapter;
     private ArrayList<ItemsModel> mItemsData;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        //Bottom Navigation Initialization
+        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
+        //bottom navigation atrributes
+        BottomNavigationViewHelper.removeShiftMode(navigation);
+        navigation.setBackgroundColor(getResources().getColor(R.color.signInButton_Blue));
+        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+
+        mItemsData = new ArrayList<>();
+        mRecyclerView = findViewById(R.id.mainRecyclerView);
+        mAdapter = new MainAdapter(this, mItemsData);
+        //recyclerview attributes
+        mRecyclerView.setAdapter(mAdapter);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        //Adding data to recyclerview
+        initializeData();
+    }
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -47,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.navigation_favourites:
                     return true;
                 case R.id.navigation_discovery:
-                  intentDelivery(new DiscoveryActivity());
+                    intentDelivery(new DiscoveryActivity());
 //                    Intent intent1 = new Intent(MainActivity.this, DiscoveryActivity.class);
 //                    startActivity(intent1);
                     return true;
@@ -68,36 +88,11 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        mTextMessage = (TextView) findViewById(R.id.message);
-
-        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
-        BottomNavigationViewHelper.removeShiftMode(navigation);
-
-        navigation.setBackgroundColor(getResources().getColor(R.color.bottom_navigation));
-        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-
-        mItemsData = new ArrayList<>();
-        mRecyclerView = findViewById(R.id.mainRecyclerView);
-        mAdapter = new MainAdapter(this, mItemsData);
-        mRecyclerView.setAdapter(mAdapter);
-
-        //mRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        initializeData();
-    }
-
     public void initializeData(){
         TypedArray ImageResources =
                 getResources().obtainTypedArray(R.array.images);
-
         for(int i =0; i<ImageResources.length(); i++){
-            mItemsData.add(new ItemsModel( ImageResources.getResourceId(i,0)));
+           // mItemsData.add(new ItemsModel( ImageResources.getResourceId(i,0)));
         }
 
         ImageResources.recycle();
@@ -106,7 +101,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void intentDelivery(Activity cls){
-
         Intent intent = new Intent(MainActivity.this, cls.getClass());
         intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
         startActivity(intent);

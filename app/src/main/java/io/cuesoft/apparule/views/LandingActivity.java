@@ -1,9 +1,11 @@
 package io.cuesoft.apparule.views;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
@@ -70,8 +72,10 @@ public class LandingActivity extends AppCompatActivity {
         signInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+           signInButton.setCardBackgroundColor(Color.WHITE);
                 Intent intent = new Intent(LandingActivity.this, SignInActivity.class);
                 startActivity(intent);
+           signInButton.setCardBackgroundColor(ContextCompat.getColor(LandingActivity.this, R.color.bottom_navigation));
             }
         });
         signUpButton.setOnClickListener(new View.OnClickListener() {
