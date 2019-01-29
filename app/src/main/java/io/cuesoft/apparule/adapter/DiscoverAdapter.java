@@ -15,6 +15,7 @@ import com.bumptech.glide.Glide;
 import java.util.ArrayList;
 
 import io.cuesoft.apparule.R;
+import io.cuesoft.apparule.interfaces.OnCategoriesClickListener;
 import io.cuesoft.apparule.model.CategoriesItemModel;
 import io.cuesoft.apparule.views.DiscoveryActivity;
 
@@ -30,16 +31,17 @@ public class DiscoverAdapter extends
     private LayoutInflater mInflater;
     Context mContext;
     private ArrayList<CategoriesItemModel> mCategoriesData;
-
+    private OnCategoriesClickListener mOnCategoriesClickListener;
     /**
      * DiscoverAdapter Constructor initializing the categoriesModel
        @param context Context of the application
         @param mImageData ArrayList containing the Categories data
     */
-    public DiscoverAdapter(Context context, ArrayList<CategoriesItemModel> mImageData){
+    public DiscoverAdapter(Context context, ArrayList<CategoriesItemModel> mImageData, OnCategoriesClickListener onCategoriesClickListener){
         mInflater = LayoutInflater.from(context);
         mContext = context;
         this.mCategoriesData = mImageData;
+        this.mOnCategoriesClickListener = onCategoriesClickListener;
     }
 
 
@@ -73,6 +75,7 @@ public class DiscoverAdapter extends
                     implements  View.OnClickListener{
         private ImageView imageView;
         private TextView textView;
+        private DiscoveryActivity discoverObject;
 
         public DiscoverViewHolder(View itemView) {
             super(itemView);
@@ -93,8 +96,9 @@ public class DiscoverAdapter extends
 
         @Override
         public void onClick(View v) {
-            CategoriesItemModel currentModel = mCategoriesData.get(getAdapterPosition());
-
+         CategoriesItemModel currentModel = mCategoriesData.get(getAdapterPosition());
+            String categoriesText = currentModel.getCategoriesText();
+            mOnCategoriesClickListener.onCategoriesClick(categoriesText);
         }
     }
 }

@@ -1,14 +1,13 @@
 package io.cuesoft.apparule.views;
 
 import android.annotation.TargetApi;
-import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.TypedArray;
 import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -16,7 +15,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.TextView;
+import android.view.View;
 
 import java.util.ArrayList;
 
@@ -24,10 +23,12 @@ import io.cuesoft.apparule.R;
 import io.cuesoft.apparule.adapter.DiscoverAdapter;
 import io.cuesoft.apparule.adapter.MainAdapter;
 import io.cuesoft.apparule.helper.BottomNavigationViewHelper;
+import io.cuesoft.apparule.interfaces.OnCategoriesClickListener;
 import io.cuesoft.apparule.model.CategoriesItemModel;
 import io.cuesoft.apparule.model.ItemsModel;
 
-public class DiscoveryActivity extends AppCompatActivity {
+public class DiscoveryActivity extends AppCompatActivity
+              implements OnCategoriesClickListener {
 
     //Memeber variable
     private RecyclerView mRecyclerView1;
@@ -35,7 +36,7 @@ public class DiscoveryActivity extends AppCompatActivity {
 
     private MainAdapter mAdapter;
     private ArrayList<ItemsModel> mItemsData;
-    private  ArrayList<CategoriesItemModel> mCateData;
+    private  ArrayList<CategoriesItemModel> mCategoriesData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,15 +44,24 @@ public class DiscoveryActivity extends AppCompatActivity {
         setContentView(R.layout.activity_discovery);
         //Arraylist for data
         mItemsData = new ArrayList<>();
-        mCateData = new ArrayList<>();
+        mCategoriesData = new ArrayList<>();
+
         //Handling RecyclerView
         bottomNavigationView();
         //Data for RecyclerView
         categoriesRecyclerView();
         detailsRecyclerView();
-        initializeData();
+        initializeData(R.array.images);
         categories();
 
+    }
+
+    public DiscoveryActivity(){
+
+    }
+
+   public  DiscoveryActivity(String imageResources){
+//        this.ImageResources = getResources().obtainTypedArray(R.array.images);;
     }
 
     public void bottomNavigationView(){
@@ -68,9 +78,10 @@ public class DiscoveryActivity extends AppCompatActivity {
 
     public void categoriesRecyclerView(){
         mRecyclerView1 = findViewById(R.id.categories_Recyclerview);
-        DiscoverAdapter mAdapter1 = new DiscoverAdapter(this, mCateData);
+        final DiscoverAdapter mAdapter1 = new DiscoverAdapter(this, mCategoriesData,this);
         mRecyclerView1.setAdapter(mAdapter1);
         mRecyclerView1.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+     //   mRecyclerView1.addOnItemTouchListener(new RecyclerItemCl);
         ViewCompat.setNestedScrollingEnabled(mRecyclerView1, false);
     }
 
@@ -82,12 +93,29 @@ public class DiscoveryActivity extends AppCompatActivity {
         ViewCompat.setNestedScrollingEnabled(mRecyclerView2,false);
     }
 
-    public void changeCategories(){
+    @Override
+    public void onCategoriesClick(String CategoriesData) {
+        switch(CategoriesData){
+            case "Featured":
+                initializeData(R.array.images);
+            case "Women":
+                initializeData(R.array.categories);
+            case "Men":
+            case "Kids":
+            case "Women Accessories":
+            case "Men Accessories":
+            case "Kids Accessories":
+            case "Wedding":
+            case "Fabric":
 
     }
-    public void initializeData(){
+
+
+    }
+    public void initializeData(int id){
+
         TypedArray ImageResources =
-                getResources().obtainTypedArray(R.array.images);
+                getResources().obtainTypedArray(id);
 
         for(int i =0; i<ImageResources.length(); i++){
             mItemsData.add(new ItemsModel( ImageResources.getResourceId(i,0)));
@@ -96,7 +124,17 @@ public class DiscoveryActivity extends AppCompatActivity {
         ImageResources.recycle();
         mAdapter.notifyDataSetChanged();
     }
+    public  void categoriesData(int id){
 
+    TypedArray    ImageResources = getResources().obtainTypedArray(id);
+
+        for(int i =0; i<ImageResources.length(); i++){
+            mItemsData.add(new ItemsModel( ImageResources.getResourceId(i,0)));
+        }
+
+        ImageResources.recycle();
+        mAdapter.notifyDataSetChanged();
+    }
     public void categories(){
         String[] categories = getResources()
                 .getStringArray(R.array.categories);
@@ -105,7 +143,7 @@ public class DiscoveryActivity extends AppCompatActivity {
                 .obtainTypedArray(R.array.images_categories);
 
         for(int i=0; i<ImageCategories.length(); i++){
-            mCateData.add(new CategoriesItemModel(categories[i], ImageCategories.getResourceId(i, 0)));
+            mCategoriesData.add(new CategoriesItemModel(categories[i], ImageCategories.getResourceId(i, 0)));
         }
 
         ImageCategories.recycle();

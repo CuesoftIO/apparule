@@ -21,6 +21,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 import io.cuesoft.apparule.R;
+import io.cuesoft.apparule.views.LandingActivity;
 import io.cuesoft.apparule.views.MainActivity;
 import io.cuesoft.apparule.views.SignInActivity;
 import io.cuesoft.apparule.views.designer.DesignerSignUpActivity;
@@ -141,6 +142,12 @@ public class CustomerSignUpActivity extends AppCompatActivity {
               });
         }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = new Intent(this,LandingActivity.class);
+        startActivity(intent);
+    }
 
     public boolean validateForm(){
         boolean valid = true;

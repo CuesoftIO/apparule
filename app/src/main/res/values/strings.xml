@@ -13,17 +13,6 @@
     <string name="sign_up_here"><u>Sign Up here</u></string>
     <string name="sign_in_here"><u>Sign In here</u></string>
 
-    <string-array name="categories">
-        <item>Featured</item>
-        <item>Women</item>
-        <item>Men</item>
-        <item>Kids</item>
-        <item>Women Accessories</item>
-        <item>Men Accessories</item>
-        <item>Kids Accessories</item>
-        <item>Wedding</item>
-        <item>Fabric</item>
-    </string-array>
 
     <array name="images_categories">
         <item>@drawable/selfie06</item>
@@ -37,6 +26,17 @@
         <item>@drawable/frabrics</item>
     </array>
 
+    <string-array name="categories">
+        <item>Featured</item>
+        <item>Women</item>
+        <item>Men</item>
+        <item>Kids</item>
+        <item>Women Accessories</item>
+        <item>Men Accessories</item>
+        <item>Kids Accessories</item>
+        <item>Wedding</item>
+        <item>Fabric</item>
+    </string-array>
 
     <string-array name="men_categories">
         <item>Senator</item>
