@@ -9,6 +9,7 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.view.ViewCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -59,11 +60,13 @@ public class DiscoveryActivity extends AppCompatActivity {
         DiscoverAdapter mAdapter1 = new DiscoverAdapter(this, mCateData);
         mRecyclerView1.setAdapter(mAdapter1);
         mRecyclerView1.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+        ViewCompat.setNestedScrollingEnabled(mRecyclerView1, false);
 
         mRecyclerView2 = findViewById(R.id.discoverRecyclerView);
         mAdapter = new MainAdapter(this, mItemsData);
         mRecyclerView2.setAdapter(mAdapter);
         mRecyclerView2.setLayoutManager(new LinearLayoutManager(this));
+        ViewCompat.setNestedScrollingEnabled(mRecyclerView2,false);
         initializeData();
         categories();
     }
