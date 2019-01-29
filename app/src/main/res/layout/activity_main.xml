@@ -50,7 +50,7 @@
         android:background="?attr/colorPrimary"
         android:minHeight="?attr/actionBarSize"
         android:theme="@style/AppBaseTheme.Toolbar"
-
+        android:elevation="2dp"
         app:layout_scrollFlags="scroll|enterAlways"
         app:layout_constraintBottom_toTopOf="@+id/frame_container"
         app:layout_constraintEnd_toEndOf="parent"
