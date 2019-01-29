@@ -12,6 +12,7 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -36,11 +37,13 @@ public class SignInActivity extends AppCompatActivity {
 
     private TextView mForgotPassword;
     private TextView mDesignerSignUp;
+    private TextView signInTextCardView;
 
     //The variables for handling forgotten passwordpage
     private TextInputEditText mForgotEmailField;
     private CardView mForgotPasswordButton;
     private TextView signUP;
+    private ProgressBar signInProgress;
 
     private FirebaseAuth mFirebaseAuth;
     @Override
@@ -53,6 +56,9 @@ public class SignInActivity extends AppCompatActivity {
         mUsernameField = findViewById(R.id.username_signinField);
         mPasswordField = findViewById(R.id.password_signinField);
 
+        //SignIn ProgressBar
+        signInProgress = findViewById(R.id.signin_progressBar);
+        signInTextCardView = findViewById(R.id.signIn_cardViewText);
         //Firebase Authentication insatnce
         mFirebaseAuth = FirebaseAuth.getInstance();
 
@@ -64,13 +70,15 @@ public class SignInActivity extends AppCompatActivity {
         signInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                signInButton.setCardBackgroundColor(Color.WHITE);
                 //land.enterMain(v);
                 if (validateForm()) {
-                    signInButton.setCardBackgroundColor(Color.WHITE);
+                    signInProgress.setVisibility(View.VISIBLE);
+                    signInTextCardView.setVisibility(View.INVISIBLE);
                     signIn(mUsernameField.getText().toString(), mPasswordField.getText().toString());
-                    signInButton.setCardBackgroundColor(ContextCompat.getColor(SignInActivity.this, R.color.bottom_navigation));
-                }else{
 
+                }else{
+                    signInButton.setCardBackgroundColor(ContextCompat.getColor(SignInActivity.this, R.color.bottom_navigation));
                     // Toast.makeText(SignInActivity.this,"Authentication false", Toast.LENGTH_LONG).show();
                 }
             }
@@ -104,17 +112,18 @@ public class SignInActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-
-                            //Sign in success, Ui with the signed-in use's information
+                        //Sign in success, Ui with the signed-in use's information
                             Toast.makeText(SignInActivity.this, "Authentication Success.",
                                     Toast.LENGTH_SHORT).show();
                             //Granted Acces to the MainActivity
                             Intent intent = new Intent(SignInActivity.this, MainActivity.class);
                             startActivity(intent);
-
+                            signInButton.setCardBackgroundColor(ContextCompat.getColor(SignInActivity.this, R.color.bottom_navigation));
                         } else {
                             //If sign in fails, display a message to the user.
+                            signInButton.setCardBackgroundColor(ContextCompat.getColor(SignInActivity.this, R.color.bottom_navigation));
                             Log.w(TAG, "createUserWithEmailAndPassword:failure", task.getException());
+
                             Toast.makeText(SignInActivity.this, "Authentication failed. Please" +
                                             " check your connection and try again",
                                     Toast.LENGTH_SHORT).show();
@@ -125,6 +134,7 @@ public class SignInActivity extends AppCompatActivity {
             @Override
             public void onFailure(@NonNull Exception e) {
                 if (e instanceof FirebaseAuthInvalidUserException) {
+                    signInButton.setCardBackgroundColor(ContextCompat.getColor(SignInActivity.this, R.color.bottom_navigation));
                     String errorCode =
                             ((FirebaseAuthInvalidUserException) e).getErrorCode();
 
