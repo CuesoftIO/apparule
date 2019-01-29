@@ -23,12 +23,14 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+
         android:background="?attr/colorPrimary"
+        android:elevation="2dp"
         android:minHeight="?attr/actionBarSize"
         android:theme="@style/AppBaseTheme.Toolbar"
-        android:elevation="2dp"
         app:layout_constraintBottom_toTopOf="@+id/nestedScrollView"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 
     <android.support.constraint.Guideline
@@ -56,13 +58,11 @@
         android:id="@+id/searchview_discover"
         android:layout_width="270dp"
         android:layout_height="35dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="56dp"
         android:layout_marginBottom="10dp"
-        android:autofillHints="search"
-
         android:queryHint="search"
-        android:tooltipText="search"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="@+id/guideline3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.275"
@@ -74,7 +74,7 @@
         android:id="@+id/nestedScrollView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="8dp"
+
         app:layout_constraintBottom_toTopOf="@id/navigation"
         app:layout_constraintTop_toTopOf="@+id/guideline3">
 
