@@ -1,8 +1,11 @@
 package io.cuesoft.apparule.views.designer;
 
+import android.Manifest;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
@@ -19,20 +22,25 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import java.io.InputStream;
+
 import io.cuesoft.apparule.R;
 import io.cuesoft.apparule.views.MainActivity;
 import io.cuesoft.apparule.views.SignInActivity;
 import io.cuesoft.apparule.views.customer.CustomerSignUpActivity;
+import pub.devrel.easypermissions.EasyPermissions;
 
 public class DesignerSignUpActivity extends AppCompatActivity {
     private static final String TAG = "DesignerEmailPassowrd";
-    final int PIC_CROP = 2;
+    private static final int PICK_IMAGE = 2;
+   // final int PIC_CROP = 2;
     //first designerPage Views
     private TextInputEditText businessName;
     private TextInputEditText designerEmail;
@@ -50,7 +58,7 @@ public class DesignerSignUpActivity extends AppCompatActivity {
     private TextInputEditText designerPassword2;
     String Email;
     private FirebaseAuth mFirebaseAuth;
-
+    private String[] galleryPermissions = {Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE};
     //Camera Views
     final int CAMERA_CAPTURE =1;
     //captured picture uri
@@ -105,16 +113,15 @@ public class DesignerSignUpActivity extends AppCompatActivity {
         designer2CardViewText = findViewById(R.id.designer2textCardView);
 
         designersSignUp2progressBar = findViewById(R.id.designersignIn_progressBar);
-
         //SecondPage Signup Initialization
         designerPassword1 = findViewById(R.id.designerPasswordField1);
         designerPassword2= findViewById(R.id.designerPasswordField2);
         businessLogoText = findViewById(R.id.business_logoText);
-
+        //Business clicked
         businessLogoText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openCamera();
+                pickImage();
             }
         });
         signUp2Button.setOnClickListener(new View.OnClickListener() {
@@ -124,8 +131,7 @@ public class DesignerSignUpActivity extends AppCompatActivity {
                 designer2CardViewText.setVisibility(View.INVISIBLE);
                 if(validateForm2()) {
                     createdesignerAccount(designerEmail.getText().toString(), designerPassword1.getText().toString());
-                }
-            }
+                } }
         });
     }
 
@@ -170,8 +176,12 @@ public class DesignerSignUpActivity extends AppCompatActivity {
 
     }
 
-
-
+   public void  pickImage(){
+       Intent intent = new Intent();
+       intent.setType("image/*");
+       intent.setAction(Intent.ACTION_GET_CONTENT);
+       startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE);
+    }
     public void openCamera(){
         try{
             //use standard intent to capture an image
@@ -189,9 +199,35 @@ public class DesignerSignUpActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(resultCode == RESULT_OK){
-            //user is returning from capturing an image using the camera
-            if(requestCode == CAMERA_CAPTURE){
+
+        if (requestCode == PICK_IMAGE && resultCode == RESULT_OK && null != data) {
+            if (EasyPermissions.hasPermissions(DesignerSignUpActivity.this, galleryPermissions)) {
+
+                Uri selectedImage = data.getData();
+                String[] filePathColumn = { MediaStore.Images.Media.DATA };
+
+                Cursor cursor = getContentResolver().query(selectedImage,
+                        filePathColumn, null, null, null);
+                cursor.moveToFirst();
+
+                int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
+                String picturePath = cursor.getString(columnIndex);
+                cursor.close();
+
+                ImageView imageView = (ImageView) findViewById(R.id.business_logoImage);
+               // Glide.with()
+                imageView.setImageBitmap(BitmapFactory.decodeFile(picturePath));
+
+
+            } else {
+                EasyPermissions.requestPermissions(this, "Access for storage",
+                        101, galleryPermissions);
+                pickImage();
+            }
+
+        }
+
+        /*if(requestCode == CAMERA_CAPTURE){
                 //get the Uri for the captured image
                 picUri = data.getData();
                 performCrop();
@@ -205,7 +241,7 @@ public class DesignerSignUpActivity extends AppCompatActivity {
                 //display the returned cropped image
                 picView.setImageBitmap(thePic);
             }
-        }
+        }*/
     }
 
     private void performCrop() {
@@ -225,7 +261,7 @@ public class DesignerSignUpActivity extends AppCompatActivity {
             //retrieve data on return
             cropIntent.putExtra("return-data", true);
             //start the activity - we handle returning in onActivityResult
-            startActivityForResult(cropIntent, PIC_CROP);
+         //   startActivityForResult(cropIntent, PIC_CROP);
 
         }catch(ActivityNotFoundException e){
             //display an error message
@@ -238,7 +274,6 @@ public class DesignerSignUpActivity extends AppCompatActivity {
     public boolean validateForm(){
         boolean valid = true;
         String email = designerEmail.getText().toString();
-
         if(TextUtils.isEmpty(email)){
             designerEmail.setError("Required");
             valid = false;
@@ -246,41 +281,29 @@ public class DesignerSignUpActivity extends AppCompatActivity {
         else{
             designerEmail.setError(null);
         }
-
-
         String businessNameText = businessName.getText().toString();
-
         if(TextUtils.isEmpty(businessNameText)){
             businessName.setError("Required");
             valid =false;
-        }
-        else{
+        } else{
             businessName.setError(null);
         }
-
         String designerAddressText = designerAddress.getText().toString();
 
         if(TextUtils.isEmpty(designerAddressText)){
             designerAddress.setError("Required");
             valid =false;
-        }
-        else{
+        } else{
             designerAddress.setError(null);
         }
-
         String designerCountryText = designerCountry.getText().toString();
-
         if(TextUtils.isEmpty(designerCountryText)){
             designerCountry.setError("Required");
             valid =false;
-        }
-        else{
+        } else{
             designerCountry.setError(null);
         }
-
-
         return valid;
-
     }
 
     public boolean validateForm2(){

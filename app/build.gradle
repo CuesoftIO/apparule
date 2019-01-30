@@ -29,7 +29,8 @@ dependencies {
 
     implementation 'com.github.paolorotolo:appintro:4.1.0'
     implementation 'com.makeramen:roundedimageview:2.3.0'
-
+    //Android Permisson for marshMellow
+    implementation 'pub.devrel:easypermissions:0.2.1'
     //Firebase services
     implementation 'com.google.firebase:firebase-core:16.0.6'
     implementation 'com.google.firebase:firebase-auth:16.1.0'
