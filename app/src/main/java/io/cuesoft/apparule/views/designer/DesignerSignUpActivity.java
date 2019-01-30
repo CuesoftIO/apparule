@@ -1,6 +1,10 @@
 package io.cuesoft.apparule.views.designer;
 
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
+import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
@@ -9,6 +13,9 @@ import android.support.v7.widget.CardView;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,23 +31,30 @@ import io.cuesoft.apparule.views.SignInActivity;
 import io.cuesoft.apparule.views.customer.CustomerSignUpActivity;
 
 public class DesignerSignUpActivity extends AppCompatActivity {
-
     private static final String TAG = "DesignerEmailPassowrd";
+    final int PIC_CROP = 2;
+    //first designerPage Views
     private TextInputEditText businessName;
     private TextInputEditText designerEmail;
     private TextInputEditText designerAddress;
     private TextInputEditText designerCountry;
-
+    private CardView continueButton;
     private TextView signInText_signup;
 
-    private CardView continueButton;
-    private CardView signUpButton;
-
+    //SEcond Designer Views
+    private TextView designer2CardViewText;
+    private ProgressBar designersSignUp2progressBar;
+    private CardView signUp2Button;
+    private  TextView businessLogoText;
     private TextInputEditText designerPassword1;
     private TextInputEditText designerPassword2;
     String Email;
     private FirebaseAuth mFirebaseAuth;
 
+    //Camera Views
+    final int CAMERA_CAPTURE =1;
+    //captured picture uri
+    private Uri picUri;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,13 +67,13 @@ public class DesignerSignUpActivity extends AppCompatActivity {
         designerCountry = findViewById(R.id.designerCountryField);
 
         signInText_signup = findViewById(R.id.designer_signupText);
-
         mFirebaseAuth = FirebaseAuth.getInstance();
 
         //SecondPage Signup Initialization
         designerPassword1 = findViewById(R.id.designerPasswordField1);
         designerPassword2= findViewById(R.id.designerPasswordField2);
 
+        //Button to the second designer page
         continueButton = findViewById(R.id.designerContinue_button);
         continueButton.setOnClickListener(new View.OnClickListener() {
         @Override
@@ -79,6 +93,47 @@ public class DesignerSignUpActivity extends AppCompatActivity {
             }
         });
     }
+    /**
+    ** Method for Creating Designer Account
+     *
+     **/
+    public void secondButtonSignUp(){
+        //Caliing the second layout for registration
+        setContentView(R.layout.designer_signin);
+        //CardView Elements
+        signUp2Button = findViewById(R.id.designerSignInButton);
+        designer2CardViewText = findViewById(R.id.designer2textCardView);
+
+        designersSignUp2progressBar = findViewById(R.id.designersignIn_progressBar);
+
+        //SecondPage Signup Initialization
+        designerPassword1 = findViewById(R.id.designerPasswordField1);
+        designerPassword2= findViewById(R.id.designerPasswordField2);
+        businessLogoText = findViewById(R.id.business_logoText);
+
+        businessLogoText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openCamera();
+            }
+        });
+        signUp2Button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                designersSignUp2progressBar.setVisibility(View.VISIBLE);
+                designer2CardViewText.setVisibility(View.INVISIBLE);
+                if(validateForm2()) {
+                    createdesignerAccount(designerEmail.getText().toString(), designerPassword1.getText().toString());
+                }
+            }
+        });
+    }
+
+    /**
+     * Method for Creating designer Account
+     * @param email
+     * @param password
+     */
 
     private void createdesignerAccount(String email, String password) {
         Log.d(TAG, "createAccount: " + email);
@@ -88,17 +143,27 @@ public class DesignerSignUpActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
+
                             //Sign in success, Ui with the signed-in use's information
                             FirebaseUser user = mFirebaseAuth.getCurrentUser();
                             Toast.makeText(DesignerSignUpActivity .this, "Account Created.",
                                     Toast.LENGTH_SHORT).show();
+
                             Intent intent = new Intent(DesignerSignUpActivity .this, MainActivity.class);
                             startActivity(intent);
-                        } else {
+                            //Making Progress Bar Invisible and text Visible
+                            designersSignUp2progressBar.setVisibility(View.INVISIBLE);
+                            designer2CardViewText.setVisibility(View.VISIBLE);
+                        }
+
+                        else {
                             //If sign in fails, display a message to the user.
                             Log.w(TAG, "createUserWithEmailAndPassword:failure", task.getException());
                             Toast.makeText(DesignerSignUpActivity .this, "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();
+                            //Making Progress Bar Invisible and text Visible
+                            designersSignUp2progressBar.setVisibility(View.INVISIBLE);
+                            designer2CardViewText.setVisibility(View.VISIBLE);
                         }
                     }
                 });
@@ -106,28 +171,72 @@ public class DesignerSignUpActivity extends AppCompatActivity {
     }
 
 
-    public void secondButtonSignUp(){
-        //Caliing the second layout for registration
-        setContentView(R.layout.designer_signin);
-        signUpButton = findViewById(R.id.designerSignInButton);
 
-        //SecondPage Signup Initialization
-        designerPassword1 = findViewById(R.id.designerPasswordField1);
-        designerPassword2= findViewById(R.id.designerPasswordField2);
+    public void openCamera(){
+        try{
+            //use standard intent to capture an image
+            Intent captureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+            //we will handle the returned data in onActivityResult
+            startActivityForResult(captureIntent, CAMERA_CAPTURE);
+        }catch(Exception e){
+            String errorMessage = "Whoops - your device doesn't support capturing images!";
+            Toast toast = Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT);
+            toast.show();
+        }
+    }
 
-        signUpButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(validateForm2()) {
-                    createdesignerAccount(designerEmail.getText().toString(), designerPassword1.getText().toString());
-                }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(resultCode == RESULT_OK){
+            //user is returning from capturing an image using the camera
+            if(requestCode == CAMERA_CAPTURE){
+                //get the Uri for the captured image
+                picUri = data.getData();
+                performCrop();
+            }else if(requestCode == PIC_CROP){
+                //get the returned data
+                Bundle extras = data.getExtras();
+                //get the cropped bitmap
+                Bitmap thePic = extras.getParcelable("data");
+                //retrieve a reference to the ImageView
+                ImageView picView = (ImageView)findViewById(R.id.business_logoImage);
+                //display the returned cropped image
+                picView.setImageBitmap(thePic);
             }
-        });
+        }
+    }
+
+    private void performCrop() {
+        try
+        {
+            Intent cropIntent = new Intent("io.cuesoft.apparule.camera.action.CROP");
+            //indicate image type and Uri
+            cropIntent.setDataAndType(picUri, "image/*");
+            //set crop properties
+            cropIntent.putExtra("crop", "true");
+            //indicate aspect of desired crop
+            cropIntent.putExtra("aspectX", 1);
+            cropIntent.putExtra("aspectY", 1);
+            //indicate output X and Y
+            cropIntent.putExtra("outputX", 256);
+            cropIntent.putExtra("outputY", 256);
+            //retrieve data on return
+            cropIntent.putExtra("return-data", true);
+            //start the activity - we handle returning in onActivityResult
+            startActivityForResult(cropIntent, PIC_CROP);
+
+        }catch(ActivityNotFoundException e){
+            //display an error message
+            String errorMessage ="Your devicde does not support the crop activity";
+            Toast toast = Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT);
+            toast.show();
+        }
     }
 
     public boolean validateForm(){
         boolean valid = true;
-
         String email = designerEmail.getText().toString();
 
         if(TextUtils.isEmpty(email)){

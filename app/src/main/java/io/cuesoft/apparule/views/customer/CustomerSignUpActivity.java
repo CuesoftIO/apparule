@@ -10,6 +10,7 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -36,6 +37,9 @@ public class CustomerSignUpActivity extends AppCompatActivity {
     private TextInputEditText mPasswordField1;
     private TextInputEditText mPasswordField2;
 
+    private TextView signUpCardTextView;
+    private ProgressBar signUpprogressBar;
+
     private FirebaseAuth mFirebaseAuth;
     //TextView
     private TextView mSignInLink;
@@ -58,6 +62,9 @@ public class CustomerSignUpActivity extends AppCompatActivity {
 
         signUpButton= findViewById(R.id.signUpButton);
 
+        signUpCardTextView = findViewById(R.id.signUpCardtextView);
+        signUpprogressBar = findViewById(R.id.signup_progressBar);
+
         mFirebaseAuth = FirebaseAuth.getInstance();
 
         signUpButton.setOnClickListener(new View.OnClickListener() {
@@ -65,7 +72,8 @@ public class CustomerSignUpActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 if (validateForm()) {
-
+                    signUpprogressBar.setVisibility(View.VISIBLE);
+                    signUpCardTextView.setVisibility(View.INVISIBLE);
                     createAccount(mEmailField.getText().toString(), mPasswordField1.getText().toString());
 
                 } else {
@@ -96,11 +104,15 @@ public class CustomerSignUpActivity extends AppCompatActivity {
                                         Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(CustomerSignUpActivity.this, MainActivity.class);
                                 startActivity(intent);
+                                signUpprogressBar.setVisibility(View.INVISIBLE);
+                                signUpCardTextView.setVisibility(View.VISIBLE);
                             } else {
                                 //If sign in fails, display a message to the user.
                                 Log.w(TAG, "createUserWithEmailAndPassword:failure", task.getException());
                                 Toast.makeText(CustomerSignUpActivity.this, "Authentication failed.",
                                         Toast.LENGTH_SHORT).show();
+                                signUpprogressBar.setVisibility(View.INVISIBLE);
+                                signUpCardTextView.setVisibility(View.VISIBLE);
                             }
 
                         }
@@ -108,10 +120,14 @@ public class CustomerSignUpActivity extends AppCompatActivity {
                 @Override
                 public void onFailure(@NonNull Exception e) {
                     errorMessage(e.getLocalizedMessage());
+                    signUpprogressBar.setVisibility(View.INVISIBLE);
+                    signUpCardTextView.setVisibility(View.VISIBLE);
                 }
             });
         }catch (Exception e){
             errorMessage("Error Creating Account try again");
+            signUpprogressBar.setVisibility(View.INVISIBLE);
+            signUpCardTextView.setVisibility(View.VISIBLE);
         }
     }
 

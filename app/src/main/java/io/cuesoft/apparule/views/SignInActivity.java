@@ -38,12 +38,15 @@ public class SignInActivity extends AppCompatActivity {
     private TextView mForgotPassword;
     private TextView mDesignerSignUp;
     private TextView signInTextCardView;
+    private ProgressBar signInProgress;
 
     //The variables for handling forgotten passwordpage
     private TextInputEditText mForgotEmailField;
     private CardView mForgotPasswordButton;
     private TextView signUP;
-    private ProgressBar signInProgress;
+
+    private ProgressBar forgotPasswordProgressBar;
+    private TextView forgotPassWordTextView;
 
     private FirebaseAuth mFirebaseAuth;
     @Override
@@ -70,14 +73,16 @@ public class SignInActivity extends AppCompatActivity {
         signInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                signInButton.setCardBackgroundColor(Color.WHITE);
+    //            signInButton.setCardBackgroundColor(Color.WHITE);
                 //land.enterMain(v);
                 if (validateForm()) {
-                    signInProgress.setVisibility(View.VISIBLE);
                     signInTextCardView.setVisibility(View.INVISIBLE);
+                    signInProgress.setVisibility(View.VISIBLE);
                     signIn(mUsernameField.getText().toString(), mPasswordField.getText().toString());
 
                 }else{
+                    signInTextCardView.setVisibility(View.VISIBLE);
+                    signInProgress.setVisibility(View.INVISIBLE);
                     signInButton.setCardBackgroundColor(ContextCompat.getColor(SignInActivity.this, R.color.bottom_navigation));
                     // Toast.makeText(SignInActivity.this,"Authentication false", Toast.LENGTH_LONG).show();
                 }
@@ -119,6 +124,8 @@ public class SignInActivity extends AppCompatActivity {
                             Intent intent = new Intent(SignInActivity.this, MainActivity.class);
                             startActivity(intent);
                             signInButton.setCardBackgroundColor(ContextCompat.getColor(SignInActivity.this, R.color.bottom_navigation));
+                            signInTextCardView.setVisibility(View.VISIBLE);
+                            signInProgress.setVisibility(View.INVISIBLE);
                         } else {
                             //If sign in fails, display a message to the user.
                             signInButton.setCardBackgroundColor(ContextCompat.getColor(SignInActivity.this, R.color.bottom_navigation));
@@ -127,6 +134,8 @@ public class SignInActivity extends AppCompatActivity {
                             Toast.makeText(SignInActivity.this, "Authentication failed. Please" +
                                             " check your connection and try again",
                                     Toast.LENGTH_SHORT).show();
+                            signInTextCardView.setVisibility(View.VISIBLE);
+                            signInProgress.setVisibility(View.INVISIBLE);
                         }
                         //Add on failure listener
                     }
@@ -137,7 +146,8 @@ public class SignInActivity extends AppCompatActivity {
                     signInButton.setCardBackgroundColor(ContextCompat.getColor(SignInActivity.this, R.color.bottom_navigation));
                     String errorCode =
                             ((FirebaseAuthInvalidUserException) e).getErrorCode();
-
+                    signInTextCardView.setVisibility(View.VISIBLE);
+                    signInProgress.setVisibility(View.INVISIBLE);
                     if (errorCode.equals("ERROR_USER_NOT_FOUND")) {
                         mUsernameField.setError("Email not found,Signup");
                     }
@@ -188,6 +198,9 @@ public class SignInActivity extends AppCompatActivity {
         mForgotPasswordButton = findViewById(R.id.forgotPasswordButton);
         signUP = findViewById(R.id.signup_forgotPassword);
 
+        forgotPassWordTextView = findViewById(R.id.forgotPasswordCardtextView);
+        forgotPasswordProgressBar = findViewById(R.id.forgotPassword_progressBar);
+
         signUP.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -204,7 +217,9 @@ public class SignInActivity extends AppCompatActivity {
                }
 
                 else{
-                    errorMessage("working on it");
+                    forgotPasswordProgressBar.setVisibility(View.VISIBLE);
+                    forgotPassWordTextView.setVisibility(View.INVISIBLE);
+                    errorMessage("working on it, Try again later");
                     mForgotPasswordButton.setActivated(false);
                 }
             }
