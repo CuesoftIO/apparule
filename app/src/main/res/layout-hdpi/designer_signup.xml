@@ -74,13 +74,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/designerAddressFieldLayout">
 
-        <android.support.design.widget.TextInputEditText
+        <AutoCompleteTextView
             android:id="@+id/designerCountryField"
             android:layout_width="252dp"
             android:layout_height="40dp"
             android:backgroundTint="#e7d9d9"
             android:ems="10"
             android:hint="COUNTRY"
+            android:completionThreshold="1"
             android:inputType="textPersonName"
             android:textColor="#e7d9d9"
             android:textColorHint="#e7d9d9"

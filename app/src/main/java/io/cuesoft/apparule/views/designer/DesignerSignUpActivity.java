@@ -16,6 +16,9 @@ import android.support.v7.widget.CardView;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -23,6 +26,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -37,7 +41,8 @@ import io.cuesoft.apparule.views.SignInActivity;
 import io.cuesoft.apparule.views.customer.CustomerSignUpActivity;
 import pub.devrel.easypermissions.EasyPermissions;
 
-public class DesignerSignUpActivity extends AppCompatActivity {
+public class DesignerSignUpActivity extends AppCompatActivity implements
+        AdapterView.OnItemClickListener {
     private static final String TAG = "DesignerEmailPassowrd";
     private static final int PICK_IMAGE = 2;
    // final int PIC_CROP = 2;
@@ -45,11 +50,22 @@ public class DesignerSignUpActivity extends AppCompatActivity {
     private TextInputEditText businessName;
     private TextInputEditText designerEmail;
     private TextInputEditText designerAddress;
-    private TextInputEditText designerCountry;
+    private AutoCompleteTextView designerCountry;
     private CardView continueButton;
     private TextView signInText_signup;
-
-    //SEcond Designer Views
+    private String Countries[] ={
+                "Nigeria",
+                "America",
+                "Togo",
+                "Ghana",
+                "Cameroon",
+                "Algeria",
+                "South Africa",
+                "Benin",
+                "Ivory Coast",
+                "Gambia"
+            };
+    //Second Designer Views
     private TextView designer2CardViewText;
     private ProgressBar designersSignUp2progressBar;
     private CardView signUp2Button;
@@ -63,26 +79,17 @@ public class DesignerSignUpActivity extends AppCompatActivity {
     final int CAMERA_CAPTURE =1;
     //captured picture uri
     private Uri picUri;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.designer_signup);
 
-        //FirstPage Views Signup initialization
-        businessName = findViewById(R.id.designerBusinessNameField);
-        designerEmail = findViewById(R.id.designerEmailField);
-        designerAddress = findViewById(R.id.designerAddressField);
-        designerCountry = findViewById(R.id.designerCountryField);
+        initialization();
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,Countries);
+        designerCountry.setAdapter(adapter);
+        designerCountry.setOnItemClickListener(this);
 
-        signInText_signup = findViewById(R.id.designer_signupText);
-        mFirebaseAuth = FirebaseAuth.getInstance();
-
-        //SecondPage Signup Initialization
-        designerPassword1 = findViewById(R.id.designerPasswordField1);
-        designerPassword2= findViewById(R.id.designerPasswordField2);
-
-        //Button to the second designer page
-        continueButton = findViewById(R.id.designerContinue_button);
         continueButton.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -101,6 +108,37 @@ public class DesignerSignUpActivity extends AppCompatActivity {
             }
         });
     }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        //fetch the user selected value
+        String item = parent.getItemAtPosition(position).toString();
+        //create Toast with user selected value
+        //Toast.makeText(DesignerSignUpActivity.this, "Selected Item is: \t" + item, Toast.LENGTH_LONG).show();
+        designerCountry.setText(item);
+    }
+
+    public void initialization(){
+        //FirstPage Views Signup initialization
+        businessName = findViewById(R.id.designerBusinessNameField);
+        designerEmail = findViewById(R.id.designerEmailField);
+        designerAddress = findViewById(R.id.designerAddressField);
+        designerCountry = findViewById(R.id.designerCountryField);
+
+        signInText_signup = findViewById(R.id.designer_signupText);
+        mFirebaseAuth = FirebaseAuth.getInstance();
+
+        //SecondPage Signup Initialization
+        designerPassword1 = findViewById(R.id.designerPasswordField1);
+        designerPassword2= findViewById(R.id.designerPasswordField2);
+
+        //Button to the second designer page
+        continueButton = findViewById(R.id.designerContinue_button);
+
+
+
+    }
+
     /**
     ** Method for Creating Designer Account
      *
@@ -215,8 +253,12 @@ public class DesignerSignUpActivity extends AppCompatActivity {
                 cursor.close();
 
                 ImageView imageView = (ImageView) findViewById(R.id.business_logoImage);
-               // Glide.with()
-                imageView.setImageBitmap(BitmapFactory.decodeFile(picturePath));
+                Glide.with(this)
+                        .load(BitmapFactory.decodeFile(picturePath))
+                        .apply(new RequestOptions(). optionalCircleCrop())
+                        .into(imageView);
+
+                //imageView.setImageBitmap(BitmapFactory.decodeFile(picturePath));
 
 
             } else {

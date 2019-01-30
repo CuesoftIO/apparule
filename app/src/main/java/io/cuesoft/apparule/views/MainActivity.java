@@ -107,4 +107,10 @@ public class MainActivity extends AppCompatActivity {
         overridePendingTransition(0,0);
     }
 
+    @Override
+    public void onBackPressed() {
+        finish();
+        super.onBackPressed();
+
+    }
 }

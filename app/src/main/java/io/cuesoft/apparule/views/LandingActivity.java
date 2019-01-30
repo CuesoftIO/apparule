@@ -33,7 +33,7 @@ import io.cuesoft.apparule.views.designer.designerSecondFragment;
  * Signing Up, Signing In, Customer SigningUp, Designer SignUp
  */
 public class LandingActivity extends AppCompatActivity {
-
+    //Memebers Initialization
     private static final String TAG = "EmailPassword";
     CardView signInButton;
     CardView signUpButton;
@@ -46,12 +46,8 @@ public class LandingActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_landing);
-
         mFirebaseAuth = FirebaseAuth.getInstance();
         mFirebaseUser = mFirebaseAuth.getCurrentUser();
-
-
-
         mAuthStateListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
@@ -65,10 +61,8 @@ public class LandingActivity extends AppCompatActivity {
                }
             }
         };
-
         signInButton = findViewById(R.id.signIn_landing);
         signUpButton = findViewById(R.id.signUp_landing);
-
         signInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -90,8 +84,6 @@ public class LandingActivity extends AppCompatActivity {
 
     public  void createAccount(String email, String password){
         Log.d( TAG, "createAccount: " + email );
-
-
         //[START create_user_with_email]
         FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -114,9 +106,7 @@ public class LandingActivity extends AppCompatActivity {
 
                     }
                 });
-
-
-    }
+        }
 
 
 
@@ -165,5 +155,12 @@ public class LandingActivity extends AppCompatActivity {
         transaction.replace(android.R.id.content, ForgotPasswordFragment);
         transaction.addToBackStack(null);
         transaction.commit();
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 }
