@@ -7,10 +7,10 @@
 
     <gradient
         android:angle="90"
-        android:endColor="#00ede7e7"
-        android:startColor="#534c4c"
-        android:centerColor="#e31b1a1a"
-        android:centerY="0.3"
+        android:endColor="#00f5f2f2"
+        android:startColor="#1C1A1A"
+        android:centerColor="#eb1b1a1a"
+        android:centerY="0.35"
         />
 
 

@@ -124,12 +124,13 @@
     <TextView
         android:id="@+id/designer_terms_and_Conditions"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="12dp"
         android:layout_marginTop="14dp"
         android:text="I agree to the term and conditions."
         android:textColor="#e7d9d9"
         android:textSize="12sp"
         app:layout_constraintEnd_toStartOf="@id/iAgree_checkBox"
+        app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/designerSignInButton" />
 
@@ -169,6 +170,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
         android:text="Select your business logo"
         android:textColor="@color/cardview_light_background"
         app:layout_constraintBottom_toTopOf="@id/textInputLayout8"
@@ -181,11 +183,12 @@
         android:id="@+id/iAgree_checkBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="36dp"
+        android:layout_marginEnd="0dp"
         android:shadowColor="@android:color/white"
-        android:text="i agree"
+        android:text=""
         android:textColor="#f2e6e6"
         android:textSize="12dp"
+        app:layout_constraintStart_toEndOf="@id/designer_terms_and_Conditions"
         app:layout_constraintBaseline_toBaselineOf="@id/designer_terms_and_Conditions"
         app:layout_constraintEnd_toEndOf="parent" />
 

@@ -17,6 +17,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Layout;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.RelativeLayout;
@@ -35,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView mRecyclerView;
     private MainAdapter mAdapter;
     private ArrayList<ItemsModel> mItemsData;
-
+    BottomNavigationView navigation;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,6 +47,10 @@ public class MainActivity extends AppCompatActivity {
         BottomNavigationViewHelper.removeShiftMode(navigation);
         navigation.setBackgroundColor(getResources().getColor(R.color.signInButton_Blue));
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+
+        Menu menu = navigation.getMenu();
+        MenuItem menuItem = menu.getItem(0);
+        menuItem.setChecked(true);
 
         mItemsData = new ArrayList<>();
         mRecyclerView = findViewById(R.id.mainRecyclerView);
@@ -76,10 +81,12 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(intent2);
                     return true;
                 case R.id.navigation_notifications:
+
                     Intent intent3 = new Intent(MainActivity.this, NotificationsActivity.class);
                     startActivity(intent3);
                     return true;
                 case R.id.navigation_account:
+
                     Intent intent4 = new Intent(MainActivity.this, ProfileActivity.class);
                     startActivity(intent4);
                     return true;

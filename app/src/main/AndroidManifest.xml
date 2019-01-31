@@ -25,7 +25,9 @@
 
         <activity
             android:name=".views.MainActivity"
-            android:label="@string/title_activity_main">
+            android:label="@string/title_activity_main"
+
+            >
 
         </activity>
 

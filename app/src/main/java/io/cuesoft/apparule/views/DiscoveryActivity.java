@@ -37,7 +37,7 @@ public class DiscoveryActivity extends AppCompatActivity
     private MainAdapter mAdapter;
     private ArrayList<ItemsModel> mItemsData;
     private  ArrayList<CategoriesItemModel> mCategoriesData;
-
+    BottomNavigationView navigation;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,6 +45,15 @@ public class DiscoveryActivity extends AppCompatActivity
         //Arraylist for data
         mItemsData = new ArrayList<>();
         mCategoriesData = new ArrayList<>();
+        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
+        BottomNavigationViewHelper.removeShiftMode(navigation);
+        navigation.setBackgroundColor(getResources().getColor(R.color.bottom_navigation));
+        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+        //Setting Menu index
+        Menu menu = navigation.getMenu();
+        MenuItem menuItem = menu.getItem(0);
+        menuItem.setChecked(true);
+
 
         //Handling RecyclerView
         bottomNavigationView();
@@ -65,14 +74,7 @@ public class DiscoveryActivity extends AppCompatActivity
     }
 
     public void bottomNavigationView(){
-        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
-        BottomNavigationViewHelper.removeShiftMode(navigation);
-        navigation.setBackgroundColor(getResources().getColor(R.color.bottom_navigation));
-        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-        //Setting Menu index
-        Menu menu = navigation.getMenu();
-        MenuItem menuItem = menu.getItem(1);
-        menuItem.setChecked(true);
+
 
     }
 
@@ -190,6 +192,7 @@ public class DiscoveryActivity extends AppCompatActivity
     public void onBackPressed() {
         super.onBackPressed();
         Intent intent = new Intent(this, MainActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
     }
 }
