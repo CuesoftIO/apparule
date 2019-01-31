@@ -124,7 +124,7 @@
     <TextView
         android:id="@+id/designer_terms_and_Conditions"
         android:layout_width="wrap_content"
-        android:layout_height="12dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="14dp"
         android:text="I agree to the term and conditions."
         android:textColor="#e7d9d9"
@@ -186,6 +186,7 @@
         android:layout_marginEnd="0dp"
         android:shadowColor="@android:color/white"
         android:text=""
+        android:buttonTint="@android:color/white"
         android:textColor="#f2e6e6"
         android:textSize="12dp"
         app:layout_constraintStart_toEndOf="@id/designer_terms_and_Conditions"

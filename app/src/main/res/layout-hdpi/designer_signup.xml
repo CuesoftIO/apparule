@@ -63,34 +63,6 @@
             tools:layout_editor_absoluteY="252dp" />
     </android.support.design.widget.TextInputLayout>
 
-    <android.support.design.widget.TextInputLayout
-        android:id="@+id/designerCountryFieldLayout"
-        android:layout_width="147dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:textColorHint="#e7d9d9"
-        app:layout_constraintEnd_toStartOf="@id/designerSpinner"
-
-        app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/designerAddressFieldLayout">
-
-        <AutoCompleteTextView
-            android:id="@+id/designerCountryField"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:backgroundTint="#e7d9d9"
-            android:completionThreshold="1"
-            android:ems="10"
-            android:hint="COUNTRY"
-            android:inputType="textPersonName"
-            android:textColor="#e7d9d9"
-            android:textColorHint="#e7d9d9"
-            android:textSize="14sp"
-            tools:layout_editor_absoluteX="39dp"
-            tools:layout_editor_absoluteY="306dp" />
-    </android.support.design.widget.TextInputLayout>
-
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="50dp"
@@ -108,14 +80,14 @@
         android:id="@+id/designerContinue_button"
         android:layout_width="252dp"
         android:layout_height="40dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="18dp"
         app:cardBackgroundColor="#ffcc00"
         app:cardCornerRadius="20dp"
         app:cardElevation="6dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/designerCountryFieldLayout">
+        app:layout_constraintTop_toBottomOf="@+id/designerSpinner">
 
         <TextView
             android:id="@+id/designertextCardView"
@@ -224,9 +196,13 @@
         android:id="@+id/designerSpinner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+
+        android:backgroundTint="@color/cardview_light_background"
+        android:foregroundTint="@color/cardview_light_background"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginEnd="42dp"
-        app:layout_constraintStart_toEndOf="@+id/designerCountryFieldLayout"
-        tools:layout_editor_absoluteY="312dp" />
+        app:layout_constraintHorizontal_bias="0.363"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/designerAddressFieldLayout" />
 
 </android.support.constraint.ConstraintLayout>

@@ -42,7 +42,7 @@
         android:id="@+id/designerAddressFieldLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="20dp"
         android:textColorHint="#e7d9d9"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -64,32 +64,6 @@
             tools:layout_editor_absoluteY="252dp" />
     </android.support.design.widget.TextInputLayout>
 
-    <android.support.design.widget.TextInputLayout
-        android:id="@+id/designerCountryFieldLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:textColorHint="#e7d9d9"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/designerAddressFieldLayout">
-
-        <android.support.design.widget.TextInputEditText
-            android:id="@+id/designerCountryField"
-            android:layout_width="262dp"
-            android:layout_height="40dp"
-            android:backgroundTint="#e7d9d9"
-            android:ems="10"
-            android:hint="COUNTRY"
-            android:inputType="textPersonName"
-            android:textColor="#e7d9d9"
-            android:textColorHint="#e7d9d9"
-            android:textSize="14sp"
-            tools:layout_editor_absoluteX="39dp"
-            tools:layout_editor_absoluteY="306dp" />
-    </android.support.design.widget.TextInputLayout>
-
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="55dp"
@@ -107,14 +81,14 @@
         android:id="@+id/designerContinue_button"
         android:layout_width="262dp"
         android:layout_height="40dp"
-        android:layout_marginTop="12dp"
         app:cardBackgroundColor="#ffcc00"
         app:cardCornerRadius="20dp"
         app:cardElevation="6dp"
+        app:layout_constraintTop_toBottomOf="@id/guideline18"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/designerCountryFieldLayout">
+        tools:layout_editor_absoluteY="383dp">
 
         <TextView
             android:id="@+id/textView"
@@ -123,13 +97,21 @@
             android:layout_gravity="center"
             android:onClick="designerSignUP"
             android:text="CONTINUE" />
+
+        <ProgressBar
+            android:id="@+id/signup_progressBar"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="invisible" />
     </android.support.v7.widget.CardView>
 
     <android.support.design.widget.TextInputLayout
         android:id="@+id/designerEmailFieldLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="20dp"
         android:textColorHint="#e7d9d9"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -191,6 +173,19 @@
         app:layout_constraintTop_toBottomOf="@id/designerContinue_button"
         tools:layout_editor_absoluteY="415dp" />
 
+    <Spinner
+        android:id="@+id/designerSpinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+
+        android:backgroundTint="@color/cardview_light_background"
+        android:foregroundTint="@color/cardview_light_background"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.363"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/designerAddressFieldLayout" />
+
     <TextView
         android:id="@+id/cuesoftText"
         android:layout_width="wrap_content"
@@ -210,5 +205,12 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_begin="120dp" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline18"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="393dp" />
 
 </android.support.constraint.ConstraintLayout>

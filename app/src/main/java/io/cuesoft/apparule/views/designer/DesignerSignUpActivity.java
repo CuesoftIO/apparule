@@ -22,18 +22,23 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Locale;
 
 import io.cuesoft.apparule.R;
 import io.cuesoft.apparule.views.MainActivity;
@@ -50,7 +55,7 @@ public class DesignerSignUpActivity extends AppCompatActivity implements
     private TextInputEditText businessName;
     private TextInputEditText designerEmail;
     private TextInputEditText designerAddress;
-    private AutoCompleteTextView designerCountry;
+
     private CardView continueButton;
     private TextView signInText_signup;
     private String Countries[] ={
@@ -80,6 +85,7 @@ public class DesignerSignUpActivity extends AppCompatActivity implements
     //captured picture uri
     private Uri picUri;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -87,8 +93,24 @@ public class DesignerSignUpActivity extends AppCompatActivity implements
 
         initialization();
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,Countries);
-        designerCountry.setAdapter(adapter);
-        designerCountry.setOnItemClickListener(this);
+
+        Locale[] locale = Locale.getAvailableLocales();
+        ArrayList<String> countries = new ArrayList<>();
+        String country;
+        for(Locale loc: locale){
+            country = loc.getDisplayCountry();
+            if(country.length() >0 && !countries.contains(country)){
+                countries.add(country);
+            }
+            Collections.sort(countries, String.CASE_INSENSITIVE_ORDER);
+
+            Spinner citizenship =(Spinner)findViewById(R.id.designerSpinner);
+           ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, countries);
+           citizenship.setAdapter(adapter1);
+        }
+
+//        designerCountry.setAdapter(adapter);
+  //      designerCountry.setOnItemClickListener(this);
 
         continueButton.setOnClickListener(new View.OnClickListener() {
         @Override
@@ -115,7 +137,7 @@ public class DesignerSignUpActivity extends AppCompatActivity implements
         String item = parent.getItemAtPosition(position).toString();
         //create Toast with user selected value
         //Toast.makeText(DesignerSignUpActivity.this, "Selected Item is: \t" + item, Toast.LENGTH_LONG).show();
-        designerCountry.setText(item);
+
     }
 
     public void initialization(){
@@ -123,7 +145,7 @@ public class DesignerSignUpActivity extends AppCompatActivity implements
         businessName = findViewById(R.id.designerBusinessNameField);
         designerEmail = findViewById(R.id.designerEmailField);
         designerAddress = findViewById(R.id.designerAddressField);
-        designerCountry = findViewById(R.id.designerCountryField);
+
 
         signInText_signup = findViewById(R.id.designer_signupText);
         mFirebaseAuth = FirebaseAuth.getInstance();
@@ -209,7 +231,14 @@ public class DesignerSignUpActivity extends AppCompatActivity implements
                             designer2CardViewText.setVisibility(View.VISIBLE);
                         }
                     }
-                });
+                }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+
+                designersSignUp2progressBar.setVisibility(View.INVISIBLE);
+                designer2CardViewText.setVisibility(View.VISIBLE);
+            }
+        });
 
     }
 
@@ -337,13 +366,7 @@ public class DesignerSignUpActivity extends AppCompatActivity implements
         } else{
             designerAddress.setError(null);
         }
-        String designerCountryText = designerCountry.getText().toString();
-        if(TextUtils.isEmpty(designerCountryText)){
-            designerCountry.setError("Required");
-            valid =false;
-        } else{
-            designerCountry.setError(null);
-        }
+
         return valid;
     }
 

@@ -32,12 +32,10 @@
         </activity>
 
         <activity android:name=".views.designer.DesignerActivity" />
-        <activity android:name=".views.BlankActivity" />
         <activity android:name=".views.SignInActivity" />
         <activity android:name=".views.customer.CustomerSignUpActivity" />
         <activity android:name=".views.designer.DesignerSignUpActivity" />
         <activity android:name=".views.DiscoveryActivity" />
-        <activity android:name=".views.BaseActivity" />
         <activity android:name=".views.NotificationsActivity" />
         <activity android:name=".views.ProfileActivity" />
         <activity android:name=".views.PostActivity" />
