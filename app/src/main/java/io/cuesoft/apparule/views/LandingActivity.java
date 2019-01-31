@@ -48,6 +48,7 @@ public class LandingActivity extends AppCompatActivity {
         setContentView(R.layout.activity_landing);
         mFirebaseAuth = FirebaseAuth.getInstance();
         mFirebaseUser = mFirebaseAuth.getCurrentUser();
+
         mAuthStateListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
@@ -67,9 +68,10 @@ public class LandingActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
            signInButton.setCardBackgroundColor(Color.WHITE);
-                Intent intent = new Intent(LandingActivity.this, SignInActivity.class);
-                startActivity(intent);
-           signInButton.setCardBackgroundColor(ContextCompat.getColor(LandingActivity.this, R.color.bottom_navigation));
+            Intent intent = new Intent(LandingActivity.this, SignInActivity.class);
+            startActivity(intent);
+            signInButton.setCardBackgroundColor(ContextCompat.getColor(LandingActivity.this, R.color.bottom_navigation));
+
             }
         });
         signUpButton.setOnClickListener(new View.OnClickListener() {
@@ -77,64 +79,12 @@ public class LandingActivity extends AppCompatActivity {
            public void onClick(View v) {
                Intent intent = new Intent(LandingActivity.this, CustomerSignUpActivity.class);
                startActivity(intent);
+
            }
        });
 
     }
 
-    public  void createAccount(String email, String password){
-        Log.d( TAG, "createAccount: " + email );
-        //[START create_user_with_email]
-        FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, password)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if(task.isSuccessful()){
-                            //Sign in success, Ui with the signed-in use's information
-                            FirebaseUser user = mFirebaseAuth.getCurrentUser();
-                            Toast.makeText(LandingActivity.this, "Authentication Success.",
-                                    Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent( LandingActivity.this, MainActivity.class);
-                            startActivity(intent);
-                        }
-                        else{
-                            //If sign in fails, display a message to the user.
-                            Log.w(TAG, "createUserWithEmailAndPassword:failure", task.getException());
-                            Toast.makeText(LandingActivity.this, "Authentication failed.",
-                                    Toast.LENGTH_SHORT).show();
-                        }
-
-                    }
-                });
-        }
-
-
-
-    //Sigining In
-    public void signin(View view) {
-        Fragment SignInFragment = new SignInFragment();
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(android.R.id.content, SignInFragment);
-        transaction.addToBackStack(null);
-        transaction.commit();
-    }
-    //Customer SignUp
-    public void signup(View view) {
-        Fragment SignUpFragment = new CustomerSignUpFragment();
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(android.R.id.content, SignUpFragment);
-        transaction.addToBackStack(null);
-        transaction.commit();
-    }
-
-    //Designer SecondFragment
-    public void designer(View view) {
-        Fragment designerSignSecondFragment = new designerSecondFragment();
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(android.R.id.content, designerSignSecondFragment);
-        transaction.addToBackStack(null);
-        transaction.commit();
-    }
 
     //Designer SignUpFragment
     public void designerSignUP(View view)
@@ -148,19 +98,10 @@ public class LandingActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    //ForgotPassword Fragment
-    public void forgotpassword(View view) {
-        Fragment ForgotPasswordFragment = new ForgotPasswordFragment();
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(android.R.id.content, ForgotPasswordFragment);
-        transaction.addToBackStack(null);
-        transaction.commit();
-    }
 
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
+
     }
 }

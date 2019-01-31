@@ -64,7 +64,7 @@ public class SignInFragment extends Fragment {
             public void onClick(View v) {
                 //land.enterMain(v);
                 if (validateForm()) {
-                    land.createAccount(mUsernameField.getText().toString(), mPasswordField.getText().toString());
+                   // land.createAccount(mUsernameField.getText().toString(), mPasswordField.getText().toString());
                 }else{
                     Toast.makeText(getActivity(),"Authentication false", Toast.LENGTH_LONG).show();
                 }

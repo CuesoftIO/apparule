@@ -53,22 +53,18 @@ public class SignInActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.signin_page);
-
         //Initailizing fields and button for signin layout
         signInButton =  findViewById(R.id.signButton);
         mUsernameField = findViewById(R.id.username_signinField);
         mPasswordField = findViewById(R.id.password_signinField);
-
         //SignIn ProgressBar
         signInProgress = findViewById(R.id.signin_progressBar);
         signInTextCardView = findViewById(R.id.signIn_cardViewText);
         //Firebase Authentication insatnce
         mFirebaseAuth = FirebaseAuth.getInstance();
-
         //Initialization for text fields
         mForgotPassword = findViewById(R.id.forgetPasswordText_signin);
         mDesignerSignUp = findViewById(R.id.designer_signupText_singup_in_signin);
-
         //Calling the Sign-in- method which sends credentials to Firebase for authentication
         signInButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -106,13 +102,11 @@ public class SignInActivity extends AppCompatActivity {
        });
 
     }
-
-
     public  void signIn(String email, String password){
         Log.d( TAG, "signIn: " + email );
         //[START create_user_with_email]
-    try {
-        mFirebaseAuth.signInWithEmailAndPassword(email, password)
+        try {
+            mFirebaseAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
@@ -122,23 +116,26 @@ public class SignInActivity extends AppCompatActivity {
                                     Toast.LENGTH_SHORT).show();
                             //Granted Acces to the MainActivity
                             Intent intent = new Intent(SignInActivity.this, MainActivity.class);
+                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                             startActivity(intent);
                             signInButton.setCardBackgroundColor(ContextCompat.getColor(SignInActivity.this, R.color.bottom_navigation));
                             signInTextCardView.setVisibility(View.VISIBLE);
                             signInProgress.setVisibility(View.INVISIBLE);
+                            finish();
                         } else {
                             //If sign in fails, display a message to the user.
                             signInButton.setCardBackgroundColor(ContextCompat.getColor(SignInActivity.this, R.color.bottom_navigation));
                             Log.w(TAG, "createUserWithEmailAndPassword:failure", task.getException());
-
+                            //Send toast Message to the user
                             Toast.makeText(SignInActivity.this, "Authentication failed. Please" +
                                             " check your connection and try again",
                                     Toast.LENGTH_SHORT).show();
+                            //Handling the progress bar visiblitiy
                             signInTextCardView.setVisibility(View.VISIBLE);
                             signInProgress.setVisibility(View.INVISIBLE);
                         }
-                        //Add on failure listener
-                    }
+                        }
+                //Add on failure listener
                 }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
@@ -146,6 +143,7 @@ public class SignInActivity extends AppCompatActivity {
                     signInButton.setCardBackgroundColor(ContextCompat.getColor(SignInActivity.this, R.color.bottom_navigation));
                     String errorCode =
                             ((FirebaseAuthInvalidUserException) e).getErrorCode();
+                    //Handling progress bar visibility
                     signInTextCardView.setVisibility(View.VISIBLE);
                     signInProgress.setVisibility(View.INVISIBLE);
                     if (errorCode.equals("ERROR_USER_NOT_FOUND")) {
@@ -162,9 +160,14 @@ public class SignInActivity extends AppCompatActivity {
     }
 
     }
+    /**
+     * Method for validation of Username and Password
+     *
+     */
 
     public boolean validateForm(){
         boolean valid = true;
+       //Email validation
         String email = mUsernameField.getText().toString();
             if(TextUtils.isEmpty(email)){
                 mUsernameField.setError("Required");
@@ -173,7 +176,7 @@ public class SignInActivity extends AppCompatActivity {
             else{
                 mUsernameField.setError(null);
             }
-
+         //Password Valdaitn
         String password = mPasswordField.getText().toString();
            if(TextUtils.isEmpty(password)){
                 mPasswordField.setError("Required");
@@ -181,15 +184,13 @@ public class SignInActivity extends AppCompatActivity {
             }
          else{
             mPasswordField.setError(null);
-        }
-            return valid;
+        }return valid;
     }
 
     public void errorMessage(String errorMessage){
         Toast.makeText(SignInActivity.this, errorMessage,
                 Toast.LENGTH_SHORT).show();
     }
-
 
     private void forgotPasswordView() {
         setContentView(R.layout.forgot_password);

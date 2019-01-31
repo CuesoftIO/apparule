@@ -194,6 +194,7 @@ public class DesignerSignUpActivity extends AppCompatActivity implements
                                     Toast.LENGTH_SHORT).show();
 
                             Intent intent = new Intent(DesignerSignUpActivity .this, MainActivity.class);
+                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                             startActivity(intent);
                             //Making Progress Bar Invisible and text Visible
                             designersSignUp2progressBar.setVisibility(View.INVISIBLE);
