@@ -46,31 +46,15 @@ public class LandingActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_landing);
-        mFirebaseAuth = FirebaseAuth.getInstance();
-        mFirebaseUser = mFirebaseAuth.getCurrentUser();
 
-        mAuthStateListener = new FirebaseAuth.AuthStateListener() {
-            @Override
-            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-               FirebaseUser user = firebaseAuth.getCurrentUser();
-               if(user == null){
 
-               }
-               else{
-                   Intent intent = new Intent(LandingActivity.this, MainActivity.class);
-                   startActivity(intent);
-               }
-            }
-        };
         signInButton = findViewById(R.id.signIn_landing);
         signUpButton = findViewById(R.id.signUp_landing);
         signInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-           signInButton.setCardBackgroundColor(Color.WHITE);
             Intent intent = new Intent(LandingActivity.this, SignInActivity.class);
             startActivity(intent);
-            signInButton.setCardBackgroundColor(ContextCompat.getColor(LandingActivity.this, R.color.bottom_navigation));
 
             }
         });

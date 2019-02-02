@@ -117,11 +117,10 @@
         app:layout_constraintTop_toBottomOf="@id/designerCountryFieldLayout">
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/designertextCardView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:onClick="designerSignUP"
             android:text="CONTINUE" />
 
         <ProgressBar

@@ -7,8 +7,17 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+
+import com.crashlytics.android.Crashlytics;
+import com.google.firebase.analytics.FirebaseAnalytics;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 
 import io.cuesoft.apparule.R;
 import io.cuesoft.apparule.adapter.CustomPagerAdapter;
@@ -16,6 +25,7 @@ import io.cuesoft.apparule.adapter.WalkThroughAdapter;
 import io.cuesoft.apparule.helper.WalkThroughHelper;
 import io.cuesoft.apparule.views.customer.CustomerActivity;
 import io.cuesoft.apparule.views.customer.CustomerSignUpActivity;
+import io.fabric.sdk.android.Fabric;
 
 
 public class WalkThroughActivity extends AppCompatActivity {
@@ -23,10 +33,42 @@ public class WalkThroughActivity extends AppCompatActivity {
     private Button skipBtn;
     private Button getStartedBtn;
 
+    private FirebaseAuth mAuth;
+    private FirebaseUser mFirebaseUser;
+
+    private FirebaseAnalytics mFirebaseAnalytics;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_walk_through2);
+
+        Fabric.with(this, new Crashlytics());
+        Crashlytics.log(Log.DEBUG, "tag", "message");
+
+        // Obtain the FirebaseAnalytics instance.
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
+
+        Bundle bundle = new Bundle();
+        String id="1";
+        bundle.putString(FirebaseAnalytics.Param.ITEM_ID, id);
+        String name= "analytics";
+        bundle.putString(FirebaseAnalytics.Param.ITEM_NAME, name);
+        bundle.putString(FirebaseAnalytics.Param.CONTENT_TYPE, "image");
+        mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, bundle);
+
+        mAuth = FirebaseAuth.getInstance();
+
+        mAuth.getAccessToken(true);
+        mFirebaseUser = mAuth.getCurrentUser();
+        mAuth.signInAnonymously();
+
+        if(mFirebaseUser == null){
+
+        }else{
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+        }
 
         preferenceHelper = new WalkThroughHelper(this);
         skipBtn = findViewById(R.id.skip_walkthroughBtn);
@@ -34,6 +76,7 @@ public class WalkThroughActivity extends AppCompatActivity {
 
         ViewPager viewPager = findViewById(R.id.view_pager);
         viewPager.setAdapter(new CustomPagerAdapter(this));
+
         TabLayout tabLayout = findViewById(R.id.tabDots);
         tabLayout.setupWithViewPager(viewPager,true);
 
@@ -45,6 +88,7 @@ public class WalkThroughActivity extends AppCompatActivity {
 
 
     }
+
 
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {
@@ -72,7 +116,7 @@ public class WalkThroughActivity extends AppCompatActivity {
     }
 
     public void sendIntent(Activity cls){
-        Intent intent = new Intent(WalkThroughActivity.this, cls.getClass());;
+        Intent intent = new Intent(WalkThroughActivity.this, cls.getClass());
         startActivity(intent);
         this.finish();
 

@@ -8,7 +8,6 @@
     android:alpha="3.5"
     android:background="@drawable/landing"
     android:backgroundTint="#534c4c"
-
     android:backgroundTintMode="multiply"
     android:tint="#fc121010"
     tools:context=".views.LandingActivity"
