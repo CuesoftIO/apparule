@@ -11,11 +11,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
 
 import io.cuesoft.apparule.R;
 import io.cuesoft.apparule.helper.BottomNavigationViewHelper;
 
 public class ProfileActivity extends AppCompatActivity {
+
+    ImageView settingsView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,9 +32,19 @@ public class ProfileActivity extends AppCompatActivity {
 
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
+        settingsView = findViewById(R.id.settingsView);
+
         Menu menu = navigation.getMenu();
         MenuItem menuItem = menu.getItem(4);
         menuItem.setChecked(true);
+
+        settingsView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ProfileActivity.this, SettingsActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener

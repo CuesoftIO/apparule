@@ -17,22 +17,36 @@
         app:itemIconTint="@drawable/selector"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nestedScrollView"
         app:menu="@menu/navigation" />
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="?android:actionBarSize">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
         android:background="?attr/colorPrimary"
-        android:elevation="2dp"
         android:minHeight="?attr/actionBarSize"
-        android:theme="@style/AppBaseTheme.Toolbar"
-        app:layout_constraintBottom_toTopOf="@+id/nestedScrollView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:theme="@style/AppBaseTheme.Toolbar" />
 
+        <SearchView
+            android:id="@+id/searchview_discover"
+            android:layout_width="270dp"
+            android:layout_height="35dp"
+            android:queryHint="search"
+            android:visibility="visible"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_editor_absoluteY="10dp" />
+
+        <SearchView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </android.support.design.widget.AppBarLayout>/
     <android.support.constraint.Guideline
         android:id="@+id/guideline2"
         android:layout_width="wrap_content"
@@ -54,29 +68,15 @@
         android:orientation="vertical"
         app:layout_constraintGuide_begin="0dp" />
 
-    <SearchView
-        android:id="@+id/searchview_discover"
-        android:layout_width="270dp"
-        android:layout_height="35dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="56dp"
-        android:layout_marginBottom="10dp"
-        android:queryHint="search"
-        android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="@+id/guideline3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.275"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/toolbar"
-        app:layout_constraintVertical_bias="1.0" />
-
     <android.support.v4.widget.NestedScrollView
         android:id="@+id/nestedScrollView"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="397dp"
 
-        app:layout_constraintBottom_toTopOf="@id/navigation"
-        app:layout_constraintTop_toTopOf="@+id/guideline3">
+        app:layout_constraintBottom_toTopOf="@+id/navigation"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appBarLayout">
 
         <LinearLayout
             android:id="@+id/linearLayout"

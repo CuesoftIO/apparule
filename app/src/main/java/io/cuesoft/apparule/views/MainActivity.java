@@ -16,6 +16,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.text.Layout;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -47,6 +48,23 @@ public class MainActivity extends AppCompatActivity {
         BottomNavigationViewHelper.removeShiftMode(navigation);
         navigation.setBackgroundColor(getResources().getColor(R.color.signInButton_Blue));
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+
+        Toolbar toolbar = findViewById(R.id.toolbar_main);
+        toolbar.setOverflowIcon(getResources().getDrawable(R.drawable.ic_shopping_cart_black_24dp));
+        toolbar.setTitle("Home");
+        toolbar.inflateMenu(R.menu.main_menu);
+
+        toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                int id = item.getItemId();
+                if(id==R.id.shoppingCart){
+                    Toast.makeText(MainActivity.this,"No cart added yet", Toast.LENGTH_SHORT).show();
+                }
+                return false;
+            }
+        });
+
 
         Menu menu = navigation.getMenu();
         MenuItem menuItem = menu.getItem(0);
@@ -99,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
         TypedArray ImageResources =
                 getResources().obtainTypedArray(R.array.images);
         for(int i =0; i<ImageResources.length(); i++){
-           // mItemsData.add(new ItemsModel( ImageResources.getResourceId(i,0)));
+            mItemsData.add(new ItemsModel( ImageResources.getResourceId(i,0)));
         }
 
         ImageResources.recycle();
