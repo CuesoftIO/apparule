@@ -8,8 +8,10 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+
 
 import io.cuesoft.apparule.R;
 import io.cuesoft.apparule.helper.BottomNavigationViewHelper;
@@ -26,6 +28,17 @@ public class NotificationsActivity extends AppCompatActivity {
         navigation.setBackgroundColor(getResources().getColor(R.color.bottom_navigation));
 
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+
+        Toolbar toolbar = findViewById(R.id.notifications_toolbar);
+        toolbar.setTitle("Notifications");
+        toolbar.inflateMenu(R.menu.notifications_menu);
+        toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+
+                return false;
+            }
+        });
 
 
         Menu menu = navigation.getMenu();

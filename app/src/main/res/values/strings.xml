@@ -16,8 +16,8 @@
 
     <array name="images_categories">
         <item>@drawable/selfie06</item>
-        <item>@drawable/men2</item>
         <item>@drawable/selfie07</item>
+        <item>@drawable/men2</item>
         <item>@drawable/kid</item>
         <item>@drawable/accessories</item>
         <item>@drawable/men_accessories</item>

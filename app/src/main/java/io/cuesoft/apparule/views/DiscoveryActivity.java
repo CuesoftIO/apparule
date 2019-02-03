@@ -13,6 +13,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -39,6 +40,7 @@ public class DiscoveryActivity extends AppCompatActivity
     private  ArrayList<CategoriesItemModel> mCategoriesData;
     BottomNavigationView navigation;
     @Override
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_discovery);
@@ -49,10 +51,23 @@ public class DiscoveryActivity extends AppCompatActivity
         BottomNavigationViewHelper.removeShiftMode(navigation);
         navigation.setBackgroundColor(getResources().getColor(R.color.bottom_navigation));
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+
         //Setting Menu index
         Menu menu = navigation.getMenu();
-        MenuItem menuItem = menu.getItem(0);
+        MenuItem menuItem = menu.getItem(1);
         menuItem.setChecked(true);
+
+        Toolbar toolbar = findViewById(R.id.discover_toolbar);
+        toolbar.setTitle("Discover");
+        toolbar.inflateMenu(R.menu.discover_menu);
+        toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+
+                return false;
+            }
+        });
+
 
 
         //Handling RecyclerView

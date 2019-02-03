@@ -10,7 +10,7 @@ import android.util.Log;
 import java.lang.reflect.Field;
 
 public class BottomNavigationViewHelper {
-
+    //removing the shift mode in bottomNavigation
     @SuppressLint("RestrictedApi")
     public static void removeShiftMode(BottomNavigationView view){
         BottomNavigationMenuView menuView = (BottomNavigationMenuView) view.getChildAt(0);
