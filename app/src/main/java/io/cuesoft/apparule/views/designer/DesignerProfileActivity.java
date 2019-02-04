@@ -5,7 +5,7 @@ import android.os.Bundle;
 
 import io.cuesoft.apparule.R;
 
-public class DesignerProfileActivity extends AppCompatActivity {
+public class DesignerProfileActivity extends DesignerBaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
