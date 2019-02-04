@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import io.cuesoft.apparule.R;
 import io.cuesoft.apparule.interfaces.OnCategoriesClickListener;
 import io.cuesoft.apparule.model.CategoriesItemModel;
-import io.cuesoft.apparule.views.DiscoveryActivity;
+import io.cuesoft.apparule.views.customer.DiscoveryActivity;
 
 /**
  *  This is the adapter for the Categories page

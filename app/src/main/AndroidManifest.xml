@@ -42,9 +42,10 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".views.customer.ProfileActivity" />
         </activity>
+
         <activity
             android:name=".views.designer.DesignerBaseActivity"
-            android:label="DashBaord"
+            android:label="DashBoard"
             android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -52,13 +53,23 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".views.designer.DashBoardActivity" />
+        <activity android:name=".views.designer.DashBoardActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+        </activity>
         <activity
             android:name=".views.designer.CatalogueActivity"
             android:label="@string/title_activity_catalogue"
             android:theme="@style/AppTheme" />
         <activity android:name=".views.designer.DesignerProfileActivity" />
-        <activity android:name=".views.designer.DesignerSettingsActivity"></activity>
+
+        <activity android:name=".views.designer.DesignerSettingsActivity">
+
+        </activity>
     </application>
 
 </manifest>
