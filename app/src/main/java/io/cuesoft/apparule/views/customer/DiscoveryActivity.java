@@ -1,7 +1,6 @@
-package io.cuesoft.apparule.views;
+package io.cuesoft.apparule.views.customer;
 
 import android.annotation.TargetApi;
-import android.content.Context;
 import android.content.Intent;
 import android.content.res.TypedArray;
 import android.os.Build;
@@ -16,7 +15,6 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 
 import java.util.ArrayList;
 
@@ -67,9 +65,6 @@ public class DiscoveryActivity extends AppCompatActivity
                 return false;
             }
         });
-
-
-
         //Handling RecyclerView
         bottomNavigationView();
         //Data for RecyclerView

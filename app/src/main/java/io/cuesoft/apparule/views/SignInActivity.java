@@ -1,7 +1,6 @@
 package io.cuesoft.apparule.views;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.design.widget.TextInputEditText;
 import android.support.v4.content.ContextCompat;
@@ -23,10 +22,11 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthInvalidUserException;
-import com.google.firebase.auth.FirebaseUser;
 
 import io.cuesoft.apparule.R;
+import io.cuesoft.apparule.helper.SignInHelper;
 import io.cuesoft.apparule.views.customer.CustomerSignUpActivity;
+import io.cuesoft.apparule.views.customer.MainActivity;
 
 public class SignInActivity extends AppCompatActivity {
 
@@ -44,6 +44,7 @@ public class SignInActivity extends AppCompatActivity {
     private TextInputEditText mForgotEmailField;
     private CardView mForgotPasswordButton;
     private TextView signUP;
+    private  SignInHelper signInHelper;
 
     private ProgressBar forgotPasswordProgressBar;
     private TextView forgotPassWordTextView;
@@ -62,6 +63,10 @@ public class SignInActivity extends AppCompatActivity {
         signInTextCardView = findViewById(R.id.signIn_cardViewText);
         //Firebase Authentication insatnce
         mFirebaseAuth = FirebaseAuth.getInstance();
+
+
+        signInHelper = new SignInHelper(this);
+
         //Initialization for text fields
         mForgotPassword = findViewById(R.id.forgetPasswordText_signin);
         mDesignerSignUp = findViewById(R.id.designer_signupText_singup_in_signin);
@@ -121,6 +126,7 @@ public class SignInActivity extends AppCompatActivity {
                             signInButton.setCardBackgroundColor(ContextCompat.getColor(SignInActivity.this, R.color.bottom_navigation));
                             signInTextCardView.setVisibility(View.VISIBLE);
                             signInProgress.setVisibility(View.INVISIBLE);
+                            signInHelper.putLogin("yes");
                             finish();
                         } else {
                             //If sign in fails, display a message to the user.

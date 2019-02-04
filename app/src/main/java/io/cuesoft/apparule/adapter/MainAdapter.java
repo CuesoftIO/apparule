@@ -1,7 +1,5 @@
 package io.cuesoft.apparule.adapter;
 
-import android.content.ContentProvider;
-import android.content.ContentValues;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -17,7 +15,6 @@ import java.util.ArrayList;
 
 import io.cuesoft.apparule.R;
 import io.cuesoft.apparule.model.ItemsModel;
-import io.cuesoft.apparule.views.ProportionalImageView;
 
 public class MainAdapter extends
         RecyclerView.Adapter<MainAdapter.MainViewHolder> {

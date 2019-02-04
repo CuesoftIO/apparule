@@ -1,4 +1,4 @@
-package io.cuesoft.apparule.views;
+package io.cuesoft.apparule.views.customer;
 
 import android.annotation.TargetApi;
 import android.content.Intent;

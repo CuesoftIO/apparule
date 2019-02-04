@@ -22,46 +22,43 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".views.LandingActivity">
-
-        </activity>
-        <activity android:name=".views.customer.CustomerActivity" />
-
+        <activity android:name=".views.LandingActivity" />
         <activity
-            android:name=".views.MainActivity"
-            android:label="@string/title_activity_main">
+            android:name=".views.customer.MainActivity"
+            android:label="@string/title_activity_main" />
+        <activity android:name=".views.SignInActivity" />
+        <activity android:name=".views.customer.CustomerSignUpActivity" />
+        <activity android:name=".views.designer.DesignerSignUpActivity" />
+        <activity android:name=".views.customer.DiscoveryActivity" />
+        <activity android:name=".views.customer.NotificationsActivity" />
+        <activity android:name=".views.customer.ProfileActivity" />
+        <activity android:name=".views.customer.PostActivity" />
+        <activity android:name=".views.WalkThroughActivity" />
+        <activity
+            android:name=".views.customer.SettingsActivity"
+            android:label="Settings"
+            android:parentActivityName=".views.customer.ProfileActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".views.customer.ProfileActivity" />
+        </activity>
+        <activity
+            android:name=".views.designer.DesignerBaseActivity"
+            android:label="DashBaord"
+            android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".views.designer.DesignerActivity">
-
-        </activity>
-
-        <activity android:name=".views.SignInActivity" />
-        <activity android:name=".views.customer.CustomerSignUpActivity" />
-        <activity android:name=".views.designer.DesignerSignUpActivity" />
-        <activity android:name=".views.DiscoveryActivity" />
-        <activity android:name=".views.NotificationsActivity" />
-        <activity android:name=".views.ProfileActivity" />
-        <activity android:name=".views.PostActivity" />
-        <activity android:name=".views.WalkThroughActivity">
-
-        </activity>
-
-        <activity android:name=".views.SettingsActivity"
-                  android:parentActivityName=".views.ProfileActivity"
-
-                  android:label="Settings"
-            >
-        <meta-data
-           android:name="android.support.PARENT_ACTIVITY"
-            android:value=".views.ProfileActivity"
-            />
-        </activity>
+        <activity android:name=".views.designer.DashBoardActivity" />
+        <activity
+            android:name=".views.designer.CatalogueActivity"
+            android:label="@string/title_activity_catalogue"
+            android:theme="@style/AppTheme" />
+        <activity android:name=".views.designer.DesignerProfileActivity" />
+        <activity android:name=".views.designer.DesignerSettingsActivity"></activity>
     </application>
 
 </manifest>

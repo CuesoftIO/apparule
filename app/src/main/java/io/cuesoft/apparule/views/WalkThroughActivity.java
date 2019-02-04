@@ -1,7 +1,6 @@
 package io.cuesoft.apparule.views;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
@@ -16,15 +15,12 @@ import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
-
 import io.cuesoft.apparule.R;
 import io.cuesoft.apparule.adapter.CustomPagerAdapter;
-import io.cuesoft.apparule.adapter.WalkThroughAdapter;
+import io.cuesoft.apparule.helper.SignInHelper;
 import io.cuesoft.apparule.helper.WalkThroughHelper;
-import io.cuesoft.apparule.views.customer.CustomerActivity;
 import io.cuesoft.apparule.views.customer.CustomerSignUpActivity;
+import io.cuesoft.apparule.views.customer.MainActivity;
 import io.fabric.sdk.android.Fabric;
 
 
@@ -38,6 +34,7 @@ public class WalkThroughActivity extends AppCompatActivity {
 
     private FirebaseAnalytics mFirebaseAnalytics;
 
+    private SignInHelper signInHelper;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,6 +45,8 @@ public class WalkThroughActivity extends AppCompatActivity {
 
         // Obtain the FirebaseAnalytics instance.
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
+
+        signInHelper = new SignInHelper(this);
 
         Bundle bundle = new Bundle();
         String id="1";
@@ -63,12 +62,12 @@ public class WalkThroughActivity extends AppCompatActivity {
         mFirebaseUser = mAuth.getCurrentUser();
         mAuth.signInAnonymously();
 
-        if(mFirebaseUser == null){
-
-        }else{
-            Intent intent = new Intent(this, MainActivity.class);
-            startActivity(intent);
-        }
+//        if(mFirebaseUser == null){
+//
+//        }else{
+//            Intent intent = new Intent(this, MainActivity.class);
+//            startActivity(intent);
+//        }
 
         preferenceHelper = new WalkThroughHelper(this);
         skipBtn = findViewById(R.id.skip_walkthroughBtn);
@@ -80,7 +79,14 @@ public class WalkThroughActivity extends AppCompatActivity {
         TabLayout tabLayout = findViewById(R.id.tabDots);
         tabLayout.setupWithViewPager(viewPager,true);
 
-        if(preferenceHelper.getIntro().equals("no")){
+        if(signInHelper.getLogin().equals("yes")){
+            Intent intent = new Intent(WalkThroughActivity.this, MainActivity.class);
+            startActivity(intent);
+            this.finish();
+
+
+        }
+        else if(preferenceHelper.getIntro().equals("no")){
             Intent intent = new Intent(WalkThroughActivity.this, LandingActivity.class);
             startActivity(intent);
             this.finish();

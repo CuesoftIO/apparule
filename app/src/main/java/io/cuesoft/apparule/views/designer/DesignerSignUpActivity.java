@@ -4,7 +4,6 @@ import android.Manifest;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.database.Cursor;
-import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.provider.MediaStore;
@@ -18,8 +17,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.AutoCompleteTextView;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
@@ -35,15 +32,14 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Locale;
 
 import io.cuesoft.apparule.R;
-import io.cuesoft.apparule.views.MainActivity;
+import io.cuesoft.apparule.helper.SignInHelper;
+import io.cuesoft.apparule.views.customer.MainActivity;
 import io.cuesoft.apparule.views.SignInActivity;
-import io.cuesoft.apparule.views.customer.CustomerSignUpActivity;
 import pub.devrel.easypermissions.EasyPermissions;
 
 public class DesignerSignUpActivity extends AppCompatActivity implements
@@ -84,7 +80,7 @@ public class DesignerSignUpActivity extends AppCompatActivity implements
     final int CAMERA_CAPTURE =1;
     //captured picture uri
     private Uri picUri;
-
+    private SignInHelper signInHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -108,6 +104,8 @@ public class DesignerSignUpActivity extends AppCompatActivity implements
            ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, countries);
            citizenship.setAdapter(adapter1);
         }
+
+        signInHelper = new SignInHelper(this);
 
 //        designerCountry.setAdapter(adapter);
   //      designerCountry.setOnItemClickListener(this);
@@ -219,6 +217,7 @@ public class DesignerSignUpActivity extends AppCompatActivity implements
                             //Making Progress Bar Invisible and text Visible
                             designersSignUp2progressBar.setVisibility(View.INVISIBLE);
                             designer2CardViewText.setVisibility(View.VISIBLE);
+                            signInHelper.putLogin("yes");
                         }
 
                         else {

@@ -9,7 +9,6 @@ import android.support.v7.widget.CardView;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -22,8 +21,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 import io.cuesoft.apparule.R;
+import io.cuesoft.apparule.helper.SignInHelper;
 import io.cuesoft.apparule.views.LandingActivity;
-import io.cuesoft.apparule.views.MainActivity;
 import io.cuesoft.apparule.views.SignInActivity;
 import io.cuesoft.apparule.views.designer.DesignerSignUpActivity;
 
@@ -45,6 +44,8 @@ public class CustomerSignUpActivity extends AppCompatActivity {
     private TextView mSignInLink;
     private TextView mDesignerText;
 
+    private SignInHelper signInHelper;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,6 +56,8 @@ public class CustomerSignUpActivity extends AppCompatActivity {
         mEmailField = findViewById(R.id.CustomerEmail);
         mPasswordField1 = findViewById(R.id.customerPassword1);
         mPasswordField2 = findViewById(R.id.customerPassword2);
+
+        signInHelper = new SignInHelper(this);
 
         //Initializing textViews form
         mSignInLink = findViewById(R.id.signinText);
@@ -107,6 +110,7 @@ public class CustomerSignUpActivity extends AppCompatActivity {
                                 startActivity(intent);
                                 signUpprogressBar.setVisibility(View.INVISIBLE);
                                 signUpCardTextView.setVisibility(View.VISIBLE);
+                                signInHelper.putLogin("yes");
                             } else {
                                 //If sign in fails, display a message to the user.
                                 Log.w(TAG, "createUserWithEmailAndPassword:failure", task.getException());
