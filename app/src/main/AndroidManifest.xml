@@ -45,29 +45,34 @@
 
         <activity
             android:name=".views.designer.DesignerBaseActivity"
-            android:label="DashBoard"
-            android:theme="@style/AppTheme">
+
+            android:theme="@style/DesignerAppTheme">
+
+        </activity>
+
+        <activity
+            android:name=".views.designer.DashBoardActivity"
+            android:label="Dashboard"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".views.designer.DashBoardActivity" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-
-        </activity>
         <activity
             android:name=".views.designer.CatalogueActivity"
-            android:label="@string/title_activity_catalogue"
+            android:label="Catalogue"
             android:theme="@style/AppTheme" />
-        <activity android:name=".views.designer.DesignerProfileActivity" />
 
-        <activity android:name=".views.designer.DesignerSettingsActivity">
+        <activity android:name=".views.designer.DesignerProfileActivity"
+                  android:label="Profile"
+            />
+
+        <activity android:name=".views.designer.DesignerSettingsActivity"
+                  android:label="Settings"
+            >
 
         </activity>
     </application>

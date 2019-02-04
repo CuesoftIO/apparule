@@ -16,6 +16,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import io.cuesoft.apparule.R;
+import io.cuesoft.apparule.views.LandingActivity;
+import io.cuesoft.apparule.views.customer.ProfileActivity;
 
 public class DesignerBaseActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -31,10 +33,11 @@ public class DesignerBaseActivity extends AppCompatActivity
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
         toolbar.setBackgroundColor(getResources().getColor(R.color.bottom_navigation));
+        toolbar.setTitle("Dashboard");
+        drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
 
-
-         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
@@ -43,6 +46,7 @@ public class DesignerBaseActivity extends AppCompatActivity
         navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
     }
+/*
 
     @Override
     public void onBackPressed() {
@@ -53,6 +57,7 @@ public class DesignerBaseActivity extends AppCompatActivity
             super.onBackPressed();
         }
     }
+*/
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -81,18 +86,21 @@ public class DesignerBaseActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
-
         if (id == R.id.nav_dashboard) {
-            sendIntent(new DesignerBaseActivity(), new DashBoardActivity());
+            sendIntent(new DashBoardActivity());
             // Handle the camera action
-        } else if (id == R.id.nav_catalogue) {
-            sendIntent(new DesignerBaseActivity(), new CatalogueActivity() );
-        } else if (id == R.id.nav_profile) {
-
-        } else if (id == R.id.nav_settings) {
-
-        } else if (id == R.id.nav_signout) {
-
+        }
+        else if (id == R.id.nav_catalogue) {
+            sendIntent(new CatalogueActivity() );
+        }
+        else if (id == R.id.nav_profile) {
+            sendIntent(new DesignerProfileActivity());
+        }
+        else if (id == R.id.nav_settings) {
+            sendIntent(new DesignerSettingsActivity());
+        }
+        else if (id == R.id.nav_signout) {
+            sendIntent(new LandingActivity());
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -100,8 +108,8 @@ public class DesignerBaseActivity extends AppCompatActivity
         return true;
     }
 
-    public void sendIntent(Activity firstActivity, Activity secondActivity){
-        Intent intent = new Intent(getApplicationContext() , secondActivity.getClass());
+    public void sendIntent(Activity secondActivity){
+        Intent intent = new Intent(getApplicationContext(),secondActivity.getClass());
         startActivity(intent);
 
     }
