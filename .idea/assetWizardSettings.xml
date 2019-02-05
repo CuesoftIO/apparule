@@ -28,7 +28,8 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="outputName" value="ic_check_black_24dp" />
+                            <entry key="color" value="f2ffe1" />
+                            <entry key="outputName" value="ic_check_white_24dp" />
                             <entry key="sourceFile" value="C:\Users\MRS OLADINI\Documents\Cuesoft.io\Assets\signout.svg" />
                           </map>
                         </option>

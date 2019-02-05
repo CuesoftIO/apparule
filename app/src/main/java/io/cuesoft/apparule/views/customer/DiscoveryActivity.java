@@ -61,7 +61,8 @@ public class DiscoveryActivity extends AppCompatActivity
         toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
-
+                Intent intent = new Intent(DiscoveryActivity.this, SearchActivity.class);
+                startActivity(intent);
                 return false;
             }
         });

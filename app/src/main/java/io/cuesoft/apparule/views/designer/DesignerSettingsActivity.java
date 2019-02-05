@@ -1,11 +1,9 @@
 package io.cuesoft.apparule.views.designer;
 
-import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.view.LayoutInflater;
 import android.view.View;
 
 
@@ -19,7 +17,7 @@ public class DesignerSettingsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_designer_settings);
 
         Toolbar toolbar = findViewById(R.id.designerSettingsToolbar);
-        toolbar.setNavigationIcon(R.drawable.ic_arrow_back_black_24dp);
+        toolbar.setNavigationIcon(R.drawable.ic_arrow_back_white_24dp);
         toolbar.setTitle("Settings");
         toolbar.setTitleTextColor(getResources().getColor(R.color.whites));
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {

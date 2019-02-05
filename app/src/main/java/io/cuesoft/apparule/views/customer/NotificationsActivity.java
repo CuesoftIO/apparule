@@ -31,7 +31,8 @@ public class NotificationsActivity extends AppCompatActivity {
 
         Toolbar toolbar = findViewById(R.id.notifications_toolbar);
         toolbar.setTitle("Notifications");
-        toolbar.inflateMenu(R.menu.notifications_menu);
+        toolbar.inflateMenu(R.menu.check_menu);
+
         toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {

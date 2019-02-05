@@ -17,7 +17,7 @@ public class AddCatalogueActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_catalogue);
 
         Toolbar toolbar = findViewById(R.id.add_catalogueToolbar);
-        toolbar.setNavigationIcon(R.drawable.ic_arrow_back_black_24dp);
+        toolbar.setNavigationIcon(R.drawable.ic_arrow_back_white_24dp);
         toolbar.setTitle("Add Item");
         toolbar.setTitleTextColor(getResources().getColor(R.color.whites));
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {

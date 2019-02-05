@@ -16,7 +16,7 @@ public class EditCatalogueActivity extends AppCompatActivity {
         setContentView(R.layout.activity_edit_catalogue);
 
         Toolbar toolbar = findViewById(R.id.edit_CatalogueToolbar);
-        toolbar.setNavigationIcon(R.drawable.ic_arrow_back_black_24dp);
+        toolbar.setNavigationIcon(R.drawable.ic_arrow_back_white_24dp);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

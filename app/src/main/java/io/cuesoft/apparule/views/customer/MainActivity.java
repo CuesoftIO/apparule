@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
             public boolean onMenuItemClick(MenuItem item) {
                 int id = item.getItemId();
                 if(id==R.id.shoppingCart){
-                    Toast.makeText(MainActivity.this,"No cart added yet", Toast.LENGTH_SHORT).show();
+                intentDelivery(new CartActivity());
                 }
                 return false;
             }
