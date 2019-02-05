@@ -64,9 +64,13 @@
         <activity
             android:name=".views.designer.DesignerSettingsActivity"
             android:label="Settings" />
-        <activity android:name=".views.designer.AddCatalogueActivity" />
+        <activity android:name=".views.designer.AddCatalogueActivity"
+                  android:label="Add Item"
+            />
 
-        <activity android:name=".views.designer.EditCatalogueActivity" />
+        <activity android:name=".views.designer.EditCatalogueActivity"
+                android:label="Edit Item"
+            />
 
         <activity android:name=".views.designer.EditDesignerProfileActivity" />
 

@@ -27,6 +27,7 @@ public class SettingsActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar1);
         toolbar.setTitleTextColor(getResources().getColor(android.R.color.black));
         toolbar.setTitle("Settings");
+
         toolbar.setNavigationIcon(R.drawable.ic_arrow_back_black_24dp);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override

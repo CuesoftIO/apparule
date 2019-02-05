@@ -8,6 +8,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 
 import io.cuesoft.apparule.views.designer.AllFragment;
 import io.cuesoft.apparule.views.designer.FabricFragment;
+import io.cuesoft.apparule.views.designer.KidsAccesoriesFragment;
 import io.cuesoft.apparule.views.designer.KidsFragment;
 import io.cuesoft.apparule.views.designer.MenAccessoriesFragment;
 import io.cuesoft.apparule.views.designer.MenFragment;
@@ -38,7 +39,7 @@ public class DesignerCataloguePagerAdapter extends FragmentPagerAdapter {
             case 5:
                 return new MenAccessoriesFragment();
             case 6:
-                return new WomenAccessoriesFragment();
+                return new KidsAccesoriesFragment();
             case 7:
                 return new WeddingFragment();
             case 8:
@@ -65,17 +66,17 @@ public class DesignerCataloguePagerAdapter extends FragmentPagerAdapter {
             case 2:
                 return "MEN";
             case 3:
-                return new KidsFragment();
+                return "KIDS";
             case 4:
-                return new WomenAccessoriesFragment();
+                return "WOMEN ACCESSORIES";
             case 5:
-                return new MenAccessoriesFragment();
+                return "MEN ACCESSORIES";
             case 6:
-                return new WomenAccessoriesFragment();
+                return "KIDS ACCESSORIES";
             case 7:
-                return new WeddingFragment();
+                return "WEDDING";
             case 8:
-                return new FabricFragment();
+                return "FABRICS";
             default:
                 return null;
         }

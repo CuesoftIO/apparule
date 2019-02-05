@@ -48,11 +48,14 @@
         android:id="@+id/signIn_landing"
         android:layout_width="175dp"
         android:layout_height="40dp"
+        android:layout_marginTop="77dp"
         app:cardBackgroundColor="@color/signInButton_Blue"
         app:cardCornerRadius="20dp"
         app:cardElevation="6dp"
-        tools:layout_editor_absoluteX="73dp"
-        tools:layout_editor_absoluteY="272dp">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2">
 
         <TextView
             android:id="@+id/textView"
@@ -89,7 +92,7 @@
         android:id="@+id/imageView"
         android:layout_width="70dp"
         android:layout_height="70dp"
-        app:layout_constraintBottom_toTopOf="@id/guideline5"
+        app:layout_constraintBottom_toTopOf="@+id/imageView2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/logo" />

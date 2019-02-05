@@ -8,4 +8,11 @@
     tools:context=".views.designer.CatalogueActivity"
     tools:showIn="@layout/activity_catalogue">
 
+    <android.support.v4.view.ViewPager
+        android:id="@+id/catalogueViewPager"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </android.support.v4.view.ViewPager>
+
 </android.support.constraint.ConstraintLayout>

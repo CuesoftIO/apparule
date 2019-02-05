@@ -1,26 +1,33 @@
 package io.cuesoft.apparule.views.designer;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 
+
 import io.cuesoft.apparule.R;
 
-public class DesignerSettingsActivity extends DesignerBaseActivity {
+public class DesignerSettingsActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        LayoutInflater inflater = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        //inflate your activity layout here!
+        setContentView(R.layout.activity_designer_settings);
 
-        View contentView =inflater.inflate(R.layout.activity_designer_settings, null, false);
-        drawer.addView(contentView, 0);
-        navigationView.setCheckedItem(R.id.nav_settings);
-
-        tabLayout.setVisibility(View.GONE);
-
+        Toolbar toolbar = findViewById(R.id.designerSettingsToolbar);
+        toolbar.setNavigationIcon(R.drawable.ic_arrow_back_black_24dp);
+        toolbar.setTitle("Settings");
+        toolbar.setTitleTextColor(getResources().getColor(R.color.whites));
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(DesignerSettingsActivity.this, DashBoardActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }

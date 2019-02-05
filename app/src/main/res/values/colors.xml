@@ -4,6 +4,7 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#fbffffff</color>
     <color name="black">#0b0b0b</color>
+    <color name="whites">#fbffffff</color>
     <color name="bottom_navigation">#0fb2e4</color>
     <color name="item_Clicked">#ffea00</color>
     <color name="signInButton_Blue">#0099ff</color>
