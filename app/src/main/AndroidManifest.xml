@@ -47,7 +47,7 @@
             android:theme="@style/DesignerAppTheme" />
         <activity
             android:name=".views.designer.DashBoardActivity"
-            android:label="Dashboard">
+            android:label="Request">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
