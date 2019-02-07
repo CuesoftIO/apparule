@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
+import io.cuesoft.apparule.views.designer.AllCatalogueFragment;
 import io.cuesoft.apparule.views.designer.AllFragment;
 import io.cuesoft.apparule.views.designer.FabricFragment;
 import io.cuesoft.apparule.views.designer.KidsAccesoriesFragment;
@@ -27,7 +28,7 @@ public class DesignerCataloguePagerAdapter extends FragmentPagerAdapter {
 
         switch(position){
             case 0:
-                return new AllFragment();
+                return new AllCatalogueFragment();
             case 1:
                 return new WomenFragment();
             case 2:

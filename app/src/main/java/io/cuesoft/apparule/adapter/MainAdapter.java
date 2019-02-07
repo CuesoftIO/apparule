@@ -53,7 +53,7 @@ public class MainAdapter extends
         private ImageView imageView;
         private ImageView profileImageView;
 
-     public MainViewHolder(View itemView)
+     MainViewHolder(View itemView)
         {
             super(itemView);
             profileImageView = itemView.findViewById(R.id.profilePic);
