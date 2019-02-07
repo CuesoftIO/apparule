@@ -22,11 +22,18 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthInvalidUserException;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import io.cuesoft.apparule.R;
 import io.cuesoft.apparule.helper.SignInHelper;
+import io.cuesoft.apparule.model.Customer;
+import io.cuesoft.apparule.model.Designer;
 import io.cuesoft.apparule.views.customer.CustomerSignUpActivity;
 import io.cuesoft.apparule.views.customer.MainActivity;
+import io.cuesoft.apparule.views.designer.DashBoardActivity;
 
 public class SignInActivity extends AppCompatActivity {
 
@@ -50,6 +57,10 @@ public class SignInActivity extends AppCompatActivity {
     private TextView forgotPassWordTextView;
 
     private FirebaseAuth mFirebaseAuth;
+    String isCustomer;
+    String isDesigner;
+    String emailCheck;
+    FirebaseDatabase mPostReference;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,6 +75,9 @@ public class SignInActivity extends AppCompatActivity {
         //Firebase Authentication insatnce
         mFirebaseAuth = FirebaseAuth.getInstance();
 
+        // Initialize Database
+        //mPostReference = FirebaseDatabase.getInstance().getReference()
+          //      .child("posts").child(mPostKey);
 
         signInHelper = new SignInHelper(this);
 
@@ -107,7 +121,7 @@ public class SignInActivity extends AppCompatActivity {
        });
 
     }
-    public  void signIn(String email, String password){
+    public  void signIn(final String email, String password){
         Log.d( TAG, "signIn: " + email );
         //[START create_user_with_email]
         try {
@@ -119,10 +133,21 @@ public class SignInActivity extends AppCompatActivity {
                         //Sign in success, Ui with the signed-in use's information
                             Toast.makeText(SignInActivity.this, "Authentication Success.",
                                     Toast.LENGTH_SHORT).show();
-                            //Granted Acces to the MainActivity
                             Intent intent = new Intent(SignInActivity.this, MainActivity.class);
                             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                             startActivity(intent);
+
+                         /*   //   customerOrDesigner();
+
+                            if(email.equals(isCustomer)){
+                                //Granted Acces to the MainActivity
+                            }
+                            if(email.equals(isDesigner)){
+                                //Granted Acces to the MainActivity
+                                Intent intent = new Intent(SignInActivity.this, DashBoardActivity.class);
+                                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                startActivity(intent);
+                            }*/
                             signInButton.setCardBackgroundColor(ContextCompat.getColor(SignInActivity.this, R.color.bottom_navigation));
                             signInTextCardView.setVisibility(View.VISIBLE);
                             signInProgress.setVisibility(View.INVISIBLE);
@@ -170,6 +195,41 @@ public class SignInActivity extends AppCompatActivity {
      * Method for validation of Username and Password
      *
      */
+     /* public void customerOrDesigner(){
+          ValueEventListener postListener = new ValueEventListener() {
+              @Override
+              public void onDataChange(DataSnapshot dataSnapshot) {
+                  // Get Post object and use the values to update the UI
+                  Customer customer = dataSnapshot.getValue(Customer.class);
+
+                  assert customer != null;
+                  isCustomer = customer.email;
+
+                  Designer designer = dataSnapshot.getValue(Designer.class);
+
+                  assert designer != null;
+                  isDesigner = designer.email;
+
+
+
+              }
+
+              @Override
+              public void onCancelled(DatabaseError databaseError) {
+                  // Getting Post failed, log a message
+                  Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
+                  // ...
+              }
+          };
+          //mPostReference.addValueEventListener(postListener);
+
+          mPostReference.addValueEventListener(postListener);
+          // [END post_value_event_listener]
+
+          // Keep copy of post listener so we can remove it when app stops
+          mPostListener = postListener;
+       }*/
+
 
     public boolean validateForm(){
         boolean valid = true;

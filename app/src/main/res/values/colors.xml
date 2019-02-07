@@ -9,6 +9,7 @@
     <color name="item_Clicked">#ffea00</color>
     <color name="signInButton_Blue">#0099ff</color>
     <color name="app_color_yellow">#ffcc00</color>
+    <color name="last_seen">#BCA1A1</color>
     <array name="dot_on_page_active">
         <item>#B71C1C</item>
         <item>#8BC34A</item>

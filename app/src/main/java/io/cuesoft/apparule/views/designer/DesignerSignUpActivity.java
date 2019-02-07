@@ -31,13 +31,17 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Locale;
+import java.util.Objects;
 
 import io.cuesoft.apparule.R;
 import io.cuesoft.apparule.helper.SignInHelper;
+import io.cuesoft.apparule.model.Designer;
 import io.cuesoft.apparule.views.customer.MainActivity;
 import io.cuesoft.apparule.views.SignInActivity;
 import pub.devrel.easypermissions.EasyPermissions;
@@ -75,12 +79,16 @@ public class DesignerSignUpActivity extends AppCompatActivity implements
     private TextInputEditText designerPassword2;
     String Email;
     private FirebaseAuth mFirebaseAuth;
+    private DatabaseReference mDatabase;
     private String[] galleryPermissions = {Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE};
     //Camera Views
     final int CAMERA_CAPTURE =1;
     //captured picture uri
     private Uri picUri;
     private SignInHelper signInHelper;
+    String businessName1;
+    String email;
+    String address;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -104,6 +112,8 @@ public class DesignerSignUpActivity extends AppCompatActivity implements
            ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, countries);
            citizenship.setAdapter(adapter1);
         }
+        mFirebaseAuth = FirebaseAuth.getInstance();
+        mDatabase = FirebaseDatabase.getInstance().getReference();
 
         signInHelper = new SignInHelper(this);
 
@@ -113,6 +123,7 @@ public class DesignerSignUpActivity extends AppCompatActivity implements
         continueButton.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+
             if(validateForm()){
                 Email = designerEmail.getText().toString();
                 secondButtonSignUp();
@@ -186,7 +197,9 @@ public class DesignerSignUpActivity extends AppCompatActivity implements
                 designer2CardViewText.setVisibility(View.INVISIBLE);
                 if(validateForm2()) {
                     createdesignerAccount(designerEmail.getText().toString(), designerPassword1.getText().toString());
-                } }
+
+                }
+            }
         });
     }
 
@@ -209,11 +222,7 @@ public class DesignerSignUpActivity extends AppCompatActivity implements
                             FirebaseUser user = mFirebaseAuth.getCurrentUser();
                             Toast.makeText(DesignerSignUpActivity .this, "Account Created.",
                                     Toast.LENGTH_SHORT).show();
-
-                            Intent intent = new Intent(DesignerSignUpActivity .this, MainActivity.class);
-                            //Clearing the backStack
-                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                            startActivity(intent);
+                            onAuthSuccess(Objects.requireNonNull(task.getResult()).getUser());
                             //Making Progress Bar Invisible and text Visible
                             designersSignUp2progressBar.setVisibility(View.INVISIBLE);
                             designer2CardViewText.setVisibility(View.VISIBLE);
@@ -241,23 +250,28 @@ public class DesignerSignUpActivity extends AppCompatActivity implements
 
     }
 
+    private void onAuthSuccess(FirebaseUser user){
+
+        Intent intent = new Intent(DesignerSignUpActivity.this, DashBoardActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+
+        writeNewUser(user.getUid(), businessName.getText().toString(), designerEmail.getText()
+                .toString(), designerAddress.getText().toString(), "Nigeria");
+    }
+
+    public void writeNewUser(String userId, String businessname, String email,
+                             String address, String country){
+        Designer designer = new Designer(businessname,email,address,country);
+        mDatabase.child("designer").child(userId).setValue(designer);
+    }
+
+
    public void  pickImage(){
        Intent intent = new Intent();
        intent.setType("image/*");
        intent.setAction(Intent.ACTION_GET_CONTENT);
        startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE);
-    }
-    public void openCamera(){
-        try{
-            //use standard intent to capture an image
-            Intent captureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-            //we will handle the returned data in onActivityResult
-            startActivityForResult(captureIntent, CAMERA_CAPTURE);
-        }catch(Exception e){
-            String errorMessage = "Whoops - your device doesn't support capturing images!";
-            Toast toast = Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT);
-            toast.show();
-        }
     }
 
 
@@ -295,50 +309,8 @@ public class DesignerSignUpActivity extends AppCompatActivity implements
             }
 
         }
-
-        /*if(requestCode == CAMERA_CAPTURE){
-                //get the Uri for the captured image
-                picUri = data.getData();
-                performCrop();
-            }else if(requestCode == PIC_CROP){
-                //get the returned data
-                Bundle extras = data.getExtras();
-                //get the cropped bitmap
-                Bitmap thePic = extras.getParcelable("data");
-                //retrieve a reference to the ImageView
-                ImageView picView = (ImageView)findViewById(R.id.business_logoImage);
-                //display the returned cropped image
-                picView.setImageBitmap(thePic);
-            }
-        }*/
     }
 
-    private void performCrop() {
-        try
-        {
-            Intent cropIntent = new Intent("io.cuesoft.apparule.camera.action.CROP");
-            //indicate image type and Uri
-            cropIntent.setDataAndType(picUri, "image/*");
-            //set crop properties
-            cropIntent.putExtra("crop", "true");
-            //indicate aspect of desired crop
-            cropIntent.putExtra("aspectX", 1);
-            cropIntent.putExtra("aspectY", 1);
-            //indicate output X and Y
-            cropIntent.putExtra("outputX", 256);
-            cropIntent.putExtra("outputY", 256);
-            //retrieve data on return
-            cropIntent.putExtra("return-data", true);
-            //start the activity - we handle returning in onActivityResult
-         //   startActivityForResult(cropIntent, PIC_CROP);
-
-        }catch(ActivityNotFoundException e){
-            //display an error message
-            String errorMessage ="Your devicde does not support the crop activity";
-            Toast toast = Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT);
-            toast.show();
-        }
-    }
 
     public boolean validateForm(){
         boolean valid = true;

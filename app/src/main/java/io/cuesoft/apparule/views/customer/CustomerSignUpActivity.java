@@ -19,9 +19,14 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.Objects;
 
 import io.cuesoft.apparule.R;
 import io.cuesoft.apparule.helper.SignInHelper;
+import io.cuesoft.apparule.model.Customer;
 import io.cuesoft.apparule.views.LandingActivity;
 import io.cuesoft.apparule.views.SignInActivity;
 import io.cuesoft.apparule.views.designer.DesignerSignUpActivity;
@@ -40,6 +45,8 @@ public class CustomerSignUpActivity extends AppCompatActivity {
     private ProgressBar signUpprogressBar;
 
     private FirebaseAuth mFirebaseAuth;
+    private DatabaseReference mDatabase;
+
     //TextView
     private TextView mSignInLink;
     private TextView mDesignerText;
@@ -69,14 +76,13 @@ public class CustomerSignUpActivity extends AppCompatActivity {
         signUpprogressBar = findViewById(R.id.signup_progressBar);
 
         mFirebaseAuth = FirebaseAuth.getInstance();
+        mDatabase = FirebaseDatabase.getInstance().getReference();
 
         signUpButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                addFeedback();
                 if (validateForm()) {
-                    signUpprogressBar.setVisibility(View.VISIBLE);
-                    signUpCardTextView.setVisibility(View.INVISIBLE);
                     createAccount(mEmailField.getText().toString(), mPasswordField1.getText().toString());
 
                 } else {
@@ -85,8 +91,6 @@ public class CustomerSignUpActivity extends AppCompatActivity {
                 }
             }
         });
-        //onClickListener handling the navigation to designerSignup
-        //and Signing of users
         allOnClickListener();
     }
 
@@ -102,22 +106,17 @@ public class CustomerSignUpActivity extends AppCompatActivity {
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
                                 //Sign in success, Ui with the signed-in use's information
-                                FirebaseUser user = mFirebaseAuth.getCurrentUser();
                                 Toast.makeText(CustomerSignUpActivity.this, "Account Created.",
                                         Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent(CustomerSignUpActivity.this, MainActivity.class);
-                                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                startActivity(intent);
-                                signUpprogressBar.setVisibility(View.INVISIBLE);
-                                signUpCardTextView.setVisibility(View.VISIBLE);
+                                onAuthSuccess(Objects.requireNonNull(task.getResult()).getUser());
+                                removeFeedback();
                                 signInHelper.putLogin("yes");
                             } else {
                                 //If sign in fails, display a message to the user.
                                 Log.w(TAG, "createUserWithEmailAndPassword:failure", task.getException());
                                 Toast.makeText(CustomerSignUpActivity.this, "Authentication failed.",
                                         Toast.LENGTH_SHORT).show();
-                                signUpprogressBar.setVisibility(View.INVISIBLE);
-                                signUpCardTextView.setVisibility(View.VISIBLE);
+                                    removeFeedback();
                             }
 
                         }
@@ -125,14 +124,12 @@ public class CustomerSignUpActivity extends AppCompatActivity {
                 @Override
                 public void onFailure(@NonNull Exception e) {
                     errorMessage(e.getLocalizedMessage());
-                    signUpprogressBar.setVisibility(View.INVISIBLE);
-                    signUpCardTextView.setVisibility(View.VISIBLE);
+                    removeFeedback();
                 }
             });
         }catch (Exception e){
             errorMessage("Error Creating Account try again");
-            signUpprogressBar.setVisibility(View.INVISIBLE);
-            signUpCardTextView.setVisibility(View.VISIBLE);
+            removeFeedback();
         }
     }
 
@@ -141,6 +138,32 @@ public class CustomerSignUpActivity extends AppCompatActivity {
                 Toast.LENGTH_SHORT).show();
     }
 
+    private void onAuthSuccess(FirebaseUser user){
+        Intent intent = new Intent(CustomerSignUpActivity.this, MainActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+
+        writeNewUser(user.getUid(), mFullNameField.getText().toString(), mEmailField.getText().toString() );
+
+    }
+
+    private void writeNewUser(String userId,String fullname, String email){
+
+        Customer customer = new Customer(fullname, email);
+        mDatabase.child("customers").child(userId).setValue(customer);
+    }
+
+    private void addFeedback(){
+        signUpprogressBar.setVisibility(View.VISIBLE);
+        signUpCardTextView.setVisibility(View.INVISIBLE);
+
+    }
+
+    private void removeFeedback(){
+        signUpprogressBar.setVisibility(View.INVISIBLE);
+        signUpCardTextView.setVisibility(View.VISIBLE);
+
+    }
 
     public void allOnClickListener(){
              /*Setting click listener for designerText to take users to designer

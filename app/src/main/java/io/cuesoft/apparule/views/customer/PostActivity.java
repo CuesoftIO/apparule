@@ -5,6 +5,7 @@ import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
 
 import io.cuesoft.apparule.R;
 import io.cuesoft.apparule.views.customer.MainActivity;
@@ -17,9 +18,17 @@ public class PostActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post);
+
         Toolbar toolbar = findViewById(R.id.post_toolbar);
         toolbar.setTitle("Post Request");
-
+        toolbar.setNavigationIcon(R.drawable.ic_arrow_back_black_24dp);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(PostActivity.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
 
