@@ -19,11 +19,29 @@ import io.cuesoft.apparule.model.DesignerCatalogueRecyclerModel;
 
 public class CatalogueBaseFragment extends Fragment {
 
-    private RecyclerView mRecyclerView;
-    private LinearLayoutManager mLayoutManager;
-    private DesignerCatalogueReyclerAdapter mAdapter;
-    private ArrayList<DesignerCatalogueRecyclerModel> mCatalogueData;
+    RecyclerView mRecyclerView;
+    LinearLayoutManager mLayoutManager;
+    DesignerCatalogueReyclerAdapter mAdapter;
+    ArrayList<DesignerCatalogueRecyclerModel> mCatalogueData;
 
+    public void initilaizeView(){
+        mCatalogueData = new ArrayList<>();
+        mAdapter = new DesignerCatalogueReyclerAdapter(this.getActivity(), mCatalogueData);
+        mRecyclerView.setAdapter(mAdapter);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this.getActivity()));
 
+    }
+
+    public void initilaizeData(){
+        TypedArray imageResources =
+                getResources().obtainTypedArray(R.array.images);
+        for(int i =0; i<imageResources.length(); i++){
+            mCatalogueData.add(new DesignerCatalogueRecyclerModel("Versache Bags",
+                    "A Lovely Product", "2 HOURS AGO",
+                    "#61,000", imageResources.getResourceId(i,0)));
+        }
+        imageResources.recycle();
+        mAdapter.notifyDataSetChanged();
+    }
 
 }

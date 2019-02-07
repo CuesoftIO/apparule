@@ -12,7 +12,7 @@ import io.cuesoft.apparule.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class OnGoingFragment extends Fragment {
+public class OnGoingFragment extends RequestBaseFragment{
 
 
     public OnGoingFragment() {
@@ -24,7 +24,15 @@ public class OnGoingFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_on_going, container, false);
+        View view =inflater.inflate(R.layout.fragment_on_going, container, false);
+        mRecyclerView = view.findViewById(R.id.ongoing_fragment_recyclerView);
+        initilaizeView();
+        initilaizeData();
+        return view;
     }
+
+
+
+
 
 }

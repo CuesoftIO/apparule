@@ -12,7 +12,7 @@ import io.cuesoft.apparule.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class WeddingFragment extends Fragment {
+public class WeddingFragment extends CatalogueBaseFragment{
 
 
     public WeddingFragment() {
@@ -24,7 +24,11 @@ public class WeddingFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_wedding, container, false);
+        View view = inflater.inflate(R.layout.fragment_wedding, container, false);
+        mRecyclerView = view.findViewById(R.id.recyclerView_Wedding);
+        initilaizeView();
+        initilaizeData();
+        return view;
     }
 
 }
