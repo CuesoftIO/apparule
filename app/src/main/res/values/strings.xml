@@ -83,6 +83,46 @@
         <item>@drawable/men1</item>
         <item>@drawable/men11</item>
     </array>
+
+    <array name="women_images">
+        <item>@drawable/product02</item>
+        <item>@drawable/selfie06</item>
+        <item>@drawable/product01</item>
+        <item>@drawable/product00</item>
+        <item>@drawable/selfie08</item>
+        <item>@drawable/product03</item>
+        <item>@drawable/selfie05</item>
+        <item>@drawable/selfie07</item>
+        <item>@drawable/product04</item>
+        <item>@drawable/selfie09</item>
+        <item>@drawable/product05</item>
+       </array>
+
+        <array name="kids_accessories">
+            <item>@drawable/kidacc2</item>
+            <item>@drawable/kidacc4</item>
+        </array>
+
+    <array name="men">
+        <item>@drawable/men2</item>
+        <item>@drawable/men1</item>
+        <item>@drawable/men6</item>
+        <item>@drawable/men4</item>
+        <item>@drawable/men11</item>
+        <item>@drawable/men10</item>
+        <item>@drawable/men12</item>
+        <item>@drawable/men8</item>
+    </array>
+
+    <array name="frabric">
+        <item>@drawable/frabic1</item>
+        <item>@drawable/frabic2</item>
+
+    </array>
+    <array name="men_accesories">
+        <item>@drawable/watch1</item>
+        <item>@drawable/menaccesories</item>
+    </array>
     <string name="title_activity_dash_board">DashBoardActivity</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>

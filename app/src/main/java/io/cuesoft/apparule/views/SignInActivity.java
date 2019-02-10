@@ -185,13 +185,14 @@ public class SignInActivity extends AppCompatActivity {
 
           firebaseReference.child(user.getUid()).addValueEventListener( new ValueEventListener() {
               @Override
-              public void onDataChange(DataSnapshot dataSnapshot) {
+              public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                   // Get Post object and use the values to update the UI
                   Customer customer = dataSnapshot.getValue(Customer.class);
                   try{
                   assert customer != null;
                   isCustomer = customer.email;
-                  }catch(Exception e){
+                  }
+                  catch(Exception e){
                       Intent intent = new Intent(SignInActivity.this, DashBoardActivity.class);
                       intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                       startActivity(intent);

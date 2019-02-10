@@ -24,11 +24,7 @@
         tools:ignore="GoogleAppIndexingWarning">
 
         <activity android:name=".views.LandingActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
 
         <activity
@@ -42,9 +38,15 @@
         <activity android:name=".views.customer.NotificationsActivity" />
         <activity android:name=".views.customer.ProfileActivity" />
         <activity android:name=".views.customer.PostActivity" />
-        <activity android:name=".views.WalkThroughActivity">
 
+        <activity android:name=".views.WalkThroughActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
+
         <activity
             android:name=".views.customer.SettingsActivity"
             android:label="Settings"

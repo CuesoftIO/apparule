@@ -16,7 +16,9 @@
             android:id="@+id/catalogue_image"
             android:layout_width="100dp"
             android:layout_height="match_parent"
-            android:src="@drawable/selfie05" />
+            android:src="@drawable/watch1"
+            android:scaleType="center"
+            />
 
         <TextView
             android:id="@+id/catalogue_title"
@@ -26,6 +28,7 @@
             android:layout_marginBottom="4dp"
             android:text="Long Robe Apparel"
             android:textStyle="bold"
+            android:textSize="13dp"
             app:layout_constraintBottom_toTopOf="@+id/catalogue_description"
             app:layout_constraintStart_toEndOf="@id/catalogue_image" />
 
@@ -35,6 +38,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:text="Designed with love from Nikika Coure "
+            android:textSize="12dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/catalogue_image"
@@ -48,7 +52,7 @@
             android:layout_marginBottom="8dp"
             android:text="5 hours ago"
             android:textColor="@color/last_seen"
-            android:textSize="12dp"
+            android:textSize="10dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@id/catalogue_image" />
 
@@ -60,6 +64,7 @@
             android:layout_marginBottom="8dp"
             android:text="#68,000"
             android:textStyle="bold"
+            android:textSize="10dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
     </android.support.constraint.ConstraintLayout>
