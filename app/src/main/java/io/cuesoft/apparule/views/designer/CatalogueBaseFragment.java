@@ -37,7 +37,7 @@ public class CatalogueBaseFragment extends Fragment {
                 getResources().obtainTypedArray(R.array.images);
         for(int i =0; i<imageResources.length(); i++){
             mCatalogueData.add(new DesignerCatalogueRecyclerModel("Versache Bags",
-                    "A Lovely Product", "2 HOURS AGO",
+                    "Designed with love from Nikkita Coure", "2 HOURS AGO",
                     "#61,000", imageResources.getResourceId(i,0)));
         }
         imageResources.recycle();

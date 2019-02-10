@@ -22,10 +22,14 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthInvalidUserException;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import java.util.Objects;
 
 import io.cuesoft.apparule.R;
 import io.cuesoft.apparule.helper.SignInHelper;
@@ -57,49 +61,47 @@ public class SignInActivity extends AppCompatActivity {
     private TextView forgotPassWordTextView;
 
     private FirebaseAuth mFirebaseAuth;
+    private FirebaseDatabase mFirebaseDatabase;
+    private DatabaseReference firebaseReference;
+
     String isCustomer;
     String isDesigner;
     String emailCheck;
-    FirebaseDatabase mPostReference;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.signin_page);
+
         //Initailizing fields and button for signin layout
         signInButton =  findViewById(R.id.signButton);
         mUsernameField = findViewById(R.id.username_signinField);
         mPasswordField = findViewById(R.id.password_signinField);
+
         //SignIn ProgressBar
         signInProgress = findViewById(R.id.signin_progressBar);
         signInTextCardView = findViewById(R.id.signIn_cardViewText);
-        //Firebase Authentication insatnce
+
+        //Firebase Authentication instance
         mFirebaseAuth = FirebaseAuth.getInstance();
 
-        // Initialize Database
-        //mPostReference = FirebaseDatabase.getInstance().getReference()
-          //      .child("posts").child(mPostKey);
+        mFirebaseDatabase = FirebaseDatabase.getInstance();
+        firebaseReference = mFirebaseDatabase.getReference("customers");
 
         signInHelper = new SignInHelper(this);
 
         //Initialization for text fields
         mForgotPassword = findViewById(R.id.forgetPasswordText_signin);
         mDesignerSignUp = findViewById(R.id.designer_signupText_singup_in_signin);
+
         //Calling the Sign-in- method which sends credentials to Firebase for authentication
         signInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-    //            signInButton.setCardBackgroundColor(Color.WHITE);
-                //land.enterMain(v);
                 if (validateForm()) {
-                    signInTextCardView.setVisibility(View.INVISIBLE);
-                    signInProgress.setVisibility(View.VISIBLE);
+                    addFeedback();
                     signIn(mUsernameField.getText().toString(), mPasswordField.getText().toString());
-
-                }else{
-                    signInTextCardView.setVisibility(View.VISIBLE);
-                    signInProgress.setVisibility(View.INVISIBLE);
-                    signInButton.setCardBackgroundColor(ContextCompat.getColor(SignInActivity.this, R.color.bottom_navigation));
-                    // Toast.makeText(SignInActivity.this,"Authentication false", Toast.LENGTH_LONG).show();
+                    }else{
                 }
             }
         });
@@ -130,40 +132,26 @@ public class SignInActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
+                            emailCheck = email;
+
                         //Sign in success, Ui with the signed-in use's information
                             Toast.makeText(SignInActivity.this, "Authentication Success.",
                                     Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(SignInActivity.this, MainActivity.class);
-                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                            startActivity(intent);
+                        customerOrDesigner(Objects.requireNonNull(task.getResult()).getUser());
 
-                         /*   //   customerOrDesigner();
-
-                            if(email.equals(isCustomer)){
-                                //Granted Acces to the MainActivity
-                            }
-                            if(email.equals(isDesigner)){
-                                //Granted Acces to the MainActivity
-                                Intent intent = new Intent(SignInActivity.this, DashBoardActivity.class);
-                                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                startActivity(intent);
-                            }*/
-                            signInButton.setCardBackgroundColor(ContextCompat.getColor(SignInActivity.this, R.color.bottom_navigation));
-                            signInTextCardView.setVisibility(View.VISIBLE);
-                            signInProgress.setVisibility(View.INVISIBLE);
                             signInHelper.putLogin("yes");
+                            removeFeedback();
                             finish();
                         } else {
                             //If sign in fails, display a message to the user.
-                            signInButton.setCardBackgroundColor(ContextCompat.getColor(SignInActivity.this, R.color.bottom_navigation));
+
                             Log.w(TAG, "createUserWithEmailAndPassword:failure", task.getException());
                             //Send toast Message to the user
                             Toast.makeText(SignInActivity.this, "Authentication failed. Please" +
                                             " check your connection and try again",
                                     Toast.LENGTH_SHORT).show();
                             //Handling the progress bar visiblitiy
-                            signInTextCardView.setVisibility(View.VISIBLE);
-                            signInProgress.setVisibility(View.INVISIBLE);
+                            removeFeedback();
                         }
                         }
                 //Add on failure listener
@@ -171,12 +159,11 @@ public class SignInActivity extends AppCompatActivity {
             @Override
             public void onFailure(@NonNull Exception e) {
                 if (e instanceof FirebaseAuthInvalidUserException) {
-                    signInButton.setCardBackgroundColor(ContextCompat.getColor(SignInActivity.this, R.color.bottom_navigation));
+
                     String errorCode =
                             ((FirebaseAuthInvalidUserException) e).getErrorCode();
                     //Handling progress bar visibility
-                    signInTextCardView.setVisibility(View.VISIBLE);
-                    signInProgress.setVisibility(View.INVISIBLE);
+                    removeFeedback();
                     if (errorCode.equals("ERROR_USER_NOT_FOUND")) {
                         mUsernameField.setError("Email not found,Signup");
                     }
@@ -194,24 +181,34 @@ public class SignInActivity extends AppCompatActivity {
     /**
      * Method for validation of Username and Password
      *
-     */
-     /* public void customerOrDesigner(){
-          ValueEventListener postListener = new ValueEventListener() {
+     */ public void customerOrDesigner(FirebaseUser user){
+
+          firebaseReference.child(user.getUid()).addValueEventListener( new ValueEventListener() {
               @Override
               public void onDataChange(DataSnapshot dataSnapshot) {
                   // Get Post object and use the values to update the UI
                   Customer customer = dataSnapshot.getValue(Customer.class);
-
+                  try{
                   assert customer != null;
                   isCustomer = customer.email;
-
-                  Designer designer = dataSnapshot.getValue(Designer.class);
-
+                  }catch(Exception e){
+                      Intent intent = new Intent(SignInActivity.this, DashBoardActivity.class);
+                      intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                      startActivity(intent);
+                  }
+              /*    Designer designer = dataSnapshot.getValue(Designer.class);
                   assert designer != null;
                   isDesigner = designer.email;
+*/
+                 // errorMessage(isCustomer);
+                  if(emailCheck.equalsIgnoreCase(isCustomer)){
 
-
-
+                      Intent intent = new Intent(SignInActivity.this, MainActivity.class);
+                      intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                      startActivity(intent);
+                  }
+                  else{
+                  }
               }
 
               @Override
@@ -220,15 +217,9 @@ public class SignInActivity extends AppCompatActivity {
                   Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
                   // ...
               }
-          };
-          //mPostReference.addValueEventListener(postListener);
+          });
 
-          mPostReference.addValueEventListener(postListener);
-          // [END post_value_event_listener]
-
-          // Keep copy of post listener so we can remove it when app stops
-          mPostListener = postListener;
-       }*/
+       }
 
 
     public boolean validateForm(){
@@ -242,7 +233,7 @@ public class SignInActivity extends AppCompatActivity {
             else{
                 mUsernameField.setError(null);
             }
-         //Password Valdaitn
+         //Password Valdating
         String password = mPasswordField.getText().toString();
            if(TextUtils.isEmpty(password)){
                 mPasswordField.setError("Required");
@@ -291,6 +282,17 @@ public class SignInActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    public void addFeedback(){
+        signInTextCardView.setVisibility(View.INVISIBLE);
+        signInProgress.setVisibility(View.VISIBLE);
+
+    }
+
+    public void removeFeedback(){
+        signInTextCardView.setVisibility(View.VISIBLE);
+        signInProgress.setVisibility(View.INVISIBLE);
     }
 
 }

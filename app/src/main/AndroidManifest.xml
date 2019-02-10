@@ -22,10 +22,19 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".views.LandingActivity" />
+
+        <activity android:name=".views.LandingActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
         <activity
             android:name=".views.customer.MainActivity"
             android:label="@string/title_activity_main" />
+
         <activity android:name=".views.SignInActivity" />
         <activity android:name=".views.customer.CustomerSignUpActivity" />
         <activity android:name=".views.designer.DesignerSignUpActivity" />
@@ -44,18 +53,17 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".views.customer.ProfileActivity" />
         </activity>
+
         <activity
             android:name=".views.designer.DesignerBaseActivity"
             android:theme="@style/DesignerAppTheme" />
+
         <activity
             android:name=".views.designer.DashBoardActivity"
             android:label="Request" >
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
 
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
         </activity>
+
         <activity
             android:name=".views.designer.CatalogueActivity"
             android:label="Catalogue"
@@ -73,12 +81,15 @@
             android:name=".views.designer.EditCatalogueActivity"
             android:label="Edit Item" />
         <activity android:name=".views.designer.EditDesignerProfileActivity" />
+
         <activity
             android:name=".views.designer.Main2Activity"
             android:label="@string/title_activity_main2"
             android:theme="@style/AppTheme" />
+
         <activity android:name=".views.customer.CartActivity" />
-        <activity android:name=".views.customer.SearchActivity"></activity>
+        <activity android:name=".views.customer.SearchActivity">
+        </activity>
     </application>
 
 </manifest>

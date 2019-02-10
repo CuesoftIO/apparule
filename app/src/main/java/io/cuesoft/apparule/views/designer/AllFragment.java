@@ -60,8 +60,8 @@ public class AllFragment extends Fragment {
                 getResources().obtainTypedArray(R.array.images_categories);
         for(int i =0; i<imageCustomers.length(); i++){
 
-            mRequestsData.add(new DesignerRequestsRecyclerModel("Versache Bags",
-                    "A Lovely Product", "2 HOURS AGO",
+            mRequestsData.add(new DesignerRequestsRecyclerModel("Ibukun Dairo",
+                    "Versache Bags", "2 HOURS AGO",
               imageCustomers.getResourceId(i,0), imageResources.getResourceId(i,0)));
         }
         imageResources.recycle();
