@@ -117,7 +117,11 @@
     <array name="frabric">
         <item>@drawable/frabic1</item>
         <item>@drawable/frabic2</item>
-
+        <item>@drawable/frabic3</item>
+        <item>@drawable/frabic4</item>
+        <item>@drawable/frabic5</item>
+        <item>@drawable/frabic6</item>
+        <item>@drawable/frabic7</item>
     </array>
     <array name="men_accesories">
         <item>@drawable/watch1</item>
