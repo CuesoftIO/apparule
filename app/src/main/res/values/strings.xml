@@ -84,6 +84,7 @@
         <item>@drawable/men11</item>
     </array>
 
+
     <array name="women_images">
         <item>@drawable/product02</item>
         <item>@drawable/selfie06</item>

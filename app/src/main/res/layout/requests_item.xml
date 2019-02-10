@@ -13,11 +13,13 @@
 
         <ImageView
             android:id="@+id/requests_customer_image"
-            android:layout_width="100dp"
-            android:layout_height="match_parent"
+            android:layout_width="70dp"
+            android:layout_height="61dp"
             android:src="@drawable/selfie05"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            />
 
         <TextView
             android:id="@+id/requests_customers_name"
@@ -27,6 +29,7 @@
             android:layout_marginBottom="4dp"
             android:text="Ibukun Dairo"
             android:textStyle="bold"
+            android:textSize="13dp"
             app:layout_constraintBottom_toTopOf="@+id/requests_item_title"
             app:layout_constraintStart_toEndOf="@id/requests_customer_image" />
 
@@ -37,6 +40,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginEnd="68dp"
             android:text="Long Robe Apparel"
+            android:textSize="12dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/requests_item_image"
             app:layout_constraintStart_toEndOf="@id/requests_customer_image"
@@ -51,15 +55,16 @@
             android:layout_marginBottom="8dp"
             android:text="5 hours ago"
             android:textColor="@color/last_seen"
-            android:textSize="11dp"
+            android:textSize="10dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@id/requests_customer_image" />
 
         <ImageView
             android:id="@+id/requests_item_image"
-            android:layout_width="70dp"
-            android:layout_height="80dp"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
             android:src="@drawable/product05"
+            android:scaleType="centerCrop"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

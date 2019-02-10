@@ -40,11 +40,7 @@
         <activity android:name=".views.customer.PostActivity" />
 
         <activity android:name=".views.WalkThroughActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
 
         <activity
@@ -63,6 +59,12 @@
         <activity
             android:name=".views.designer.DashBoardActivity"
             android:label="Request" >
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
 
         </activity>
 

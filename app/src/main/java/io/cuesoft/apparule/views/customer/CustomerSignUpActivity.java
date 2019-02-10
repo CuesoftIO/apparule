@@ -110,7 +110,7 @@ public class CustomerSignUpActivity extends AppCompatActivity {
                                         Toast.LENGTH_SHORT).show();
                                 onAuthSuccess(Objects.requireNonNull(task.getResult()).getUser());
                                 removeFeedback();
-                                signInHelper.putLogin("yes");
+                                signInHelper.putLogin("customer");
                             } else {
                                 //If sign in fails, display a message to the user.
                                 Log.w(TAG, "createUserWithEmailAndPassword:failure", task.getException());

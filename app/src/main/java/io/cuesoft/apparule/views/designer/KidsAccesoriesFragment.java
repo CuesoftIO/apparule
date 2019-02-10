@@ -29,7 +29,7 @@ public class KidsAccesoriesFragment extends CatalogueBaseFragment{
         View view = inflater.inflate(R.layout.fragment_kids_accesories, container, false);
         mRecyclerView = view.findViewById(R.id.recyclerView_kidsAccessories);
         initilaizeView();
-
+           initilaizeData();
         return view;
     }
 
@@ -40,7 +40,7 @@ public class KidsAccesoriesFragment extends CatalogueBaseFragment{
         TypedArray imageResources =
                 getResources().obtainTypedArray(R.array.kids_accessories);
         for(int i =0; i<imageResources.length(); i++){
-            mCatalogueData.add(new DesignerCatalogueRecyclerModel("Versache Bags",
+            mCatalogueData.add(new DesignerCatalogueRecyclerModel("Kids",
                     "Designed with love from Nikkita Coure", "2 HOURS AGO",
                     "#61,000", imageResources.getResourceId(i,0)));
         }

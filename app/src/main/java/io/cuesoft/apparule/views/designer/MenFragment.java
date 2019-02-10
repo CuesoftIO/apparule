@@ -36,9 +36,9 @@ public class MenFragment extends CatalogueBaseFragment {
         TypedArray imageResources =
                 getResources().obtainTypedArray(R.array.men);
         for(int i =0; i<imageResources.length(); i++){
-            mCatalogueData.add(new DesignerCatalogueRecyclerModel("Versache Bags",
+            mCatalogueData.add(new DesignerCatalogueRecyclerModel("Full",
                     "Designed with love from Nikkita Coure", "2 HOURS AGO",
-                    "#61,000", imageResources.getResourceId(i,0)));
+                    "#21,000", imageResources.getResourceId(i,0)));
         }
         imageResources.recycle();
         mAdapter.notifyDataSetChanged();

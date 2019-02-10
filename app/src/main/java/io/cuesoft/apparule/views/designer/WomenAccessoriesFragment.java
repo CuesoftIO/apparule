@@ -41,7 +41,7 @@ public class WomenAccessoriesFragment extends CatalogueBaseFragment{
         TypedArray imageResources =
                 getResources().obtainTypedArray(R.array.women_images);
         for(int i =0; i<imageResources.length(); i++){
-            mCatalogueData.add(new DesignerCatalogueRecyclerModel("Versache Bags",
+            mCatalogueData.add(new DesignerCatalogueRecyclerModel("Women Styles",
                     "Designed with love from Nikkita Coure", "7 HOURS AGO",
                     "#14,000", imageResources.getResourceId(i,0)));
         }

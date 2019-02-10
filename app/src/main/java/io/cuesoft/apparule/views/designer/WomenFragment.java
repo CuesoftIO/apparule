@@ -41,7 +41,7 @@ public class WomenFragment extends CatalogueBaseFragment{
         for(int i =0; i<imageResources.length(); i++){
             mCatalogueData.add(new DesignerCatalogueRecyclerModel("Versache Bags",
                     "Designed with love from Nikkita Coure", "2 HOURS AGO",
-                    "#61,000", imageResources.getResourceId(i,0)));
+                    "#14,000", imageResources.getResourceId(i,0)));
         }
         imageResources.recycle();
         mAdapter.notifyDataSetChanged();

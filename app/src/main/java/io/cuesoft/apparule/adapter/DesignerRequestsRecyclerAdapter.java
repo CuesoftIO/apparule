@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 
 import java.util.ArrayList;
 
@@ -73,7 +74,8 @@ public class DesignerRequestsRecyclerAdapter extends RecyclerView.Adapter
         mRequestsTime.setText(requestsModel.getItemRequestTime());
 
         Glide.with(mContext).load(
-                    requestsModel.getCustomerRequestImage()).into(mCustomersRequestsImage);
+                    requestsModel.getCustomerRequestImage())
+                .apply(new RequestOptions().circleCrop()).into(mCustomersRequestsImage);
 
         Glide.with(mContext).load(
                     requestsModel.getItemRequestImage()).into(mItemRequestsImage);

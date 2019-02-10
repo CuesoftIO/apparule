@@ -21,12 +21,14 @@ import io.cuesoft.apparule.model.DesignerRequestsRecyclerModel;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class AllFragment extends Fragment {
+public class AllFragment extends RequestBaseFragment {
+/*
 
     public RecyclerView mRecyclerView;
     private LinearLayoutManager mLayoutManager;
     private DesignerRequestsRecyclerAdapter mAdapter;
-    private ArrayList<DesignerRequestsRecyclerModel>  mRequestsData;
+
+*/
 
 
     public AllFragment() {
@@ -51,21 +53,6 @@ public class AllFragment extends Fragment {
         mRecyclerView.setAdapter(mAdapter);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this.getActivity()));
 
-    }
-
-    public void initilaizeData(){
-        TypedArray imageResources =
-                getResources().obtainTypedArray(R.array.images);
-        TypedArray imageCustomers =
-                getResources().obtainTypedArray(R.array.images_categories);
-        for(int i =0; i<imageCustomers.length(); i++){
-
-            mRequestsData.add(new DesignerRequestsRecyclerModel("Ibukun Dairo",
-                    "Versache Bags", "2 HOURS AGO",
-              imageCustomers.getResourceId(i,0), imageResources.getResourceId(i,0)));
-        }
-        imageResources.recycle();
-        mAdapter.notifyDataSetChanged();
     }
 
 }

@@ -17,6 +17,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import io.cuesoft.apparule.R;
+import io.cuesoft.apparule.helper.SignInHelper;
 import io.cuesoft.apparule.views.LandingActivity;
 import io.cuesoft.apparule.views.customer.ProfileActivity;
 
@@ -27,6 +28,7 @@ public class DesignerBaseActivity extends AppCompatActivity
     NavigationView navigationView;
     Toolbar toolbar;
     TabLayout tabLayout;
+    private SignInHelper signInHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +38,7 @@ public class DesignerBaseActivity extends AppCompatActivity
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        signInHelper = new SignInHelper(this);
         tabLayout = findViewById(R.id.tabLayout);
 
         toolbar.setBackgroundColor(getResources().getColor(R.color.bottom_navigation));
@@ -104,6 +107,7 @@ public class DesignerBaseActivity extends AppCompatActivity
             sendIntent(new DesignerSettingsActivity());
         }
         else if (id == R.id.nav_signout) {
+            signInHelper.putLogin("no");
             sendIntent(new LandingActivity());
         }
 
@@ -114,6 +118,7 @@ public class DesignerBaseActivity extends AppCompatActivity
 
     public void sendIntent(Activity secondActivity){
         Intent intent = new Intent(getApplicationContext(),secondActivity.getClass());
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
 
     }

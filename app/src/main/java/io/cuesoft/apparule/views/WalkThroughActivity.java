@@ -21,6 +21,7 @@ import io.cuesoft.apparule.helper.SignInHelper;
 import io.cuesoft.apparule.helper.WalkThroughHelper;
 import io.cuesoft.apparule.views.customer.CustomerSignUpActivity;
 import io.cuesoft.apparule.views.customer.MainActivity;
+import io.cuesoft.apparule.views.designer.DashBoardActivity;
 import io.fabric.sdk.android.Fabric;
 
 
@@ -79,12 +80,15 @@ public class WalkThroughActivity extends AppCompatActivity {
         TabLayout tabLayout = findViewById(R.id.tabDots);
         tabLayout.setupWithViewPager(viewPager,true);
 
-        if(signInHelper.getLogin().equals("yes")){
+        if(signInHelper.getLogin().equals("customer")) {
             Intent intent = new Intent(WalkThroughActivity.this, MainActivity.class);
             startActivity(intent);
             this.finish();
-
-
+        }
+        else if(signInHelper.getLogin().equals("designer")) {
+            Intent intent = new Intent(WalkThroughActivity.this, DashBoardActivity.class);
+            startActivity(intent);
+            this.finish();
         }
         else if(preferenceHelper.getIntro().equals("no")){
             Intent intent = new Intent(WalkThroughActivity.this, LandingActivity.class);

@@ -226,7 +226,7 @@ public class DesignerSignUpActivity extends AppCompatActivity implements
                             //Making Progress Bar Invisible and text Visible
                             designersSignUp2progressBar.setVisibility(View.INVISIBLE);
                             designer2CardViewText.setVisibility(View.VISIBLE);
-                            signInHelper.putLogin("yes");
+                            signInHelper.putLogin("designer");
                         }
 
                         else {

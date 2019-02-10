@@ -71,7 +71,7 @@ public class MainAdapter extends
                     .into(imageView);
 
             Glide.with(mContext)
-                    .load(currentItems.getImage()).apply(new RequestOptions().optionalCircleCrop())
+                    .load(currentItems.getImage()).apply(new RequestOptions().circleCrop())
                     .into(profileImageView);
         }
 

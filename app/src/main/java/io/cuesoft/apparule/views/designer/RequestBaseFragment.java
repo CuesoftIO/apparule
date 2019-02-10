@@ -47,12 +47,12 @@ public class RequestBaseFragment extends Fragment {
         TypedArray imageResources =
                 getResources().obtainTypedArray(R.array.images);
         TypedArray imageCustomers =
-                getResources().obtainTypedArray(R.array.images_categories);
-        for(int i =0; i<imageCustomers.length(); i++){
+                getResources().obtainTypedArray(R.array.men);
+        for(int i =0; i<imageResources.length(); i++){
 
-            mRequestsData.add(new DesignerRequestsRecyclerModel("Versache Bags",
-                    "A Lovely Product", "2 HOURS AGO",
-                    imageCustomers.getResourceId(i,0), imageResources.getResourceId(i,0)));
+            mRequestsData.add(new DesignerRequestsRecyclerModel("TChalla",
+                    "Men Apparel", "2 HOURS AGO",
+                    R.drawable.men2, imageResources.getResourceId(i,0)));
         }
         imageResources.recycle();
         mAdapter.notifyDataSetChanged();
