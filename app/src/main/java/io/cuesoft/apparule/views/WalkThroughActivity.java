@@ -90,6 +90,11 @@ public class WalkThroughActivity extends AppCompatActivity {
             startActivity(intent);
             this.finish();
         }
+        else if(signInHelper.getLogin().equals("no")){
+            Intent intent = new Intent(WalkThroughActivity.this, LandingActivity.class);
+            startActivity(intent);
+            this.finish();
+        }
         else if(preferenceHelper.getIntro().equals("no")){
             Intent intent = new Intent(WalkThroughActivity.this, LandingActivity.class);
             startActivity(intent);

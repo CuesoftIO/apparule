@@ -108,7 +108,9 @@ public class DesignerBaseActivity extends AppCompatActivity
         }
         else if (id == R.id.nav_signout) {
             signInHelper.putLogin("no");
-            sendIntent(new LandingActivity());
+            Intent intent = new Intent(getApplicationContext(),LandingActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

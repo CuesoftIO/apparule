@@ -97,12 +97,12 @@
         <item>@drawable/product04</item>
         <item>@drawable/selfie09</item>
         <item>@drawable/product05</item>
-       </array>
+    </array>
 
-        <array name="kids_accessories">
-            <item>@drawable/kidacc2</item>
-            <item>@drawable/kidacc4</item>
-        </array>
+    <array name="kids_accessories">
+        <item>@drawable/kidacc2</item>
+        <item>@drawable/kidacc4</item>
+    </array>
 
     <array name="men">
         <item>@drawable/men2</item>

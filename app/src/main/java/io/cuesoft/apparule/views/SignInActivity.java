@@ -193,6 +193,8 @@ public class SignInActivity extends AppCompatActivity {
                   isCustomer = customer.email;
                   }
                   catch(Exception e){
+                      signInHelper.putLogin("designer");
+
                       Intent intent = new Intent(SignInActivity.this, DashBoardActivity.class);
                       intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                       startActivity(intent);
@@ -203,7 +205,7 @@ public class SignInActivity extends AppCompatActivity {
 */
                  // errorMessage(isCustomer);
                   if(emailCheck.equalsIgnoreCase(isCustomer)){
-
+                      signInHelper.putLogin("customer");
                       Intent intent = new Intent(SignInActivity.this, MainActivity.class);
                       intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                       startActivity(intent);
