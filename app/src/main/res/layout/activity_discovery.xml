@@ -46,9 +46,6 @@
             app:layout_constraintStart_toStartOf="parent"
             tools:layout_editor_absoluteY="10dp" />
 
-        <SearchView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
     </android.support.design.widget.AppBarLayout>
 
 
@@ -92,13 +89,13 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent">
 
-
+<!--
                 <android.support.v7.widget.RecyclerView
                     android:id="@+id/discoverRecyclerView"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
 
-                    />
+                    />-->
 
             </FrameLayout>
 

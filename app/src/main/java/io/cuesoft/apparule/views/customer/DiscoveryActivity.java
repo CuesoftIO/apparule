@@ -7,6 +7,8 @@ import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -36,6 +38,7 @@ public class DiscoveryActivity extends AppCompatActivity
     private MainAdapter mAdapter;
     private ArrayList<ItemsModel> mItemsData;
     private  ArrayList<CategoriesItemModel> mCategoriesData;
+    DiscoverAdapter mAdapter1;
     BottomNavigationView navigation;
     @Override
 
@@ -67,12 +70,22 @@ public class DiscoveryActivity extends AppCompatActivity
             }
         });
         //Handling RecyclerView
-        bottomNavigationView();
+//        bottomNavigationView();
         //Data for RecyclerView
         categoriesRecyclerView();
-        detailsRecyclerView();
-        initializeData(R.array.images);
+        //changing Recyclerview
+       // detailsRecyclerView();
+        //initializeData(R.array.images);
         categories();
+
+        //First get FragmentManager Object
+        FragmentManager fragmentManager = this.getSupportFragmentManager();
+        //Begin Fragment transaction
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        FeaturedFragment featuredFragment = new FeaturedFragment();
+        fragmentTransaction.add(R.id.discover_container,  featuredFragment);
+        fragmentTransaction.commit();
+
 
     }
 
@@ -80,30 +93,23 @@ public class DiscoveryActivity extends AppCompatActivity
 
     }
 
-   public  DiscoveryActivity(String imageResources){
-//        this.ImageResources = getResources().obtainTypedArray(R.array.images);;
-    }
 
-    public void bottomNavigationView(){
-
-
-    }
 
     public void categoriesRecyclerView(){
         mRecyclerView1 = findViewById(R.id.categories_Recyclerview);
-        final DiscoverAdapter mAdapter1 = new DiscoverAdapter(this, mCategoriesData,this);
+         mAdapter1 = new DiscoverAdapter(this, mCategoriesData,this);
         mRecyclerView1.setAdapter(mAdapter1);
         mRecyclerView1.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
      //   mRecyclerView1.addOnItemTouchListener(new RecyclerItemCl);
         ViewCompat.setNestedScrollingEnabled(mRecyclerView1, false);
     }
 
-    public void detailsRecyclerView(){
+    public void detailsRecyclerView(){/*
         mRecyclerView2 = findViewById(R.id.discoverRecyclerView);
         mAdapter = new MainAdapter(this, mItemsData);
         mRecyclerView2.setAdapter(mAdapter);
         mRecyclerView2.setLayoutManager(new LinearLayoutManager(this));
-        ViewCompat.setNestedScrollingEnabled(mRecyclerView2,false);
+        ViewCompat.setNestedScrollingEnabled(mRecyclerView2,false);*/
     }
 
     @Override
@@ -112,13 +118,15 @@ public class DiscoveryActivity extends AppCompatActivity
             case "Featured":
                 initializeData(R.array.images);
             case "Women":
-                initializeData(R.array.categories);
+                initializeData(R.array.images_categories);
             case "Men":
             case "Kids":
             case "Women Accessories":
             case "Men Accessories":
             case "Kids Accessories":
+                initializeData(R.array.kids_accessories);
             case "Wedding":
+                initializeData(R.array.men_accesories);
             case "Fabric":
 
     }
@@ -137,6 +145,7 @@ public class DiscoveryActivity extends AppCompatActivity
         ImageResources.recycle();
         mAdapter.notifyDataSetChanged();
     }
+
     public  void categoriesData(int id){
 
     TypedArray    ImageResources = getResources().obtainTypedArray(id);
@@ -148,6 +157,7 @@ public class DiscoveryActivity extends AppCompatActivity
         ImageResources.recycle();
         mAdapter.notifyDataSetChanged();
     }
+
     public void categories(){
         String[] categories = getResources()
                 .getStringArray(R.array.categories);
@@ -160,7 +170,7 @@ public class DiscoveryActivity extends AppCompatActivity
         }
 
         ImageCategories.recycle();
-        mAdapter.notifyDataSetChanged();
+        mAdapter1.notifyDataSetChanged();
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener

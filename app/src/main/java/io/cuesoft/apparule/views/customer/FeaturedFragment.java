@@ -8,11 +8,12 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import io.cuesoft.apparule.R;
+import io.cuesoft.apparule.views.designer.CatalogueBaseFragment;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class FeaturedFragment extends Fragment {
+public class FeaturedFragment extends DiscoverBaseFragment{
 
 
     public FeaturedFragment() {
@@ -23,8 +24,13 @@ public class FeaturedFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        View view =  inflater.inflate(R.layout.fragment_featured, container, false);
+        mRecyclerView = view.findViewById(R.id.featured_recyclerView);
+
+        initilaizeView();
+        initilaizeData();
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_featured, container, false);
+        return view;
     }
 
 }
