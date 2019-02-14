@@ -4,6 +4,7 @@ package io.cuesoft.apparule.views.customer;
 import android.content.res.TypedArray;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -31,16 +32,18 @@ public class DiscoverBaseFragment extends Fragment {
 
 
     public void initilaizeView(){
+
         mItemsData = new ArrayList<>();
         mAdapter = new MainAdapter(this.getActivity(), mItemsData);
         mRecyclerView.setAdapter(mAdapter);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this.getActivity()));
-
+        ViewCompat.setNestedScrollingEnabled(mRecyclerView, false);
     }
-    public void initilaizeData(){
+
+    public void initilaizeData(int id){
 
         TypedArray ImageResources =
-                getResources().obtainTypedArray(R.array.men_accesories);
+                getResources().obtainTypedArray(id);
 
         for(int i =0; i<ImageResources.length(); i++){
             mItemsData.add(new ItemsModel( ImageResources.getResourceId(i,0)));

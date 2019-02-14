@@ -48,6 +48,7 @@ public class DiscoveryActivity extends AppCompatActivity
         //Arraylist for data
         mItemsData = new ArrayList<>();
         mCategoriesData = new ArrayList<>();
+
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         BottomNavigationViewHelper.removeShiftMode(navigation);
         navigation.setBackgroundColor(getResources().getColor(R.color.bottom_navigation));
@@ -61,6 +62,7 @@ public class DiscoveryActivity extends AppCompatActivity
         Toolbar toolbar = findViewById(R.id.discover_toolbar);
         toolbar.setTitle("Discover");
         toolbar.inflateMenu(R.menu.discover_menu);
+
         toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
@@ -69,6 +71,7 @@ public class DiscoveryActivity extends AppCompatActivity
                 return false;
             }
         });
+
         //Handling RecyclerView
 //        bottomNavigationView();
         //Data for RecyclerView
@@ -86,10 +89,6 @@ public class DiscoveryActivity extends AppCompatActivity
         fragmentTransaction.add(R.id.discover_container,  featuredFragment);
         fragmentTransaction.commit();
 
-
-    }
-
-    public DiscoveryActivity(){
 
     }
 
@@ -146,17 +145,6 @@ public class DiscoveryActivity extends AppCompatActivity
         mAdapter.notifyDataSetChanged();
     }
 
-    public  void categoriesData(int id){
-
-    TypedArray    ImageResources = getResources().obtainTypedArray(id);
-
-        for(int i =0; i<ImageResources.length(); i++){
-            mItemsData.add(new ItemsModel( ImageResources.getResourceId(i,0)));
-        }
-
-        ImageResources.recycle();
-        mAdapter.notifyDataSetChanged();
-    }
 
     public void categories(){
         String[] categories = getResources()

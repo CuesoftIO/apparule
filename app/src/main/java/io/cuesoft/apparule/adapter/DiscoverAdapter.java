@@ -96,9 +96,9 @@ public class DiscoverAdapter extends
 
         @Override
         public void onClick(View v) {
-         CategoriesItemModel currentModel = mCategoriesData.get(getAdapterPosition());
+            /*CategoriesItemModel currentModel = mCategoriesData.get(getAdapterPosition());
             String categoriesText = currentModel.getCategoriesText();
             mOnCategoriesClickListener.onCategoriesClick(categoriesText);
-        }
+       */ }
     }
 }
