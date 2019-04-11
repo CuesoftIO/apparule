@@ -2,6 +2,7 @@ package io.cuesoft.apparule.views.customer;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
+import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.content.res.TypedArray;
 import android.os.Build;
@@ -23,6 +24,7 @@ import io.cuesoft.apparule.R;
 import io.cuesoft.apparule.adapter.MainAdapter;
 import io.cuesoft.apparule.helper.BottomNavigationViewHelper;
 import io.cuesoft.apparule.model.ItemsModel;
+import io.cuesoft.apparule.viewmodel.MainActivityViewModel;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -30,32 +32,24 @@ public class MainActivity extends AppCompatActivity {
     private MainAdapter mAdapter;
     private ArrayList<ItemsModel> mItemsData;
     BottomNavigationView navigation;
+
+    private MainActivityViewModel mainViewModel;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         //Bottom Navigation Initialization
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
-        //bottom navigation atrributes
-        BottomNavigationViewHelper.removeShiftMode(navigation);
-        navigation.setBackgroundColor(getResources().getColor(R.color.signInButton_Blue));
-        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+
+        setBottomNavigation();
 
         Toolbar toolbar = findViewById(R.id.toolbar_main);
-        toolbar.setOverflowIcon(getResources().getDrawable(R.drawable.ic_shopping_cart_black_24dp));
-        toolbar.setTitle("Home");
-        toolbar.inflateMenu(R.menu.main_menu);
 
-        toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem item) {
-                int id = item.getItemId();
-                if(id==R.id.shoppingCart){
-                intentDelivery(new CartActivity());
-                }
-                return false;
-            }
-        });
+        setToolBar(toolbar);
+
+        mainViewModel = ViewModelProviders.of(this).get(MainActivityViewModel.class);
 
 
         Menu menu = navigation.getMenu();
@@ -70,6 +64,31 @@ public class MainActivity extends AppCompatActivity {
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         //Adding data to recyclerview
         initializeData();
+    }
+
+    public void setBottomNavigation(){
+        //bottom navigation atrributes
+        BottomNavigationViewHelper.removeShiftMode(navigation);
+        navigation.setBackgroundColor(getResources().getColor(R.color.signInButton_Blue));
+        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+    }
+
+
+    public void setToolBar(Toolbar toolbar){
+        toolbar.setOverflowIcon(getResources().getDrawable(R.drawable.ic_shopping_cart_black_24dp));
+        toolbar.setTitle("Home");
+        toolbar.inflateMenu(R.menu.main_menu);
+
+        toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                int id = item.getItemId();
+                if(id==R.id.shoppingCart){
+                    intentDelivery(new CartActivity());
+                }
+                return false;
+            }
+        });
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener

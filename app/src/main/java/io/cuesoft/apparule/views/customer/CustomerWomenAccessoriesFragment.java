@@ -27,6 +27,9 @@ public class CustomerWomenAccessoriesFragment extends DiscoverBaseFragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_customer_women_accessories, container, false);
+        mRecyclerView =view.findViewById(R.id.custWomenAccesoriesRecycler);
+        initilaizeView();
+        initilaizeData(R.array.women_images);
         return view;
     }
     /*@Override

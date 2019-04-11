@@ -1,5 +1,6 @@
 package io.cuesoft.apparule.views.designer;
 
+import android.arch.lifecycle.ViewModelProviders;
 import android.content.res.TypedArray;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -16,6 +17,7 @@ import java.util.ArrayList;
 import io.cuesoft.apparule.R;
 import io.cuesoft.apparule.adapter.DesignerCatalogueReyclerAdapter;
 import io.cuesoft.apparule.model.DesignerCatalogueRecyclerModel;
+import io.cuesoft.apparule.viewmodel.MainActivityViewModel;
 
 public class CatalogueBaseFragment extends Fragment {
 
@@ -24,11 +26,19 @@ public class CatalogueBaseFragment extends Fragment {
     DesignerCatalogueReyclerAdapter mAdapter;
     ArrayList<DesignerCatalogueRecyclerModel> mCatalogueData;
 
+    private MainActivityViewModel mainActivityViewModel;
+
     public void initilaizeView(){
         mCatalogueData = new ArrayList<>();
         mAdapter = new DesignerCatalogueReyclerAdapter(this.getActivity(), mCatalogueData);
         mRecyclerView.setAdapter(mAdapter);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this.getActivity()));
+
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
 
     }
 

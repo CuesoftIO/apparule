@@ -15,10 +15,11 @@ public class CustomerKidsFragment extends DiscoverBaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-
-        View view = inflater.inflate(R.layout.fragment_customer_kids, container, false);
-
+      // Inflate the layout for this fragment
+      View view = inflater.inflate(R.layout.fragment_customer_kids, container, false);
+      mRecyclerView = view.findViewById(R.id.custKidsRecycler);
+      initilaizeView();
+      initilaizeData(R.array.kids_accessories);
        return view;
     }
 
