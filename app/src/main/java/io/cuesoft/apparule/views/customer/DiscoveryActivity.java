@@ -27,6 +27,8 @@ import io.cuesoft.apparule.helper.BottomNavigationViewHelper;
 import io.cuesoft.apparule.interfaces.OnCategoriesClickListener;
 import io.cuesoft.apparule.model.CategoriesItemModel;
 import io.cuesoft.apparule.model.ItemsModel;
+import io.cuesoft.apparule.views.designer.KidsFragment;
+import io.cuesoft.apparule.views.designer.WomenFragment;
 
 public class DiscoveryActivity extends AppCompatActivity
               implements OnCategoriesClickListener {
@@ -85,7 +87,7 @@ public class DiscoveryActivity extends AppCompatActivity
         FragmentManager fragmentManager = this.getSupportFragmentManager();
         //Begin Fragment transaction
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        FeaturedFragment featuredFragment = new FeaturedFragment();
+        CustomerWomenFragment featuredFragment = new CustomerWomenFragment();
         fragmentTransaction.add(R.id.discover_container,  featuredFragment);
         fragmentTransaction.commit();
 
@@ -115,23 +117,55 @@ public class DiscoveryActivity extends AppCompatActivity
     public void onCategoriesClick(String CategoriesData) {
         switch(CategoriesData){
             case "Featured":
-                initializeData(R.array.images);
+                FeaturedFragment fragment = new FeaturedFragment();
+                replaceFragment(fragment);
+                break;
             case "Women":
-                initializeData(R.array.images_categories);
+                CustomerWomenFragment womenfragment = new CustomerWomenFragment();
+                replaceFragment(womenfragment);
+                break;
             case "Men":
+                CustomerMenFragment menFragment = new CustomerMenFragment();
+                replaceFragment(menFragment);
+                break;
             case "Kids":
+                CustomerKidsFragment kidsFragment = new CustomerKidsFragment();
+                replaceFragment(kidsFragment);
+                break;
             case "Women Accessories":
+                CustomerWomenAccessoriesFragment womenAccessoriesFragment = new CustomerWomenAccessoriesFragment();
+                replaceFragment(womenAccessoriesFragment);
+                break;
             case "Men Accessories":
+                CustomerMenAccessoriesFragment menAccessoriesFragment= new CustomerMenAccessoriesFragment();
+                replaceFragment(menAccessoriesFragment);
+                break;
             case "Kids Accessories":
-                initializeData(R.array.kids_accessories);
+                CustomerKidsAccessoriesFragment kidsAccessoriesFragment = new CustomerKidsAccessoriesFragment();
+                replaceFragment(kidsAccessoriesFragment);
+                break;
             case "Wedding":
-                initializeData(R.array.men_accesories);
+                CustomerWeddingFragment weddingFragment = new CustomerWeddingFragment();
+                replaceFragment(weddingFragment);
+                break;
             case "Fabric":
+                CustomerFabricsFragment fabricsFragment = new CustomerFabricsFragment();
+                replaceFragment(fabricsFragment);
+                break;
+        }
+
+
 
     }
 
-
+    public  void replaceFragment(Fragment fragment){
+        FragmentManager fragmentManager = this.getSupportFragmentManager();
+        //Begin Fragment transaction
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.discover_container,  fragment);
+        fragmentTransaction.commit();
     }
+
     public void initializeData(int id){
 
         TypedArray ImageResources =

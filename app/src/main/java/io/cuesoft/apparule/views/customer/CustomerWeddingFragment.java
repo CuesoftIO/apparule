@@ -27,6 +27,9 @@ public class CustomerWeddingFragment extends DiscoverBaseFragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_customer_wedding, container, false);
+        mRecyclerView = view.findViewById(R.id.custWeddingRecycler);
+        initilaizeView();
+        initilaizeData(R.array.women_images);
         return view;
     }
 

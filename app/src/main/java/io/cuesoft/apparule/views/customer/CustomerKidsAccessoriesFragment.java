@@ -25,6 +25,9 @@ public class CustomerKidsAccessoriesFragment extends DiscoverBaseFragment{
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_customer_kids_accessories, container, false);
+        mRecyclerView = view.findViewById(R.id.custKidsAccesRecycler);
+        initilaizeView();
+        initilaizeData(R.array.kids_accessories);
         return view;
     }
 

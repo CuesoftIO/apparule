@@ -17,19 +17,28 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+
 import java.util.ArrayList;
 
 import io.cuesoft.apparule.R;
 import io.cuesoft.apparule.adapter.MainAdapter;
+import io.cuesoft.apparule.adapter.SecondMainAdapter;
 import io.cuesoft.apparule.helper.BottomNavigationViewHelper;
+import io.cuesoft.apparule.model.ImageModel;
 import io.cuesoft.apparule.model.ItemsModel;
 
 public class MainActivity extends AppCompatActivity {
 
     private RecyclerView mRecyclerView;
-    private MainAdapter mAdapter;
-    private ArrayList<ItemsModel> mItemsData;
+    private SecondMainAdapter mAdapter;
+    private ArrayList<ImageModel> mItemsData;
     BottomNavigationView navigation;
+
+    private FirebaseStorage storage;
+    private StorageReference imageRef;
+    StorageReference storageRef;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +49,11 @@ public class MainActivity extends AppCompatActivity {
         BottomNavigationViewHelper.removeShiftMode(navigation);
         navigation.setBackgroundColor(getResources().getColor(R.color.signInButton_Blue));
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+
+        //Firebase Storage
+        storage = FirebaseStorage.getInstance();
+        storageRef = storage.getReference();
+        imageRef = storageRef.child("designers");
 
         Toolbar toolbar = findViewById(R.id.toolbar_main);
         toolbar.setOverflowIcon(getResources().getDrawable(R.drawable.ic_shopping_cart_black_24dp));
@@ -58,13 +72,15 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
+        //Handling menu navigation
         Menu menu = navigation.getMenu();
         MenuItem menuItem = menu.getItem(0);
         menuItem.setChecked(true);
 
+        //Initialization
         mItemsData = new ArrayList<>();
         mRecyclerView = findViewById(R.id.mainRecyclerView);
-        mAdapter = new MainAdapter(this, mItemsData);
+        mAdapter = new SecondMainAdapter(this, mItemsData);
         //recyclerview attributes
         mRecyclerView.setAdapter(mAdapter);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -106,13 +122,14 @@ public class MainActivity extends AppCompatActivity {
     };
 
     public void initializeData(){
-        TypedArray ImageResources =
-                getResources().obtainTypedArray(R.array.images);
-        for(int i =0; i<ImageResources.length(); i++){
-            mItemsData.add(new ItemsModel( ImageResources.getResourceId(i,0)));
+        String [] imageArray = {"men10.jpg","men11.jpg","men4.jpg","men8.jpg","men6.jpg"};
+
+        for(String anImageArray: imageArray){
+            imageRef = storageRef.child("designers/nkkita/" + anImageArray);
+            mItemsData.add(new ImageModel(imageRef));
         }
 
-        ImageResources.recycle();
+
         mAdapter.notifyDataSetChanged();
 
     }

@@ -1,7 +1,7 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 27
+    compileSdkVersion 28
     defaultConfig {
         applicationId "io.cuesoft.apparule"
         minSdkVersion 19
@@ -21,29 +21,41 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'com.android.support:appcompat-v7:27.1.1'
+    implementation 'com.android.support:appcompat-v7:28.0.0'
     implementation 'com.android.support.constraint:constraint-layout:1.1.3'
-    implementation 'com.android.support:support-v4:27.1.1'
-    implementation 'com.android.support:design:27.1.1'
-    implementation 'com.android.support:cardview-v7:27.1.1'
+    implementation 'com.android.support:support-v4:28.0.0'
+    implementation 'com.android.support:design:28.0.0'
+    implementation 'com.android.support:cardview-v7:28.0.0'
 
     //Android Permisson for marshMellow
     implementation 'pub.devrel:easypermissions:0.2.1'
 
     //Firebase services
     implementation 'com.google.firebase:firebase-core:16.0.6'
+    //Firebase Authentication
     implementation 'com.google.firebase:firebase-auth:16.1.0'
+    //Firebase Database
     implementation 'com.google.firebase:firebase-database:16.0.6'
-    implementation 'com.github.bumptech.glide:glide:4.7.1'
+    //Firebase Storage
+    implementation 'com.google.firebase:firebase-storage:16.1.0'
+    //Firebase User Interface Storage
+    implementation 'com.firebaseui:firebase-ui-storage:4.3.1'
+
+    implementation 'com.github.bumptech.glide:glide:4.9.0'
+
+
 
     implementation "com.google.android.gms:play-services-gcm:15.0.0"
 
     // Add dependency
     implementation 'com.crashlytics.sdk.android:crashlytics:2.9.8'
 
-    implementation 'com.android.support:support-vector-drawable:27.1.1'
-    implementation 'com.android.support:recyclerview-v7:27.1.1'
+    implementation 'com.android.support:support-vector-drawable:28.0.0'
+    implementation 'com.android.support:recyclerview-v7:28.0.0'
     testImplementation 'junit:junit:4.12'
+
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.9.0'
+
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 

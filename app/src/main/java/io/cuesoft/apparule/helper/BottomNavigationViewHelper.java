@@ -21,7 +21,7 @@ public class BottomNavigationViewHelper {
             shiftingMode.setAccessible(false);
             for(int i =0; i<menuView.getChildCount(); i++){
                 BottomNavigationItemView item = (BottomNavigationItemView) menuView.getChildAt(i);
-                item.setShiftingMode(false);
+                item.setShifting(false);
                 item.setPadding(0, 15, 0, 0);
                 item.setChecked(item.getItemData().isChecked());
             }

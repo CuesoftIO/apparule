@@ -22,7 +22,9 @@ public class CustomerMenFragment extends DiscoverBaseFragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_customer_men, container, false);
-
+        mRecyclerView = view.findViewById(R.id.custMenRecycler);
+        initilaizeView();
+        initilaizeData(R.array.men);
         return view;
     }
 

@@ -15,6 +15,9 @@ public class CustomerFabricsFragment extends DiscoverBaseFragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_customer_fabrics, container, false);
+        mRecyclerView = view.findViewById(R.id.custFabricRecycler);
+        initilaizeView();
+        initilaizeData(R.array.frabric);
         return view;
     }
 
