@@ -28,7 +28,8 @@ public class FeaturedFragment extends DiscoverBaseFragment{
         mRecyclerView = view.findViewById(R.id.featured_recyclerView);
 
         initilaizeView();
-        initilaizeData(R.array.kids_accessories);
+        String [] imageArray = {"men10.jpg"};
+        initilaizeData(imageArray, "men");
         // Inflate the layout for this fragment
         return view;
     }

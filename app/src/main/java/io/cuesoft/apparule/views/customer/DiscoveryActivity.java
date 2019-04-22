@@ -98,8 +98,10 @@ public class DiscoveryActivity extends AppCompatActivity
 
     public void categoriesRecyclerView(){
         mRecyclerView1 = findViewById(R.id.categories_Recyclerview);
-         mAdapter1 = new DiscoverAdapter(this, mCategoriesData,this);
+        mAdapter1 = new DiscoverAdapter(this, mCategoriesData,this);
+
         mRecyclerView1.setAdapter(mAdapter1);
+
         mRecyclerView1.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
      //   mRecyclerView1.addOnItemTouchListener(new RecyclerItemCl);
         ViewCompat.setNestedScrollingEnabled(mRecyclerView1, false);

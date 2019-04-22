@@ -18,10 +18,11 @@ public class BottomNavigationViewHelper {
             Field shiftingMode = menuView.getClass().getDeclaredField("mShiftingMode");
             shiftingMode.setAccessible(true);
             shiftingMode.setBoolean(menuView, false);
-            shiftingMode.setAccessible(false);
+            //shiftingMode.setAccessible(false);
             for(int i =0; i<menuView.getChildCount(); i++){
                 BottomNavigationItemView item = (BottomNavigationItemView) menuView.getChildAt(i);
                 item.setShifting(false);
+
                 item.setPadding(0, 15, 0, 0);
                 item.setChecked(item.getItemData().isChecked());
             }

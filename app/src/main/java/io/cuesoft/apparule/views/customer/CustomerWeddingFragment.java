@@ -29,7 +29,8 @@ public class CustomerWeddingFragment extends DiscoverBaseFragment {
         View view = inflater.inflate(R.layout.fragment_customer_wedding, container, false);
         mRecyclerView = view.findViewById(R.id.custWeddingRecycler);
         initilaizeView();
-        initilaizeData(R.array.women_images);
+        String [] imageArray ={"wedding_dress.jpg"};
+        initilaizeData(imageArray,"Wedding");
         return view;
     }
 

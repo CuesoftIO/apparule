@@ -11,12 +11,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+
 import java.util.ArrayList;
 
 import io.cuesoft.apparule.R;
 import io.cuesoft.apparule.adapter.DesignerCatalogueReyclerAdapter;
 import io.cuesoft.apparule.adapter.MainAdapter;
+import io.cuesoft.apparule.adapter.SecondMainAdapter;
 import io.cuesoft.apparule.model.DesignerCatalogueRecyclerModel;
+import io.cuesoft.apparule.model.ImageModel;
 import io.cuesoft.apparule.model.ItemsModel;
 
 /**
@@ -26,30 +31,38 @@ public class DiscoverBaseFragment extends Fragment {
 
     RecyclerView mRecyclerView;
     LinearLayoutManager mLayoutManager;
-    MainAdapter mAdapter;
-    ArrayList<ItemsModel> mItemsData;
-
+    SecondMainAdapter mAdapter;
+    ArrayList<ImageModel> mItemsData;
+    FirebaseStorage storage;
+    StorageReference storageRef;
+    StorageReference imageRef;
 
 
     public void initilaizeView(){
 
         mItemsData = new ArrayList<>();
-        mAdapter = new MainAdapter(this.getActivity(), mItemsData);
+        mAdapter = new SecondMainAdapter(this.getActivity(), mItemsData);
+        storage = FirebaseStorage.getInstance();
+        storageRef = storage.getReference();
+        imageRef = storageRef.child("designers");
+
         mRecyclerView.setAdapter(mAdapter);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this.getActivity()));
         ViewCompat.setNestedScrollingEnabled(mRecyclerView, false);
     }
 
-    public void initilaizeData(int id){
+    public void initilaizeData(String [] imageArray, String categories){
 
-        TypedArray ImageResources =
-                getResources().obtainTypedArray(id);
-
-        for(int i =0; i<ImageResources.length(); i++){
-            mItemsData.add(new ItemsModel( ImageResources.getResourceId(i,0)));
+      if(imageArray.length == 0) {
+            imageArray = new String[]{"men10.jpg", "men8.jpg"};
+        }
+        for(String anImageArray : imageArray){
+            imageRef = storageRef.child( categories +"/" + anImageArray);
+            mItemsData.add(new ImageModel(imageRef));
         }
 
-        ImageResources.recycle();
+
+
         mAdapter.notifyDataSetChanged();
     }
 

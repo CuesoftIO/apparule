@@ -17,7 +17,8 @@ public class CustomerFabricsFragment extends DiscoverBaseFragment {
         View view = inflater.inflate(R.layout.fragment_customer_fabrics, container, false);
         mRecyclerView = view.findViewById(R.id.custFabricRecycler);
         initilaizeView();
-        initilaizeData(R.array.frabric);
+        String [] imageArray ={"frabic1.jpg","frabic2.jpg","frabic3.jpg","frabic4.jpg"};
+      initilaizeData(imageArray,"Fabric");
         return view;
     }
 

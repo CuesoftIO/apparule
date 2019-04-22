@@ -29,23 +29,12 @@ public class CustomerWomenFragment extends DiscoverBaseFragment {
         View view=inflater.inflate(R.layout.fragment_customer_women, container, false);
         mRecyclerView = view.findViewById(R.id.custWomenRecycler);
         initilaizeView();
-        initilaizeData(R.array.women_images);
+
+        String [] imageArray = {"product01.jpg","product02.jpg",
+                "product03.jpg","product05.jpg","product04.jpg"};
+        initilaizeData(imageArray,"women");
         return view;
 
     }
-/*
 
-    @Override
-    public void initilaizeData(){
-        TypedArray ImageResources =
-                getResources().obtainTypedArray(R.array.women_images);
-
-        for(int i =0; i<ImageResources.length(); i++){
-            mItemsData.add(new ItemsModel( ImageResources.getResourceId(i,0)));
-        }
-
-        ImageResources.recycle();
-        mAdapter.notifyDataSetChanged();
-    }
-*/
 }

@@ -29,7 +29,8 @@ public class CustomerWomenAccessoriesFragment extends DiscoverBaseFragment {
         View view = inflater.inflate(R.layout.fragment_customer_women_accessories, container, false);
         mRecyclerView =view.findViewById(R.id.custWomenAccesoriesRecycler);
         initilaizeView();
-        initilaizeData(R.array.women_images);
+        String [] imageArray ={"accessories.jpg"};
+        initilaizeData(imageArray, "womenAccessories");
         return view;
     }
     /*@Override
