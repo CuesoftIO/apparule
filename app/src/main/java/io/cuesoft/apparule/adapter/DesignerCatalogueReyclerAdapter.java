@@ -15,6 +15,7 @@ import java.util.ArrayList;
 
 import io.cuesoft.apparule.R;
 import io.cuesoft.apparule.model.DesignerCatalogueRecyclerModel;
+import io.cuesoft.apparule.service.GlideApp;
 
 public class DesignerCatalogueReyclerAdapter extends RecyclerView.Adapter<DesignerCatalogueReyclerAdapter.CatalogueViewHolder> {
 
@@ -75,7 +76,7 @@ public class DesignerCatalogueReyclerAdapter extends RecyclerView.Adapter<Design
             timeCatalogue.setText(catalogueModel.getTimeCatalogue());
             priceCatalogue.setText(catalogueModel.getPriceCatalogue());
 
-            Glide.with(mContext).load(
+            GlideApp.with(mContext).load(
                     catalogueModel.getImageCatalogue()).into(itemCatalogueImage);
 
         }

@@ -12,6 +12,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Adapter;
 
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+
 import java.util.ArrayList;
 
 import io.cuesoft.apparule.R;
@@ -25,6 +28,10 @@ public class RequestBaseFragment extends Fragment {
      LinearLayoutManager mLayoutManager;
      DesignerRequestsRecyclerAdapter mAdapter;
      ArrayList<DesignerRequestsRecyclerModel> mRequestsData;
+    FirebaseStorage storage;
+    StorageReference storageRef;
+    StorageReference imageRef;
+
 
     @Nullable
     @Override
@@ -41,20 +48,24 @@ public class RequestBaseFragment extends Fragment {
         mRecyclerView.setAdapter(mAdapter);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this.getActivity()));
 
+        storage = FirebaseStorage.getInstance();
+        storageRef = storage.getReference();
+        imageRef = storageRef.child("designers");
     }
 
     public void initilaizeData(){
-        TypedArray imageResources =
-                getResources().obtainTypedArray(R.array.images);
-        TypedArray imageCustomers =
-                getResources().obtainTypedArray(R.array.men);
-        for(int i =0; i<imageResources.length(); i++){
+        String [] imageResources = {"product01.jpg","product02.jpg",
+                "product03.jpg","product05.jpg","product04.jpg"};
+      //  String [] imageCustomers = {" "};
 
+        for(String anImageArray :imageResources){
+
+            imageRef =storageRef.child("women/" + anImageArray);
             mRequestsData.add(new DesignerRequestsRecyclerModel("TChalla",
                     "Men Apparel", "2 HOURS AGO",
-                    R.drawable.men2, imageResources.getResourceId(i,0)));
+                    R.drawable.men2, imageRef ));
         }
-        imageResources.recycle();
+
         mAdapter.notifyDataSetChanged();
     }
 

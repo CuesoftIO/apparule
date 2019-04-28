@@ -1,16 +1,18 @@
 package io.cuesoft.apparule.model;
 
+import com.google.firebase.storage.StorageReference;
+
 public class DesignerCatalogueRecyclerModel{
 
     private String itemCatalogueText;
     private String descriptionCatalogue;
     private String timeCatalogue;
     private String priceCatalogue;
-    private int imageCatalogue;
+    private StorageReference imageCatalogue;
 
 
     public DesignerCatalogueRecyclerModel(String itemCatalogueText,
-                                          String descriptionCatalogue, String timeCatalogue, String priceCatalogue, int imageCatalogue) {
+                                          String descriptionCatalogue, String timeCatalogue, String priceCatalogue, StorageReference imageCatalogue) {
         this.itemCatalogueText = itemCatalogueText;
         this.descriptionCatalogue = descriptionCatalogue;
         this.timeCatalogue = timeCatalogue;
@@ -35,7 +37,7 @@ public class DesignerCatalogueRecyclerModel{
         return priceCatalogue;
     }
 
-    public int getImageCatalogue() {
+    public StorageReference getImageCatalogue() {
         return imageCatalogue;
     }
 }

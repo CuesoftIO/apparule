@@ -12,6 +12,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+
 import java.util.ArrayList;
 
 import io.cuesoft.apparule.R;
@@ -26,31 +29,35 @@ public class CatalogueBaseFragment extends Fragment {
     DesignerCatalogueReyclerAdapter mAdapter;
     ArrayList<DesignerCatalogueRecyclerModel> mCatalogueData;
 
-    private MainActivityViewModel mainActivityViewModel;
+    FirebaseStorage storage;
+    StorageReference storageRef;
+    StorageReference imageRef;
+
 
     public void initilaizeView(){
         mCatalogueData = new ArrayList<>();
         mAdapter = new DesignerCatalogueReyclerAdapter(this.getActivity(), mCatalogueData);
+        storage = FirebaseStorage.getInstance();
+        storageRef = storage.getReference();
+        imageRef = storageRef.child("designers");
+
         mRecyclerView.setAdapter(mAdapter);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this.getActivity()));
-
     }
 
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-
-    }
 
     public void initilaizeData(){
-        TypedArray imageResources =
-                getResources().obtainTypedArray(R.array.images);
-        for(int i =0; i<imageResources.length(); i++){
+        String [] imageResources = {"product01.jpg","product02.jpg",
+                "product03.jpg","product05.jpg","product04.jpg"};
+
+
+        for(String anImageArray : imageResources){
+            imageRef =storageRef.child("women/" + anImageArray);
             mCatalogueData.add(new DesignerCatalogueRecyclerModel("Versache Bags",
                     "Designed with love from Nikkita Coure", "2 HOURS AGO",
-                    "#61,000", imageResources.getResourceId(i,0)));
+                    "#61,000", imageRef));
         }
-        imageResources.recycle();
+
         mAdapter.notifyDataSetChanged();
     }
 

@@ -30,20 +30,5 @@ public class MenFragment extends CatalogueBaseFragment {
         return view;
     }
 
-    @Override
-    public void initilaizeData() {
-        // super.initilaizeData();
-        TypedArray imageResources =
-                getResources().obtainTypedArray(R.array.men);
-        for(int i =0; i<imageResources.length(); i++){
-            mCatalogueData.add(new DesignerCatalogueRecyclerModel("Full",
-                    "Designed with love from Nikkita Coure", "2 HOURS AGO",
-                    "#21,000", imageResources.getResourceId(i,0)));
-        }
-        imageResources.recycle();
-        mAdapter.notifyDataSetChanged();
-
-
-    }
 
 }

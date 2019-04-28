@@ -33,19 +33,6 @@ public class FabricFragment extends CatalogueBaseFragment {
         return view;
     }
 
-    @Override
-    public void initilaizeData() {
-        TypedArray imageResources =
-                    getResources().obtainTypedArray(R.array.frabric);
-            for(int i =0; i<imageResources.length(); i++){
-                mCatalogueData.add(new DesignerCatalogueRecyclerModel("Fabrics",
-                        "Designed with love from Nikkita Coure", "2 HOURS AGO",
-                        "#10,000", imageResources.getResourceId(i,0)));
-            }
-            imageResources.recycle();
-            mAdapter.notifyDataSetChanged();
 
-
-        }
 
 }

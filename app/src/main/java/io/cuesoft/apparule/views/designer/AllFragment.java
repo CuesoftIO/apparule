@@ -10,6 +10,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.firebase.storage.FirebaseStorage;
+
 import java.util.ArrayList;
 
 import io.cuesoft.apparule.R;
@@ -53,6 +55,10 @@ public class AllFragment extends RequestBaseFragment {
         mRecyclerView.setAdapter(mAdapter);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this.getActivity()));
 
+
+        storage = FirebaseStorage.getInstance();
+        storageRef = storage.getReference();
+        imageRef = storageRef.child("designers");
     }
 
 }
