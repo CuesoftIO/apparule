@@ -3,7 +3,7 @@ Apparule is a fashion app for fashiontrepreneurs and lovers of well-made attires
 It has two user type Customer and designer
 
 ## Images  
-![Images](https://github.com/CuesoftIO/apparule/blob/master/images/Get_Started1.jpg)  
+![Images](https://raw.githubusercontent.com/CuesoftIO/apparule/master/images/Get_Started1.jpg)  
 
 
 
