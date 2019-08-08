@@ -2,17 +2,10 @@
 Apparule is a fashion app for fashiontrepreneurs and lovers of well-made attires. It uses firebase as it backend. 
 It has two user type Customer and designer
 
-## Description.
-### User flow
-#### Walkthrough
-This is the layout for the walkthrough
-1.Screen1--intro_screen1.xml
-2.Screen2--intro_screen2.xml
-3.Screen3--intro_screen3.xml
+## Images  
+![Images](C:\Users\Abayomi\Documents\ThingsToTransfer\Apparule\images\Get_Started1.jpg)  
 
 
-#### Landing
-SignInPage.xml
 
 
 
